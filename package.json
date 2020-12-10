@@ -30,6 +30,7 @@
     "gulp-autoprefixer": "^7.0.1",
     "gulp-babel": "^8.0.0",
     "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
     "gulp-eslint": "^6.0.0",
     "gulp-ftp": "^1.1.0",
     "gulp-image": "^6.2.1",
@@ -40,8 +41,10 @@
     "gulp-responsive": "^3.0.1",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-stylelint": "^13.0.0",
+    "gulp-svgo": "^2.2.1",
     "gulp-terser": "^2.0.0",
     "gulp-w3c-html-validator": "^2.0.1",
+    "pageres": "^5.2.1",
     "plumber": "^0.4.8",
     "postcss": "^8.1.14",
     "postcss-animation": "0.0.12",
@@ -53,10 +56,12 @@
     "postcss-import": "^13.0.0",
     "postcss-negative-padding": "0.0.7",
     "postcss-quantity-queries": "^0.5.0",
+    "postcss-uncss": "^0.17.0",
     "precss": "^4.0.0",
     "stylelint": "^13.8.0",
     "stylelint-config-htmlacademy": "^0.1.4",
-    "stylelint-config-standard": "^20.0.0"
+    "stylelint-config-standard": "^20.0.0",
+    "uncss": "^0.17.3"
   },
   "dependencies": {
     "clean": "^4.0.2",

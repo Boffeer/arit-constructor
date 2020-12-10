@@ -28,6 +28,8 @@ const postcss = require('gulp-postcss');
 const colors = require('colors');
 const del = require('del');
 
+const svgo = require('gulp-svgo');
+
 // const browserSync = require('browser-sync').create();
 
 // const styles = require('./gulp/tasks/styles.js');
@@ -39,6 +41,29 @@ const del = require('del');
 
 // const scripts = require('./gulp/tasks/scripts.js');
 // module.exports.scripts = gulp.series(scripts)
+
+
+
+// ==== PAGERES ====
+
+const Pageres = require('pageres');
+ 
+const screens = () =>{
+	(async () => {
+	    await new Pageres({delay: 2})
+	        .src('https://yandex.ru', ['480x320', '1024x768', 'iphone 5s'], {crop: true})
+	        .src('https://yandex.ru', ['1280x1024', '1920x1080'])
+	        .src('data:text/html,<h1>Awesome!</h1>', ['1024x768'])
+	        .dest(__dirname)
+	        .run();
+	        
+	    console.log('Finished generating screenshots!');
+	})();
+}
+exports.screens = screens;
+// ---- pageres ----
+
+
 
 
 
@@ -77,6 +102,13 @@ const gap = require('postcss-gap');
 const negativePadding = require('postcss-negative-padding');
 const quantityQueries = require('postcss-quantity-queries');
 const defineProperty = require('postcss-define-property');
+// const uncss = require('postcss-uncss');
+
+
+const stylelint = require("stylelint");
+const presetEnv = require("postcss-preset-env");
+const reporter = require("postcss-reporter")({ clearReportedMessages: true });
+
 
 const styles = () => {
 	const plugins = [ 
@@ -95,7 +127,14 @@ const styles = () => {
 		vhFix,
 		cssnext, 
 		precss,
+		stylelint({}),
+		// presetEnv,
+		// reporter,
 		cssnano({preset: 'default',}),
+		// uncss({
+		// 	html: ['build/*.html'],
+		// 	ignore: ['.ignore']
+		// }),
 		doiuse({
 			browsers: [
 			    "> .5% and last 1 versions",
@@ -104,8 +143,12 @@ const styles = () => {
 			    "not IE 11",
 			    "Edge >= 12"
 			],
-			ignore: ['background', 'appearance'],
-			onFeatureUsage: function(info) {
+			ignore: [
+				'background', 
+				'appearance',
+				'will-change',
+				'object-fit',],
+			onFeatureUsage: (info) => {
 			    const selector = info.usage.parent.selector;
 			    const property = `${info.usage.prop}: ${info.usage.value}`;
 
@@ -121,12 +164,13 @@ const styles = () => {
 			    // console.log(info.featureData)
 			    console.log(`\n${status}:\n\n    ${selector} {\n        ${property};\n    }\n`);
 			},
-		})
+		}),
 	];
 
 	return gulp.src('./dev/styles/*.css')
 		.pipe(sourcemaps.init())
 		.pipe(postcss(plugins))
+		.pipe(shorthand())
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('./build/css'))
 		.pipe(sync.stream());
@@ -137,12 +181,17 @@ exports.styles = styles;
 
 
 
+
+
 // ==== JS ====
+const concat = require('gulp-concat');
 const scripts = () => {
-	return gulp.src('dev/js/main.js')
+	// return gulp.src('dev/js/main.js')
+	return gulp.src('dev/js/*.js')
 		// .pipe(eslint())
 		// .pipe(eslint.format())
 		.pipe(sourcemaps.init())
+		.pipe(concat('main.js'))
 		.pipe(babel({
 			presets: ['@babel/env']
 		}))
@@ -162,6 +211,15 @@ exports.scripts = scripts;
 
 
 // ==== IMG ====
+const svgDev = () => {
+	return gulp.src('dev/img/*.svg')
+        .pipe(svgo())
+        .pipe(gulp.dest('build/img'));
+}
+exports.svgDev = svgDev;
+
+
+
 
 const imgDev = () => {
 	// add webp, copy just as several pics with differernt names
@@ -171,9 +229,6 @@ const imgDev = () => {
 		base: 'dev'
 	})
 	.pipe(gulp.dest('build/'))
-	// .pipe(syc.stream({
-	// 	once: true
-	// }));
 }
 
 exports.imgDev = imgDev;
@@ -216,14 +271,16 @@ const imgMultiply = () => {
 
 			})
 		)
-		.pipe(gulp.dest('temp/img'));
+		.pipe(gulp.dest('tempMultipliedImages/img'));
 }
 
 exports.imgMultiply = imgMultiply;
 
 
+
+
 const imgBuild = () => {
-	return gulp.src('temp/img/**/*')
+	return gulp.src('tempMultipliedImages/img/**/*')
 		.pipe(image({
 			pngquant: true,
 			optipng: true,
@@ -263,8 +320,7 @@ exports.loadFtp = loadFtp;
 
 
 
-// ==== FONT ====
-
+// ==== FONTS ====
 const convertFonts = () => {
 	return gulp.src('dev/fonts/*')
 		.pipe(convertAllFonts({
@@ -275,7 +331,9 @@ const convertFonts = () => {
 		    debug: false
 		}))
 		.pipe(gulp.dest('build/fonts'))
-		.pipe(sync.stream());	
+		.pipe(sync.stream({
+			once: true
+		}));	
 }
 // This will convert all ttf fonts to both woff and woff2
 exports.convertFonts = convertFonts;
@@ -289,10 +347,11 @@ exports.clean = clean;
 
 
 // ==== COPY ====
+		// 'dev/img/**/*',
 const copy = () => {
 	return gulp.src([
-		'dev/img/**/*',
-		'dev/fonts/**/*',
+		'dev/fonts/**/*.woff',
+		'dev/fonts/**/*.woff2',
 	], {
 		base: 'dev'
 	})
@@ -326,13 +385,14 @@ exports.server = server;
 // ==== WATCH ====
 const watch = () => {
 	gulp.watch('dev/pages/**/*.pug', gulp.series(pug2html));
-	gulp.watch('dev/styles/**/*.scss', gulp.series(styles));
+	gulp.watch('dev/styles/**/*.css', gulp.series(styles));
 	gulp.watch('dev/js/*.js', gulp.series(scripts));
 
 	gulp.watch('dev/img/**/*', gulp.series(imgDev));
 
 
-	gulp.watch('dev/fonts/**/*')
+	gulp.watch('dev/fonts/**/*.{ttf, oft}', gulp.series(convertFonts));
+	gulp.watch('dev/fonts/**/*.{woff, woff2}', gulp.series(copy));
 }
 
 exports.watch = watch;

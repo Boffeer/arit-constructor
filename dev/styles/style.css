@@ -1,1 +1,131 @@
+:root{
+  --c-font: #333333;
+  --c-font-2: #B9B9B9;
+  --c-prim: #2475D6;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Museo-400, sans-serif;
+  font-size: 16px;
+}
+picture img {
+  width: 100%;
+}
+
+.container {
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+
+
+
+@font-face {
+  font-family: Museo-300;
+  src:
+    local("MuseoSansCyrl-300"),
+    url(fonts/MuseoSansCyrl-300.woff),
+    url(fonts/MuseoSansCyrl-300.woff2);
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: Museo-400;
+  src:
+    local("MuseoSansCyrl-400"),
+    url(fonts/MuseoSansCyrl-400.woff),
+    url(fonts/MuseoSansCyrl-400.woff2);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: Museo-500;
+  src:
+    local("MuseoSansCyrl-500"),
+    url(fonts/MuseoSansCyrl-500.woff),
+    url(fonts/MuseoSansCyrl-500.woff2);
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: Museo-600;
+  src:
+    local("MuseoSansCyrl-600"),
+    url(fonts/MuseoSansCyrl-600.woff),
+    url(fonts/MuseoSansCyrl-600.woff2);
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: Museo-700;
+  src:
+    local("MuseoSansCyrl-700"),
+    url(fonts/MuseoSansCyrl-700.woff),
+    url(fonts/MuseoSansCyrl-700.woff2);
+  font-weight: 700;
+}
+
+
+
+
+.header{
+  background-color: #fff;
+  padding-top: 26px;
+  padding-bottom: 27px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  max-width: 278px;
+}
+
+.logo_pic {
+  margin-right: 21px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+}
+
+.nav_item {
+  margin-right: 24.5px;
+  margin-left: 24.5px;
+  list-style: none;
+}
+
+.nav_item-lnk {
+  color: var(--c-font);
+  text-decoration: none;
+  font-family: Museo-400, sans-serif;
+}
+
+.header-contacts {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.header-contact_phone {
+  font-size: 18px;
+  font-family: Museo-600, sans-serif;
+}
 
