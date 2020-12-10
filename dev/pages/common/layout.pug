@@ -12,6 +12,7 @@ html(lang="ru")
 			title #{title}
 			meta(content="width=device-width, initial-scale=1" name="viewport")
 			meta(content="ie=edge" http-equiv="x-ua-compatible")
+			link(rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css")
 			link(rel="stylesheet" href="css/style.css")
 	body
 		block header
@@ -20,6 +21,7 @@ html(lang="ru")
 		block footer
 			include footer
 		block scripts
+			script(src="https://unpkg.com/swiper/swiper-bundle.min.js")
 			script(src="js/main.min.js")
 			if (ymTag != '')
 				// Yandex.Metrika counter

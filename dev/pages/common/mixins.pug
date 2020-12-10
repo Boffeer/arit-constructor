@@ -1,4 +1,22 @@
 mixin pic(data)
 	picture(class= data.pictureClass)
-		source(srcset= data.src+".webp 1x,"+data.src+"@2.webp 2x", type="image/webp")
+		//- source(srcset= data.src+".webp 1x,"+data.src+"@2.webp 2x", type="image/webp")
 		img(class= data.imgClass, src= data.src+data.ext, srcset= data.src+"@2"+data.ext+" 2x", alt= data.alt)
+
+
+mixin catalogItem(item)
+	.catalog-item
+		+pic({
+			src: item.src,
+			ext: item.ext,
+			alt: item.model,
+		})
+		.catalog-item-name
+			h3.catalog-item-name_model= item.model
+			span.catalog-item-name_capability= item.cap
+		.catalog-item-price
+			span.catalog-item-price_value= item.price
+			span.catalog-item-price_vat (с НДС)
+		.catalog-item-buttons
+			button.catalog-item-buttons_more Подробнее
+			button.catalog-item-buttons_order.btn-prim Заказать

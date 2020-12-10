@@ -4,45 +4,371 @@ include common/mixins
 block content
 	main
 		.hero
-			.container
-				h1.headliner Рециркуляторы, 
-					em.bg-em предотвращающие распостронение вируса 
-					| с гарантией 
-					em.bold-em 12 месяцев 
-					|и доставкой 
-					em.bold-em по РФ от 2 дней
+			.container.hero-container
+				.hero-left
+					h1.headliner Рециркуляторы, 
+						em.em-color предотвращающие распостронение вируса
+						|  с гарантией 
+						em.em-bold 12&nbsp;месяцев 
+						| &nbsp;и&nbsp;доставкой 
+						em.em-bold по&nbsp;РФ&nbsp;от&nbsp;2&nbsp;дней
+					.header-quiz_wrap
+						.header-quiz
+							.header-quiz-1
+								h3.quiz_title Ответьте на 4 простых вопроса и узнайте какая модель вам нужна:
+								.quiz-progress-bar
+									.quiz-progress-bar_point
+									.quiz-progress-bar_line
+									.quiz-progress-bar_point
+									.quiz-progress-bar_line
+									.quiz-progress-bar_point
+									.quiz-progress-bar_line
+									.quiz-progress-bar_point
+								h4.quiz_question Какой размер помещения
+								.quiz-answers
+									label.quiz-answers-item.quiz-ansers-item--checked
+										input(type="radio").quiz-answer-item_input
+										span.quiz-anser-item_text до 60м²
+										span.quiz-anser-item_chekbox
+									label.quiz-answers-item
+										input(type="radio").quiz-answer-item_input
+										span.quiz-anser-item_text 60-150 м²
+										span.quiz-anser-item_chekbox
 
-				.header-quiz
-					.header-quiz-1
-						h3.quiz_title Ответьте на 4 простых вопроса и узнайте какая модель вам нужна:
-						.quiz-progress-bar
-							.quiz-progress-bar_point
-							.quiz-progress-bar_line
-							.quiz-progress-bar_point
-							.quiz-progress-bar_line
-							.quiz-progress-bar_point
-							.quiz-progress-bar_line
-							.quiz-progress-bar_point
-						h4.quiz_question Какой размер помещения
-						.quiz-answers
-							.quiz-answers-item
-								input(type="radio").quiz-answer-item_input
-								p.quiz-anser-item_text до 60м²
-							.quiz-answers-item
-								input(type="radio").quiz-answer-item_input
-								p.quiz-anser-item_text 60-150 м²
-							.quiz-answers-item
-								input(type="radio").quiz-answer-item_input
-								p.quiz-anser-item_text 150-200 м²
-							.quiz-answers-item
-								input(type="radio").quiz-answer-item_input
-								p.quiz-anser-item_text
-							.quiz-answers-item
-								input(type="radio").quiz-answer-item_input
-								p.quiz-anser-item_text
-							.quiz-answers-item
-								input(type="radio").quiz-answer-item_input
-								p.quiz-anser-item_text
-							.quiz-answers-item
-								input(type="radio").quiz-answer-item_input
-								p.quiz-anser-item_text
+									label.quiz-answers-item
+										input(type="radio").quiz-answer-item_input
+										span.quiz-anser-item_text 150-200 м²
+										span.quiz-anser-item_chekbox
+
+									label.quiz-answers-item
+										input(type="radio").quiz-answer-item_input
+										span.quiz-anser-item_text 200-300 м²
+										span.quiz-anser-item_chekbox
+
+									label.quiz-answers-item
+										input(type="radio").quiz-answer-item_input
+										span.quiz-anser-item_text 300-400 м²
+										span.quiz-anser-item_chekbox
+
+									label.quiz-answers-item
+										input(type="radio").quiz-answer-item_input
+										span.quiz-anser-item_text 400-2000 м²
+										span.quiz-anser-item_chekbox
+
+									label.quiz-answers-item
+										input(type="radio").quiz-answer-item_input
+										span.quiz-anser-item_text 2000-5000 м²
+										span.quiz-anser-item_chekbox
+
+								.quiz-contorls
+									button.quiz-controls_back Назад
+									button.quiz-controls_next.btn-prim Далее
+				.hero-right
+					.hero-card_wrap.hero-card_clear
+						.hero-card
+							.hero-cart_triangle
+							+pic({
+								src: 'img/1-hero/clear',
+								ext: '.png',
+								pictureClass: 'hero-card_pic',
+								alt: 'icon'
+							})
+							span.hero-card_text Чистый воздух
+					.hero-card_wrap.hero-card_quiet
+						.hero-card
+							.hero-cart_triangle
+							+pic({
+								src: 'img/1-hero/quiet',
+								ext: '.png',
+								pictureClass: 'hero-card_pic',
+								alt: 'icon'
+
+							})
+							span.hero-card_text Бесшумно
+					+pic({
+						src: 'img/1-hero/hero',
+						ext: '.png',
+						pictureClass: 'hero_pic',
+						alt: 'icon'
+
+					})
+
+
+
+
+
+
+
+
+		.bullets
+			.container.bullets-container
+				.bullet-item
+					+pic({
+						src: 'img/2-bullets/cardboard',
+						ext: '.png',
+						alt: 'icon'
+					})
+					h3.bullet-item_title Бесплатная доставка по всей РФ
+					p.bullet-item_text Доставляем в день заказа по СПб.
+				.bullet-item.bullet-item--sketch
+					+pic({
+						src: 'img/2-bullets/sketch',
+						ext: '.png',
+						alt: 'icon'
+					})
+					h3.bullet-item_title Индивидуальный дизайн
+					p.bullet-item_text Брендируем под вашу кампанию.<br>Розница&nbsp;и&nbsp;ОПТ.
+				.bullet-item
+					+pic({
+						src: 'img/2-bullets/plant',
+						ext: '.png',
+						pictureClass: 'bullet-item_plant',
+						alt: 'icon'
+					})
+					h3.bullet-item_title Безопасно для здоровья
+					p.bullet-item_text Отсутсвие засветок (выхода) УФ-излучения из прибора сертифицировано<br>Роспатребнадзором.	
+
+
+
+
+
+
+
+		.danger
+			.container
+				h2.section-title Опасность 
+					em.unem-title некачественных изделий
+				p.section-subtitle Многие модели, которые сейчас есть на рынке, опасны для здоровья человека
+				.danger-container
+					.danger-left
+						p.danger_text В некачественных изделиях выход излучения во время работы и попадание на кожу и глаза 
+							em.em-bold МОЖЕТ ПРИВЕСТИ К ТЯЖЁЛЫМ ПОСЛЕДСТВИЯМ 
+							| ( Различные онкологические заболевания, катаракта и другие ). Даже если, лучи напрямую не светят на человека, они могут отражаться от различных поверхностей.
+						p.danger_text УФ-излучение 
+							em.em-bold РАЗЛАГАЕТ ОБЫЧНЫЕ ПЛАСТИКИ С ВЫДЕЛЕНИЕМ ПРОДУКТОВ РАСПАДА 
+							| и в некачественных устройствах эти продукты разгоняются вентилятором по помещению (сотрудники и посетители дышат этим весь день)
+					.danger-right
+						.danger-slider
+							.danger-slide.danger-slide-1
+								.danger_icon
+									+pic({
+										src: 'img/3-danger/danger',
+										ext: '.png',
+										alt: 'icon'
+									})
+								.danger-tag_wrap.danger-tag_left
+									.danger-tag Состоит из пластика
+
+								.danger-tag_wrap.danger-tag_right
+									.danger-tag УФ излучение
+
+								+pic({
+									src: 'img/3-danger/replica',
+									ext: '.png',
+									pictureClass: 'danger-slide-1_pic',
+									alt: 'icon'
+								})
+
+
+
+
+
+
+
+
+
+
+
+		.features#features
+			h2.section-title.features-title Преимущества 
+				em.unem-title бактерицидных рециркуляторов 
+				| Enel
+			.container.features-container
+				.features-cards.features-cards--left
+					.feature-card_wrap.features-card--left-1
+						.feature-card
+							h3.feature-card_title Можно использовать в присутсвии людей
+							p.feature-card_text Полностью безопасно за счет применения<br>решеток, не выпускающих УФ-излучение,<br>и отражающей фольги, защищающей<br>комплектующие от деформации
+					.feature-card_wrap.features-card--left-2
+						.feature-card
+							h3.feature-card_title Счетчик наработанных часов
+							p.feature-card_text Ультрафиолетовой лампы. Срок<br>службы до 
+								em.em-bold 16 000 часов.
+					.feature-card_wrap.features-card--left-3
+						.feature-card
+							h3.feature-card_title Регулировка оборотов
+							p.feature-card_text Для включения турборежима<br>и бесшумной работы.
+
+				+pic({
+					src: 'img/4-features/product',
+					ext: '.png',
+					pictureClass: 'features_pic',
+					alt: 'product',
+				})
+
+				.features-cards.features-cards--right
+						.feature-card_wrap.features-card--right-1
+							.feature-card
+								h3.feature-card_title Эмальгамные лампы
+								p.feature-card_text Безопасные для здоровья (там нет жидкой<br>ртути) . Повышенная мощность и КПД. 
+
+						.feature-card_wrap.features-card--right-2
+							.feature-card
+								h3.feature-card_title Низкий уровень шума
+								p.feature-card_text Благодаря тихим и долговечным<br>подшипникам и проклеиванию<br>виброизоляционным материалом.
+						.feature-card_wrap.features-card--right-3
+							.feature-card
+								h3.feature-card_title Мгновенно уничтожает вирусы
+								p.feature-card_text 
+									em.em-bold Убивает до 99.9% <br>
+									| болезнетворных бактерий и вирусов.
+
+						.feature-card_wrap.features-card--right-4
+							.feature-card
+								h3.feature-card_title Большая вариативность крепления
+								p.feature-card_text Напольные, настольные, настенные.<br>
+									em.em-bold Подойдет для любых помещений. 
+
+
+		.catalog
+			h2.section-title.catalog_title Каталог моделей
+			.container.catalog-container
+				.catalog-item
+					+pic({
+						src: 'img/5-catalog/black',
+						ext: '.png',
+						alt: 'product',
+					})
+					.catalog-item-name
+						h3.catalog-item-name_model Модель 1
+						span.catalog-item-name_capability (Производительность)
+					.catalog-item-price
+						span.catalog-item-price_value 1 290 000 ₽
+						span.catalog-item-price_vat (с НДС)
+					.catalog-item-buttons
+						button.catalog-item-buttons_more Подробнее
+						button.catalog-item-buttons_order.btn-prim Заказать
+				+catalogItem({
+					src: 'img/5-catalog/white',
+					ext: '.png',
+					model: 'Модель 1',
+					cap: '(Производительность)',
+					price: '1 290 000 ₽',
+				})
+				+catalogItem({
+					src: 'img/5-catalog/black',
+					ext: '.png',
+					model: 'Модель 1',
+					cap: '(Производительность)',
+					price: '1 290 000 ₽',
+				})
+				+catalogItem({
+					src: 'img/5-catalog/white',
+					ext: '.png',
+					model: 'Модель 1',
+					cap: '(Производительность)',
+					price: '1 290 000 ₽',
+				})
+
+				+catalogItem({
+					src: 'img/5-catalog/black',
+					ext: '.png',
+					model: 'Модель 1',
+					cap: '(Производительность)',
+					price: '1 290 000 ₽',
+				})
+				+catalogItem({
+					src: 'img/5-catalog/white',
+					ext: '.png',
+					model: 'Модель 1',
+					cap: '(Производительность)',
+					price: '1 290 000 ₽',
+				})
+				+catalogItem({
+					src: 'img/5-catalog/black',
+					ext: '.png',
+					model: 'Модель 1',
+					cap: '(Производительность)',
+					price: '1 290 000 ₽',
+				})
+				+catalogItem({
+					src: 'img/5-catalog/white',
+					ext: '.png',
+					model: 'Модель 1',
+					cap: '(Производительность)',
+					price: '1 290 000 ₽',
+				})
+
+
+
+		.portfolio
+			h2.section-title.portfolio_title Выполненные проекты
+			.container
+				.swiper-contaienr
+					.portfolio-slider.swiper-wrapper
+						.portfolio-slider_item.swiper-slide
+							+pic({
+								src: 'img/6-portfolio/2',
+								ext: '.png',
+								alt: 'portfolio-item',
+								pictureClass: 'portfolio_pic'
+							})
+							.portfolio-text
+								h3.portfolio-text_title Опиание проекта
+								p.portfolio-text_descr Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+						.portfolio-slider_item.swiper-slide
+							+pic({
+								src: 'img/6-portfolio/1',
+								ext: '.png',
+								alt: 'portfolio-item',
+								pictureClass: 'portfolio_pic'
+							})
+							.portfolio-text
+								h3.portfolio-text_title Опиание проекта
+								p.portfolio-text_descr Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+						.portfolio-slider_item.swiper-slide
+							+pic({
+								src: 'img/6-portfolio/2',
+								ext: '.png',
+								alt: 'portfolio-item',
+								pictureClass: 'portfolio_pic'
+							})
+							.portfolio-text
+								h3.portfolio-text_title Опиание проекта
+								p.portfolio-text_descr Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+					.swiper-button-prev ←
+					.swiper-button-next →
+
+								
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		.pricing#pricing
+			.container
+				.pricing-form_wrap
+					form.pricing-form
+						h3.pricing-form_title Получить Оптовый Прайс-лист в Whatsap
+						p.pricing-form_descr Скидка до 30% при больших объемах
+						.pricing-form_input-wrap
+							input(name="tel" type="tel" autocorrect="off" autocomplete="tel" placeholder="Введите свой номер телефона" required).pricing-form_input
+							button.btn-prim.pricing-form_submit Получить Прайс-лист по Whatsap
+
+					+pic({
+						src: 'img/7-price/price',
+						ext: '.png',
+						pictureClass: 'pricing_pic'
+					})

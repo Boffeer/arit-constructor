@@ -127,7 +127,7 @@ const styles = () => {
 		vhFix,
 		cssnext, 
 		precss,
-		stylelint({}),
+		// stylelint({}),
 		// presetEnv,
 		// reporter,
 		cssnano({preset: 'default',}),
