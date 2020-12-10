@@ -13,56 +13,65 @@ block content
 						| &nbsp;и&nbsp;доставкой 
 						em.em-bold по&nbsp;РФ&nbsp;от&nbsp;2&nbsp;дней
 					.header-quiz_wrap
-						.header-quiz
+						form.header-quiz
 							.header-quiz-1
 								h3.quiz_title Ответьте на 4 простых вопроса и узнайте какая модель вам нужна:
 								.quiz-progress-bar
 									.quiz-progress-bar_point
-									.quiz-progress-bar_line
 									.quiz-progress-bar_point
-									.quiz-progress-bar_line
 									.quiz-progress-bar_point
-									.quiz-progress-bar_line
 									.quiz-progress-bar_point
 								h4.quiz_question Какой размер помещения
 								.quiz-answers
-									label.quiz-answers-item.quiz-ansers-item--checked
-										input(type="radio").quiz-answer-item_input
-										span.quiz-anser-item_text до 60м²
-										span.quiz-anser-item_chekbox
-									label.quiz-answers-item
-										input(type="radio").quiz-answer-item_input
-										span.quiz-anser-item_text 60-150 м²
-										span.quiz-anser-item_chekbox
+									.quiz-answers-item_wrap
+										label.quiz-answers-item.quiz-ansers-item--checked
+											input(type="radio" name="quiz1").quiz-answer-item_input
+											span.quiz-anser-item_text до 60м²
+											span.quiz-anser-item_chekbox
+									.quiz-answers-item_wrap
+										label.quiz-answers-item
+											input(type="radio" name="quiz1").quiz-answer-item_input
+											span.quiz-anser-item_text 60-150 м²
+											span.quiz-anser-item_chekbox
 
-									label.quiz-answers-item
-										input(type="radio").quiz-answer-item_input
-										span.quiz-anser-item_text 150-200 м²
-										span.quiz-anser-item_chekbox
+									.quiz-answers-item_wrap
+										label.quiz-answers-item
+											input(type="radio" name="quiz1").quiz-answer-item_input
+											span.quiz-anser-item_text 150-200 м²
+											span.quiz-anser-item_chekbox
 
-									label.quiz-answers-item
-										input(type="radio").quiz-answer-item_input
-										span.quiz-anser-item_text 200-300 м²
-										span.quiz-anser-item_chekbox
+									.quiz-answers-item_wrap
+										label.quiz-answers-item
+											input(type="radio" name="quiz1").quiz-answer-item_input
+											span.quiz-anser-item_text 200-300 м²
+											span.quiz-anser-item_chekbox
 
-									label.quiz-answers-item
-										input(type="radio").quiz-answer-item_input
-										span.quiz-anser-item_text 300-400 м²
-										span.quiz-anser-item_chekbox
+									.quiz-answers-item_wrap
+										label.quiz-answers-item
+											input(type="radio" name="quiz1").quiz-answer-item_input
+											span.quiz-anser-item_text 300-400 м²
+											span.quiz-anser-item_chekbox
 
-									label.quiz-answers-item
-										input(type="radio").quiz-answer-item_input
-										span.quiz-anser-item_text 400-2000 м²
-										span.quiz-anser-item_chekbox
+									.quiz-answers-item_wrap
+										label.quiz-answers-item
+											input(type="radio" name="quiz1").quiz-answer-item_input
+											span.quiz-anser-item_text 400-2000 м²
+											span.quiz-anser-item_chekbox
 
-									label.quiz-answers-item
-										input(type="radio").quiz-answer-item_input
-										span.quiz-anser-item_text 2000-5000 м²
-										span.quiz-anser-item_chekbox
+									.quiz-answers-item_wrap
+										label.quiz-answers-item
+											input(type="radio" name="quiz1").quiz-answer-item_input
+											span.quiz-anser-item_text 2000-5000 м²
+											span.quiz-anser-item_chekbox
+									.quiz-answers-item_wrap
+										label.quiz-answers-item.quiz-anwsers-item--center
+											input(type="radio" name="quiz1").quiz-answer-item_input
+											span.quiz-anser-item_text Затрудняюсь ответить
+											span.quiz-anser-item_chekbox
 
 								.quiz-contorls
-									button.quiz-controls_back Назад
-									button.quiz-controls_next.btn-prim Далее
+									button(type="button").quiz-controls_back Назад
+									button(type="button").quiz-controls_next.btn-prim Далее
 				.hero-right
 					.hero-card_wrap.hero-card_clear
 						.hero-card
@@ -336,8 +345,8 @@ block content
 							.portfolio-text
 								h3.portfolio-text_title Опиание проекта
 								p.portfolio-text_descr Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-					.swiper-button-prev ←
-					.swiper-button-next →
+					.swiper-button-prev
+					.swiper-button-next
 
 								
 
@@ -358,17 +367,124 @@ block content
 
 
 		.pricing#pricing
-			.container
-				.pricing-form_wrap
+			.container.pricing-container
+				.pricing-form_wrap.shader
 					form.pricing-form
-						h3.pricing-form_title Получить Оптовый Прайс-лист в Whatsap
+						h3.pricing-form_title Получить Оптовый<br>Прайс-лист в Whatsap
 						p.pricing-form_descr Скидка до 30% при больших объемах
 						.pricing-form_input-wrap
-							input(name="tel" type="tel" autocorrect="off" autocomplete="tel" placeholder="Введите свой номер телефона" required).pricing-form_input
+							input(name="formName" type="text").form-name
+							input(name="tel" type="tel" autocorrect="off" autocomplete="tel" placeholder="Введите свой номер телефона" required).pricing-form_input.g-input
 							button.btn-prim.pricing-form_submit Получить Прайс-лист по Whatsap
+						.pricing-form_privacy При нажатии на кнопку «Получить Прайс-лист по Whatsap» Вы соглашаетесь на обработку персональных данных
 
-					+pic({
-						src: 'img/7-price/price',
-						ext: '.png',
-						pictureClass: 'pricing_pic'
-					})
+				+pic({
+					src: 'img/7-price/price',
+					ext: '.png',
+					pictureClass: 'pricing_pic'
+				})
+
+
+
+
+
+		.about
+			h2.section-title.about-title О компании
+			.container.about-container
+				.about-left
+					.about-stats
+						.about-stats-item
+							.about-stats-item_number 25
+							.about-stats-item_name сотрудников<br>в компании
+						.about-stats-item
+							.about-stats-item_number 13
+							.about-stats-item_name лет на рынке<br>(основаны в 2007 году)
+					.about-features
+						.about-features-item
+							+pic({
+								src: 'img/8-about/arm',
+								ext: '.png',
+								alt: '',
+								pictureClass: 'about-features-item_pic'
+							})
+							p.about-features-item_text Собственные производственные мощности<br>в СПб  
+								em.em-only-color (Более 100м2 Металлобрабатывающий цех,&nbsp;офис,&nbsp;цех сварки, сборочный цех)
+
+						.about-features-item
+							+pic({
+								src: 'img/8-about/case',
+								ext: '.png',
+								alt: '',
+								pictureClass: 'about-features-item_pic'
+							})
+							p.about-features-item_text Работаем с физическими и юридическими<br>лицами   
+								em.em-only-color (Возможны все способы оплаты)
+								
+						.about-features-item
+							+pic({
+								src: 'img/8-about/gazzele',
+								ext: '.png',
+								alt: '',
+								pictureClass: 'about-features-item_pic about-features-item_pic--gazzele'
+							})
+							p.about-features-item_text Работем по всей РФ. Оперативная доставка&nbsp;товаров в регионы 
+								em.em-only-color (Бесплатная&nbsp;доставка от 2 дней)
+
+
+				.about-right
+					.about-video-wrap
+						button.about-video_play-button
+							img(src="img/8-about/play.svg")
+
+
+
+
+
+
+
+		form.questions.shader
+			h2.section-title.questions-title Остались вопросы?
+			p.questions_descr Оставьте заявку, с вами в течение 7 минут свяжется менеджер и ответит на все ваши вопросы
+			.questions-form
+				.questions-inputs
+					input(name="formName" type="text").form-name
+					input(name="name" placeholder="Ваше имя" required).g-input.question_input
+					input(name="tel" type="tel" autocorrect="off" autocomplete="tel" placeholder="Введите свой номер телефона" required).question_input.g-input
+					.questions-inputs_caption Ваш номер телефона будет использоваться для связи с вами
+				.question-button
+					button.btn-prim.questions_btn Отправить заявку
+					.question_privacy.privacy При нажатии на кнопку «Отправить заявку» Вы соглашаетесь на обработку персональных данных
+
+
+
+
+
+
+
+
+
+
+
+		.certificates
+			h2.certificates_title.section-title Сертификаты
+			p.section-subtitle Соответсвует требованием Роспотребнадзора
+			.container.certificates-container
+				.swiper-container
+					.swiper-wrapper.certificates-slider
+						.swiper-slide
+							+pic({
+								src: 'img/papers/certificate-preview',
+								ext: '.png',
+								alt: '',
+								pictureClass: 'about-features-item_pic'
+							})
+						.swiper-slide
+							+pic({
+								src: 'img/papers/certificate-preview',
+								ext: '.png',
+								alt: '',
+								pictureClass: 'about-features-item_pic'
+							})
+					.swiper-pagination
+					.swiper-button-prev
+					.swiper-button-next

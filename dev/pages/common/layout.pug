@@ -1,8 +1,13 @@
 - var title = 'Главная';
 - var ymTag = '';
 - var ymLink = 'https://mc.yandex.ru/watch/' + ymTag;
-- var headerPhone = '+7 (812) 376-00-00'
-- var headerPhoneLnk = 'tel:+78123760000'
+- var headerPhone = '+7 (812) 376-00-00';
+- var headerPhoneLnk = 'tel:+78123760000';
+- var geo = 'Наш офис находится: Санкт-Петербург, ул. Чапаева д.15 лит Ж Часы работы: 10:00-20:00';
+- var email = 'info@uv-enel.ru';
+- var igLink = 'https://instagram.com';
+- var waLink = 'https://whatsapp.com';
+- var url = 'https://thiswebsite.com';
 
 doctype html
 html(lang="ru")
@@ -20,6 +25,7 @@ html(lang="ru")
 		block content
 		block footer
 			include footer
+			include ../modules/modals
 		block scripts
 			script(src="https://unpkg.com/swiper/swiper-bundle.min.js")
 			script(src="js/main.min.js")

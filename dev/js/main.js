@@ -6,5 +6,5 @@ var mySwiper = new Swiper('.swiper-container', {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
   },
-  slidesOffsetBefore: 50;
+  slidesOffsetBefore: 50,
 })
