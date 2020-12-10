@@ -1,3 +1,46 @@
+const callbackHeader = document.querySelector('.header-contacts_callback');
+const callbackModal = document.querySelector('.modal-callback_wrap');
+
+
+function toggle(wrap, inner){
+      let select = document.querySelector(wrap),
+          compStyle = window.getComputedStyle(select),
+          modal = document.querySelector('.modal-callback_wrap');
+      if (compStyle.getPropertyValue('visibility') == 'hidden'){
+        select.style.display = 'block';
+        select.style.visibility = 'visible';
+        select.style.opacity = '1';
+        modal.style.transform = 'scale(1)';
+      } else {
+        select.style.display = 'none';
+        select.style.visibility = 'hidden';
+        select.style.opacity = '0';
+        modal.style.transform = 'scale(0.2)';
+      }
+}
+function modal(btn, modal){
+  document.querySelector(btn).addEventListener("click", () => toggle(modal));
+}
+modal(".header-contacts_callback", ".modal-callback_wrap")
+modal(".footer-btn", ".modal-callback_wrap")
+
+
+
+
+
+modal(".catalog-item-buttons_order", ".modal-order_wrap")
+
+modal(".footer-privacy", ".modal-privacy_wrap")
+
+
+
+
+
+
+
+
+
+
 const quizNext = document.querySelector('.quiz-controls_next');
 const quizPrev = document.querySelector('.quiz-controls_prev');
 const progressBar = document.querySelector('.progress-bar_wrap');
@@ -21,7 +64,7 @@ quizNext.addEventListener('click', function(){
 	}
 	if (currentQuestion == 5){
 		quizNext.classList.add('hidden')
-		currentQuestion--
+		// currentQuestion--
 	}
 	console.log(currentQuestion)
 })
@@ -39,9 +82,8 @@ quizPrev.addEventListener('click', function(){
 
 		document.querySelector('.quiz-progress-bar_point--'+currentQuestion)
 			.classList.remove('quiz-point--current');
-
 		currentQuestion--
-		document.querySelector('.quiz-page-'+currentQuestion)
+			document.querySelector('.quiz-page-'+currentQuestion)
 			.classList.remove('quiz-page--answered');
 
 		if (currentQuestion < 5){
@@ -77,13 +119,21 @@ quizPrev.addEventListener('click', function(){
 
 
 
-var mySwiper = new Swiper('.swiper-container', {
-  loop: true,
-
-  // Navigation arrows
+var mySwiper = new Swiper('.certificates-slider-wrap', {
+  // loop: true,
+  slidesPerGroup: 2,
+  slidesPerView: 2,	
+  // slidesOffsetBefore: 20,
+  // slidesOffsetAfter: 20,
+  spaceBetween: 29,
+//   // Navigation arrows
+//   // slidesOffsetAfter: 100,
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
   },
-  slidesOffsetBefore: 50,
+  pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+    },
 })

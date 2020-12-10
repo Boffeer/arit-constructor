@@ -1,5 +1,5 @@
 .modal_wrap.modal-callback_wrap
-	button.modal-close-btn ×
+	button.modal-close-btn(onclick="toggle('.modal-callback_wrap')") ×
 	.modal-inner
 		.modal-callback.shader
 			h3.modal-title Заказать звонок
@@ -16,15 +16,30 @@
 
 
 .modal_wrap.modal-product-more_wrap
-	button.modal-close-btn ×
+	button.modal-close-btn(onclick="toggle('.modal-product-more_wrap')") ×
 	.modal-inner
 		.modal-product-more.shader
-			.modal-product-more_wrap
+			.modal-product-more_inner
 				.modal-product-slider.swiper-container
 					.swiper-wrapper
 						.swiper-slide
+							+pic({
+								src: 'img/5-catalog/black',
+								ext: '.png',
+								alt: 'product',
+							})
 						.swiper-slide
+							+pic({
+								src: 'img/5-catalog/black',
+								ext: '.png',
+								alt: 'product',
+							})
 						.swiper-slide
+							+pic({
+								src: 'img/5-catalog/black',
+								ext: '.png',
+								alt: 'product',
+							})
 					.swiper-pagination
 					.swiper-button-prev
 					.swiper-button-next
@@ -53,14 +68,24 @@
 						.modal-product-includes_item - Технический паспорт
 						.modal-product-includes_item - Кабель питания
 						.modal-product-includes_item - Крепления
+			h3.modal-title.modal-title--product Оформление заказа
+			.questions-form
+				.questions-inputs
+					input(name="formName" type="text").form-name
+					input(name="name" placeholder="Ваше имя" required).g-input.question_input
+					input(name="tel" type="tel" autocorrect="off" autocomplete="tel" placeholder="Введите свой номер телефона" required).question_input.g-input
+					.questions-inputs_caption Ваш номер телефона будет использоваться для связи с вами
+				.question-button
+					button.btn-prim.questions_btn Заказать
+					.question_privacy.privacy При нажатии на кнопку «Заказать» Вы соглашаетесь на обработку персональных данных
 
 
 .modal_wrap.modal-order_wrap
-	button.modal-close-btn ×
+	button.modal-close-btn(onclick="toggle('.modal-order_wrap')") ×
 	.modal-inner
 		form.modal-order.shader
 			.modal-top
-				h3.modal-title.modal-title--order Заказать звонок
+				h3.modal-title.modal-title--order Оформление заказа
 				.order-details
 					+pic({
 						src: 'img/5-catalog/black',
@@ -109,7 +134,7 @@
 
 
 .modal_wrap.modal-privacy_wrap
-	button.modal-close-btn ×
+	button.modal-close-btn(onclick="toggle('.modal-privacy_wrap')") ×
 	.modal-inner
 		.modal-privacy
 			h3.modal-privacy_title Политика в отношении обработки персональных данных

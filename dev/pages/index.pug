@@ -603,22 +603,36 @@ block content
 			h2.certificates_title.section-title Сертификаты
 			p.section-subtitle Соответсвует требованием Роспотребнадзора
 			.container.certificates-container
-				.swiper-container
+				.swiper-container.certificates-slider-wrap
 					.swiper-wrapper.certificates-slider
-						.swiper-slide
+						.swiper-slide.certificate-slide
 							+pic({
 								src: 'img/papers/certificate-preview',
 								ext: '.png',
 								alt: '',
-								pictureClass: 'about-features-item_pic'
+								pictureClass: 'certificates_pic'
 							})
-						.swiper-slide
+						.swiper-slide.certificate-slide
 							+pic({
 								src: 'img/papers/certificate-preview',
 								ext: '.png',
 								alt: '',
-								pictureClass: 'about-features-item_pic'
+								pictureClass: 'certificates_pic'
 							})
-					.swiper-pagination
+						.swiper-slide.certificate-slide
+							+pic({
+								src: 'img/papers/certificate-preview',
+								ext: '.png',
+								alt: '',
+								pictureClass: 'certificates_pic'
+							})
+						.swiper-slide.certificate-slide
+							+pic({
+								src: 'img/papers/certificate-preview',
+								ext: '.png',
+								alt: '',
+								pictureClass: 'certificates_pic'
+							})
 					.swiper-button-prev
 					.swiper-button-next
+					.swiper-pagination
