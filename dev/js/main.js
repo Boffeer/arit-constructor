@@ -185,10 +185,11 @@ var mySwiper = new Swiper('.certificates-slider-wrap', {
     	320: {
     		init: false,
 			slidesPerGroup: 1,
-
+			slidesPerView: 1,	
     	},
     	768: { 
 			slidesPerGroup: 1,
+			slidesPerView: 1,
     		init: true
     	}
     }

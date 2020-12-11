@@ -2209,6 +2209,8 @@ input::-webkit-inner-spin-button {
   }
   .question_input {
     margin-right: 0;
+    margin-right: auto;
+    margin-left: auto;
   }
 
 
@@ -2245,6 +2247,7 @@ input::-webkit-inner-spin-button {
   }
   .about-features-item_text{
     text-align: center;
+    width: 100%;
   }
 
 
@@ -2253,7 +2256,10 @@ input::-webkit-inner-spin-button {
   }
 
 
-
+  .questions_btn{
+    max-width: 280px;
+    width: 280px;
+  }
   .certificte-slider {
     width: 100%;
     display: flex;
@@ -2370,6 +2376,10 @@ input::-webkit-inner-spin-button {
   }
   .modal-products_btn {
     width: 100%;
+    max-width: 275px;
+  }
+  .pricing-form_privacy{
+    font-size: 10px;
   }
 
 
