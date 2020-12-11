@@ -2235,6 +2235,11 @@ input::-webkit-outer-spin-button {
     right: 0;
     top: 210vw;
   }
+
+  .modal-certificate {
+    max-height: 80vh;
+    max-width: 95vw;
+  }
 }
 
 @media (max-width:360px) {
