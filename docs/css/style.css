@@ -2244,6 +2244,10 @@ input::-webkit-outer-spin-button {
     margin-left: auto;
   }
 
+  .danger-tag-3 {
+    top: 23%;
+  }
+
   .modal-top {
     display: flex;
     flex-direction: column;
@@ -2433,6 +2437,10 @@ input::-webkit-outer-spin-button {
 
   .pricing-form_privacy {
     font-size: 10px;
+  }
+
+  .danger-slide_pic-3 img {
+    width: 60%;
   }
 
   .danger_icon {

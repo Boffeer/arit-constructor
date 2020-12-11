@@ -2442,7 +2442,9 @@ input::-webkit-inner-spin-button {
     margin-left: auto;
   }
 
-
+  .danger-tag-3 {
+    top: 23%;
+  }
   .modal-top{
     display: flex;
     flex-direction: column;
@@ -2617,7 +2619,9 @@ input::-webkit-inner-spin-button {
     font-size: 10px;
   }
 
-
+  .danger-slide_pic-3 img {
+    width: 60%;
+  }
   .danger_icon{
     max-width: 75px;
     top: 11px;
