@@ -69,7 +69,8 @@ modal(".catalog-item-buttons_order-8", ".modal-order_wrap-8")
 
 
 
-modal(".certificate-slide", ".modal-certificate_wrap")
+modal(".certificate-slide-1", ".modal-certificate_wrap-1")
+modal(".certificate-slide-2", ".modal-certificate_wrap-2")
 
 modal(".footer-privacy", ".modal-privacy_wrap")
 
@@ -340,5 +341,7 @@ anchors.forEach((anchor) => {
       behavior: 'smooth',
       block: 'start'
     })
+    document.querySelector('.burger-line').classList.toggle('burger-line--opened')
+    document.querySelector('.nav-mobile').classList.toggle('nav-mobile--opened')
   })
 })

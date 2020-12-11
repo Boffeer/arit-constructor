@@ -354,12 +354,22 @@
 
 
 
-.modal_wrap.modal-certificate_wrap
-	button.modal-close-btn(onclick="toggle('.modal-certificate_wrap')") ×
+.modal_wrap.modal-certificate_wrap.modal-certificate_wrap-1
+	button.modal-close-btn(onclick="toggle('.modal-certificate_wrap-1')") ×
 	.modal-inner
 		.modal-certificate
 			+pic({
-				src: 'img/papers/certificate',
+				src: 'img/papper/certificate-1',
+				alt: '',
+				ext: '.png',
+			})
+
+.modal_wrap.modal-certificate_wrap.modal-certificate_wrap-2
+	button.modal-close-btn(onclick="toggle('.modal-certificate_wrap-2')") ×
+	.modal-inner
+		.modal-certificate
+			+pic({
+				src: 'img/papper/certificate-2',
 				alt: '',
 				ext: '.png',
 			})

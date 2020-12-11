@@ -297,65 +297,87 @@ block content
 							em.em-bold РАЗЛАГАЕТ ОБЫЧНЫЕ ПЛАСТИКИ С ВЫДЕЛЕНИЕМ ПРОДУКТОВ РАСПАДА 
 							| и в некачественных устройствах эти продукты разгоняются вентилятором по помещению (сотрудники и посетители дышат этим весь день)
 					.danger-right
+
+
 						.swiper-container.danger-slider-container
 							.danger-slider.swiper-wrapper
 
 								.danger-slide.danger-slide-1.swiper-slide
-									.danger_icon
+									.danger-tag_wrap.danger-tag_left
+										.danger-tag Есть выходящие УФ-лучши
+
+									+pic({
+										src: 'img/3-danger/danger-1',
+										ext: '.jpg',
+										pictureClass: 'danger-slide_pic',
+										alt: 'icon'
+									})
+
+
+								.danger-slide.danger-slide-2.swiper-slide
+									.danger_icon.danger_icon-2
 										+pic({
 											src: 'img/3-danger/danger',
 											ext: '.png',
 											alt: 'icon'
 										})
 									.danger-tag_wrap.danger-tag_left
-										.danger-tag Состоит из пластика
+										.danger-tag Есть выходящие УФ лучи
 
 									.danger-tag_wrap.danger-tag_right
-										.danger-tag УФ излучение
-									+pic({
-										src: 'img/3-danger/replica',
-										ext: '.png',
-										pictureClass: 'danger-slide-1_pic',
-										alt: 'icon'
-									})
-
-
-
-								.swiper-slide.danger-slide.danger-slide-2
-									.danger_icon
-										+pic({
-											src: 'img/3-danger/danger',
-											ext: '.png',
-											alt: 'icon'
-										})
-									.danger-tag_wrap.danger-tag_left
-										.danger-tag Ультрафиолетовые засветы
-
-
+										.danger-tag Корпус из пластика
 									+pic({
 										src: 'img/3-danger/danger-2',
-										ext: '.png',
-										pictureClass: 'danger-slide-2_pic',
+										ext: '.jpg',
+										pictureClass: 'danger-slide_pic danger-slide_pic-2',
 										alt: 'icon'
 									})
 
 
-								.swiper-slide.danger-slide.danger-slide-3
-									.danger_icon
-										+pic({
-											src: 'img/3-danger/danger',
-											ext: '.png',
-											alt: 'icon'
-										})
-									.danger-tag_wrap.danger-tag_left
-										.danger-tag Ультрафиолетовые засветы
+								.danger-slide.danger-slide-3.swiper-slide
+									.danger-tag_wrap.danger-tag_left.danger-tag-3
+										.danger-tag Есть выходящие УФ лучи
 
 									+pic({
 										src: 'img/3-danger/danger-3',
-										ext: '.png',
-										pictureClass: 'danger-slide-3_pic',
+										ext: '.jpg',
+										pictureClass: 'danger-slide_pic danger-slide_pic-3',
 										alt: 'icon'
 									})
+
+								.danger-slide.danger-slide-4.swiper-slide
+									.danger-tag_wrap.danger-tag_left.danger-tag-4
+										.danger-tag Есть выходящие УФ лучи
+
+									.danger-tag_wrap.danger-tag_right.danger-tag-4
+										.danger-tag Корпус из пластика
+									+pic({
+										src: 'img/3-danger/danger-4',
+										ext: '.jpg',
+										pictureClass: 'danger-slide_pic',
+										alt: 'icon'
+									})
+								.danger-slide.danger-slide-5.swiper-slide
+									.danger_icon.danger-icon-5
+										+pic({
+											src: 'img/3-danger/danger',
+											ext: '.png',
+											alt: 'icon'
+										})
+									.danger-tag_wrap.danger-tag_left.danger-tag-5
+										.danger-tag Есть выходящие УФ лучи
+
+									.danger-tag_wrap.danger-tag_right.danger-tag-5
+										.danger-tag Корпус из пластика
+									+pic({
+										src: 'img/3-danger/danger-5',
+										ext: '.jpg',
+										pictureClass: 'danger-slide_pic',
+										alt: 'icon'
+									})
+
+
+
 							.swiper-pagination.danger-pagination
 						
 
@@ -709,33 +731,19 @@ block content
 			.container.certificates-container
 				.swiper-container.certificates-slider-wrap
 					.swiper-wrapper.certificates-slider
-						.swiper-slide.certificate-slide
+						.swiper-slide.certificate-slide.certificate-slide-1
 							+pic({
-								src: 'img/papers/certificate-preview',
+								src: 'img/papper/certificate-1--cropped',
 								ext: '.png',
 								alt: '',
-								pictureClass: 'certificates_pic'
+								pictureClass: 'certificates_pic certificates_pic-1'
 							})
-						.swiper-slide.certificate-slide
+						.swiper-slide.certificate-slide.certificate-slide-2
 							+pic({
-								src: 'img/papers/certificate-preview',
+								src: 'img/papper/certificate-2--cropped',
 								ext: '.png',
 								alt: '',
-								pictureClass: 'certificates_pic'
-							})
-						.swiper-slide.certificate-slide
-							+pic({
-								src: 'img/papers/certificate-preview',
-								ext: '.png',
-								alt: '',
-								pictureClass: 'certificates_pic'
-							})
-						.swiper-slide.certificate-slide
-							+pic({
-								src: 'img/papers/certificate-preview',
-								ext: '.png',
-								alt: '',
-								pictureClass: 'certificates_pic'
+								pictureClass: 'certificates_pic certificates_pic-2'
 							})
 					.swiper-button-prev
 					.swiper-button-next
