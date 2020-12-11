@@ -67,29 +67,28 @@ quizNext.addEventListener('click', function(){
 	}
 	if (currentQuestion == 5){
 		quizNext.classList.add('hidden')
-		// currentQuestion--
 	}
-	console.log(currentQuestion)
+	console.log(currentQuestion+ 'a')
 })
 
 quizPrev.addEventListener('click', function(){
 	if (currentQuestion > 1){
-		console.log(currentQuestion)
+		console.log(currentQuestion+ 'a')
 		
 		document.querySelector('.quiz-page-'+currentQuestion)
 			.classList.remove('quiz-page--current');
 		document.querySelector('.quiz-page-5')
 			.classList.remove('quiz-page--current');
 
+		currentQuestion--;
 		progressBar.classList.remove('progress-bar_wrap--'+currentQuestion);
 
 		document.querySelector('.quiz-progress-bar_point--'+currentQuestion)
 			.classList.remove('quiz-point--current');
-		currentQuestion--
-			document.querySelector('.quiz-page-'+currentQuestion)
+		document.querySelector('.quiz-page-'+currentQuestion)
 			.classList.remove('quiz-page--answered');
-
-		if (currentQuestion < 5){
+		console.log(currentQuestion+'b')
+		if (currentQuestion == 5){
 			quizNext.classList.remove('hidden')
 		}
 	}
