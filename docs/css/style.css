@@ -2088,7 +2088,7 @@ input::-webkit-outer-spin-button {
 
   .danger-subtitle {
     text-align: left;
-    margin-bottom: 15px;
+    margin: 0 0 15px;
   }
 
   .danger-container {
