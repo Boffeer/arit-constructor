@@ -279,9 +279,9 @@ block content
 
 		.danger
 			.container
-				h2.section-title Опасность 
+				h2.section-title.danger-title Опасность 
 					em.unem-title некачественных изделий
-				p.section-subtitle Многие модели, которые сейчас есть на рынке, опасны для здоровья человека
+				p.section-subtitle.danger-subtitle Многие модели, которые сейчас есть на рынке, опасны для здоровья человека
 				.danger-container
 					.danger-left
 						p.danger_text В некачественных изделиях выход излучения во время работы и попадание на кожу и глаза 
@@ -323,9 +323,10 @@ block content
 
 
 		.features#features
-			h2.section-title.features-title Преимущества 
-				em.unem-title бактерицидных рециркуляторов 
-				| Enel
+			.contaienr
+				h2.section-title.features-title Преимущества 
+					em.unem-title бактерицидных рециркуляторов 
+					| Enel
 			.container.features-container
 				.features-cards.features-cards--left
 					.feature-card_wrap.features-card--left-1
@@ -374,7 +375,8 @@ block content
 
 
 		.catalog
-			h2.section-title.catalog_title Каталог моделей
+			.container
+				h2.section-title.catalog_title Каталог моделей
 			.container.catalog-container
 				.catalog-item
 					+pic({
@@ -447,7 +449,7 @@ block content
 		.portfolio
 			h2.section-title.portfolio_title Выполненные проекты
 			.container
-				.swiper-contaienr
+				.swiper-container.portfolio-slider-container
 					.portfolio-slider.swiper-wrapper
 						.portfolio-slider_item.swiper-slide
 							+pic({

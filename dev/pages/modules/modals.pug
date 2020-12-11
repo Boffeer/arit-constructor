@@ -27,22 +27,25 @@
 								src: 'img/5-catalog/black',
 								ext: '.png',
 								alt: 'product',
+								pictureClass: 'modal-product_pic'
 							})
 						.swiper-slide
 							+pic({
 								src: 'img/5-catalog/black',
 								ext: '.png',
 								alt: 'product',
+								pictureClass: 'modal-product_pic'
 							})
 						.swiper-slide
 							+pic({
 								src: 'img/5-catalog/black',
 								ext: '.png',
 								alt: 'product',
+								pictureClass: 'modal-product_pic'
 							})
-					.swiper-pagination
 					.swiper-button-prev
 					.swiper-button-next
+					.swiper-pagination.modal-product-pagination
 				.modal-product-stats
 					.modal-product-stats-name
 						h3.modal-product-stats-name_model Модель 1
@@ -58,7 +61,7 @@
 							span.modal-product-sizes_name Габариты ДхШхВ: 
 							span.modal-product-sizes_value 120мм
 						.modal-product-sizes-row
-							span.modal-product-sizes_name Масса:
+							span.modal-product-sizes_name Масса: 
 							span.modal-product-sizes_value 3кг
 					.modal-product-additional Гарантия
 					.modal-product-additional Лапа
@@ -69,15 +72,11 @@
 						.modal-product-includes_item - Кабель питания
 						.modal-product-includes_item - Крепления
 			h3.modal-title.modal-title--product Оформление заказа
-			.questions-form
-				.questions-inputs
-					input(name="formName" type="text").form-name
-					input(name="name" placeholder="Ваше имя" required).g-input.question_input
-					input(name="tel" type="tel" autocorrect="off" autocomplete="tel" placeholder="Введите свой номер телефона" required).question_input.g-input
-					.questions-inputs_caption Ваш номер телефона будет использоваться для связи с вами
-				.question-button
-					button.btn-prim.questions_btn Заказать
-					.question_privacy.privacy При нажатии на кнопку «Заказать» Вы соглашаетесь на обработку персональных данных
+			.modal-product-form
+				input(name="formName" type="text").form-name
+				input(name="name" placeholder="Ваше имя" required).g-input.modal-product_input
+				input(name="tel" type="tel" autocorrect="off" autocomplete="tel" placeholder="Введите свой номер телефона" required).modal-product_input.g-input
+				button.btn-prim.modal-products_btn Отправить заявку
 
 
 .modal_wrap.modal-order_wrap
@@ -116,7 +115,7 @@
 
 
 .modal_wrap.modal-certificate_wrap
-	button.modal-close-btn ×
+	button.modal-close-btn(onclick="toggle('.modal-certificate_wrap')") ×
 	.modal-inner
 		.modal-certificate
 			+pic({

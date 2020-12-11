@@ -25,10 +25,13 @@ modal(".header-contacts_callback", ".modal-callback_wrap")
 modal(".footer-btn", ".modal-callback_wrap")
 
 
+modal(".catalog-item-buttons_more", ".modal-product-more_wrap")
 
 
 
 modal(".catalog-item-buttons_order", ".modal-order_wrap")
+
+modal(".certificate-slide", ".modal-certificate_wrap")
 
 modal(".footer-privacy", ".modal-privacy_wrap")
 
@@ -113,7 +116,50 @@ quizPrev.addEventListener('click', function(){
 
 
 
+var mySwiper = new Swiper('.modal-product-slider', {
+  // loop: true,
+  slidesPerGroup: 1,
+  slidesPerView: 1,	
+  // slidesOffsetBefore: 20,
+  // slidesOffsetAfter: 20,
+  // spaceBetween: 29,
+//   // Navigation arrows
+//   // slidesOffsetAfter: 100,
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+    },
+})
 
+
+
+var mySwiper = new Swiper('.portfolio-slider', {
+  // loop: true,
+  slidesPerGroup: 2,
+  slidesPerView: 2,	
+  // slidesOffsetBefore: 20,
+  // slidesOffsetAfter: 20,
+  spaceBetween: 29,
+//   // Navigation arrows
+//   // slidesOffsetAfter: 100,
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+    },
+  breakpoints: {
+  	768: {
+  		init: false
+  	}
+  }
+})
 
 
 
