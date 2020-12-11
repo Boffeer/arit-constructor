@@ -182,4 +182,41 @@ var mySwiper = new Swiper('.certificates-slider-wrap', {
       el: '.swiper-pagination',
       type: 'bullets',
     },
+    breakpoints: {
+    	320: {
+    		init: false,
+			slidesPerGroup: 1,
+
+    	},
+    	768: { 
+			slidesPerGroup: 1,
+    		init: true
+    	}
+    }
+})
+
+
+// document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+//     anchor.addEventListener('click', function (e) {
+//         e.preventDefault();
+
+//         document.querySelector(this.getAttribute('href')).scrollIntoView({
+//             behavior: 'smooth'
+//         });
+//     });
+// });
+
+const anchors = document.querySelectorAll('a[href*="#"]')
+
+anchors.forEach((anchor) => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault()
+    
+    const blockID = anchor.getAttribute('href').substr(1)
+    
+    document.getElementById(blockID).scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    })
+  })
 })
