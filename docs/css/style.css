@@ -2221,7 +2221,13 @@ input::-webkit-outer-spin-button {
     position: absolute;
     left: 0;
     right: 0;
-    top: 90%;
+    top: 210vw;
+  }
+}
+
+@media (max-width:360px) {
+  .header-quiz_wrap {
+    top: 230vw;
   }
 }
 /*# sourceMappingURL=style.css.map */
