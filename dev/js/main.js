@@ -1,3 +1,24 @@
+const burgerButton = document.querySelector('.burger-btn');
+const burgerMenu = document.querySelector('.nav-mobile');
+let burgerIsOpen = false;
+
+burgerButton.addEventListener('click', function() {
+  document.querySelector('.burger-line').classList.toggle('burger-line--opened')
+  document.querySelector('.nav-mobile').classList.toggle('nav-mobile--opened')
+})
+
+document.querySelector('.nav_item-lnk').addEventListener('click', function() {
+  console.log('this')
+  document.querySelector('.burger-line').classList.toggle('burger-line--opened')
+  document.querySelector('.nav-mobile').classList.toggle('nav-mobile--opened')
+})
+
+
+
+
+
+
+
 const callbackHeader = document.querySelector('.header-contacts_callback');
 const callbackModal = document.querySelector('.modal-callback_wrap');
 
@@ -29,17 +50,43 @@ modal(".catalog-item-buttons_more", ".modal-product-more_wrap")
 
 
 
-modal(".catalog-item-buttons_order", ".modal-order_wrap")
+
+
+
+modal(".catalog-item-buttons_order", ".modal-order_wrap-1")
+
+modal(".catalog-item-buttons_order-2", ".modal-order_wrap-2")
+
+modal(".catalog-item-buttons_order-3", ".modal-order_wrap-3")
+modal(".catalog-item-buttons_order-4", ".modal-order_wrap-4")
+modal(".catalog-item-buttons_order-5", ".modal-order_wrap-5")
+modal(".catalog-item-buttons_order-6", ".modal-order_wrap-6")
+modal(".catalog-item-buttons_order-7", ".modal-order_wrap-7")
+modal(".catalog-item-buttons_order-8", ".modal-order_wrap-8")
+
+
+
+
+
 
 modal(".certificate-slide", ".modal-certificate_wrap")
 
 modal(".footer-privacy", ".modal-privacy_wrap")
 
 
+modal(".portfolio_pic--red", ".modal-portfolio_wrap--red")
+modal(".portfolio_pic--white", ".modal-portfolio_wrap--white")
 
 
 
 
+modal(".button-more2", ".modal-product-more_wrap2")
+modal(".button-more3", ".modal-product-more_wrap3")
+modal(".button-more4", ".modal-product-more_wrap4")
+modal(".button-more5", ".modal-product-more_wrap5")
+modal(".button-more6", ".modal-product-more_wrap6")
+modal(".button-more7", ".modal-product-more_wrap7")
+modal(".button-more8", ".modal-product-more_wrap8")
 
 
 
@@ -108,14 +155,25 @@ quizPrev.addEventListener('click', function(){
 
 
 
+// const stepperInfo = document.querySelector('.order-stepper_count')
+// const stepperPlus = document.querySelector('.order-stepper_minus')
+// const stepperMinus = document.querySelector('.order-stepper_plus')
+// let stepper = 1;
 
 
+// stepperPlus.forEach((element) => {
+//   element.addEventListener('click', function(){
+//     stepper++
+//     console.log(stepper)
+//     stepperInfo.forEach(element) => {
+//       stepperInfo.value = stepper
+//     }
+// })
+
+// })
 
 
-
-
-
-var mySwiper = new Swiper('.modal-product-slider', {
+var productSlider = new Swiper('.modal-product-slider', {
   // loop: true,
   slidesPerGroup: 1,
   slidesPerView: 1,	
@@ -129,34 +187,48 @@ var mySwiper = new Swiper('.modal-product-slider', {
     prevEl: '.swiper-button-prev',
   },
   pagination: {
-      el: '.swiper-pagination',
+      el: '.swiper-pagination.modal-product-pagination',
       type: 'bullets',
     },
 })
 
 
 
-var mySwiper = new Swiper('.portfolio-slider', {
+var portfolioPop = new Swiper('.pop-portfolio-slider', {
+  slidesPerGroup: 1,
+  slidesPerView: 1, 
+
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+})
+
+
+
+var portfolio = new Swiper('.portfolio-slider-container', {
   // loop: true,
-  slidesPerGroup: 2,
-  slidesPerView: 2,	
+  slidesPerGroup: 3,
+  slidesPerView: 3,	
   // slidesOffsetBefore: 20,
   // slidesOffsetAfter: 20,
-  spaceBetween: 29,
+  // spaceBetween: 29,
 //   // Navigation arrows
 //   // slidesOffsetAfter: 100,
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
   },
-  pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-    },
   breakpoints: {
   	768: {
-  		init: false
-  	}
+      slidesPerGroup: 1,
+      slidesPerView: 1, 
+  	},
+    320:{
+    slidesPerGroup: 1,
+    slidesPerView: 1, 
+    }
+
   }
 })
 
@@ -164,13 +236,13 @@ var mySwiper = new Swiper('.portfolio-slider', {
 
 
 
-var mySwiper = new Swiper('.certificates-slider-wrap', {
+var certificate = new Swiper('.certificates-slider-wrap', {
   // loop: true,
   slidesPerGroup: 2,
   slidesPerView: 2,	
   // slidesOffsetBefore: 20,
   // slidesOffsetAfter: 20,
-  spaceBetween: 29,
+  // spaceBetween: 29,
 //   // Navigation arrows
 //   // slidesOffsetAfter: 100,
   navigation: {
@@ -178,21 +250,38 @@ var mySwiper = new Swiper('.certificates-slider-wrap', {
     prevEl: '.swiper-button-prev',
   },
   pagination: {
-      el: '.swiper-pagination',
+      el: '.swiper-pagination.certificate-pagination',
       type: 'bullets',
     },
     breakpoints: {
     	320: {
-    		init: false,
 			slidesPerGroup: 1,
 			slidesPerView: 1,	
     	},
     	768: { 
-			slidesPerGroup: 1,
-			slidesPerView: 1,
-    		init: true
+			slidesPerGroup: 2,
+			slidesPerView: 2,
     	}
     }
+})
+
+var danger = new Swiper('.danger-slider-container', {
+  // loop: true,
+  slidesPerGroup: 1,
+  slidesPerView: 1,	
+  // slidesOffsetBefore: 20,
+  // slidesOffsetAfter: 20,
+  spaceBetween: 29,
+//   // Navigation arrows
+//   // slidesOffsetAfter: 100,
+  navigation: {
+    nextEl: '.swiper-button-next.danger-next',
+    prevEl: '.swiper-button-prev.danger-prev',
+  },
+  pagination: {
+      el: '.swiper-pagination.danger-pagination',
+      type: 'bullets',
+    },
 })
 
 

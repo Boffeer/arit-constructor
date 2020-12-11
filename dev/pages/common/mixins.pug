@@ -1,6 +1,6 @@
 mixin pic(data)
 	picture(class= data.pictureClass)
-		source(srcset= data.src+".webp 1x,"+data.src+"@2.webp 2x", type="image/webp")
+		//- source(srcset= data.src+".webp 1x,"+data.src+"@2.webp 2x", type="image/webp")
 		img(class= data.imgClass, src= data.src+data.ext, srcset= data.src+"@2"+data.ext+" 2x", alt= data.alt)
 
 
@@ -18,8 +18,72 @@ mixin catalogItem(item)
 			span.catalog-item-price_value= item.price
 			span.catalog-item-price_vat (с НДС)
 		.catalog-item-buttons
-			button.catalog-item-buttons_more Подробнее
-			button.catalog-item-buttons_order.btn-prim Заказать
+			button.catalog-item-buttons_more(class="button-more"+item.id+"") Подробнее
+			button.catalog-item-buttons_order.btn-prim(class="catalog-item-buttons_order-"+item.id) Заказать
+
+mixin catatlogItemOpened(item)
+	.modal_wrap.modal-product-more_wrap(class="modal-product-more_wrap"+item.id)
+		button.modal-close-btn(onclick="toggle('.modal-product-more_wrap"+item.id+"')") ×
+		.modal-inner
+			.modal-product-more.shader
+				.modal-product-more_inner
+					.modal-product-slider.swiper-container
+						.swiper-wrapper
+							.swiper-slide
+								+pic({
+									src: 'img/5-catalog/black',
+									ext: '.png',
+									alt: 'product',
+									pictureClass: 'modal-product_pic'
+								})
+							.swiper-slide
+								+pic({
+									src: 'img/5-catalog/black',
+									ext: '.png',
+									alt: 'product',
+									pictureClass: 'modal-product_pic'
+								})
+							.swiper-slide
+								+pic({
+									src: 'img/5-catalog/black',
+									ext: '.png',
+									alt: 'product',
+									pictureClass: 'modal-product_pic'
+								})
+						.swiper-button-prev
+						.swiper-button-next
+						.swiper-pagination.modal-product-pagination
+					.modal-product-stats
+						.modal-product-stats-name
+							h3.modal-product-stats-name_model= item.model
+							span.modal-product-stats-name_capability= item.cap
+						.modal-product-sizes
+							.modal-product-sizes-row
+								span.modal-product-sizes_name Объем помещения: 
+								span.modal-product-sizes_value= item.volume
+							.modal-product-sizes-row
+								span.modal-product-sizes_name Напряжение питания:
+								span.modal-product-sizes_value= item.u
+							.modal-product-sizes-row
+								span.modal-product-sizes_name Габариты ДхШхВ: 
+								span.modal-product-sizes_value= item.sizes
+							.modal-product-sizes-row
+								span.modal-product-sizes_name Масса: 
+								span.modal-product-sizes_value= item.weight
+						.modal-product-additional Гарантия
+						.modal-product-additional=item.lamp 
+						.modal-product-includes
+							.modal-product-includes_title Комплектация:
+							.modal-product-includes_item - Рециркулятор бактерицидный модель
+							.modal-product-includes_item - Технический паспорт
+							.modal-product-includes_item - Кабель питания
+							.modal-product-includes_item - Крепления
+				h3.modal-title.modal-title--product Оформление заказа
+				.modal-product-form
+					input(name="formName" type="text").form-name
+					input(name="name" placeholder="Ваше имя" required).g-input.modal-product_input
+					input(name="tel" type="tel" autocorrect="off" autocomplete="tel" placeholder="Введите свой номер телефона" required).modal-product_input.g-input
+					button.btn-prim.modal-products_btn Отправить заявку
 
 
 

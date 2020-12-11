@@ -9,9 +9,9 @@ block content
 					h1.headliner Рециркуляторы, 
 						em.em-color предотвращающие распостронение вируса
 						|  с гарантией 
-						em.em-bold 12&nbsp;месяцев 
-						| &nbsp;и&nbsp;доставкой 
-						em.em-bold по&nbsp;РФ&nbsp;от&nbsp;2&nbsp;дней
+						| 12&nbsp;месяцев 
+						| &nbsp;и&nbsp;доставкой по&nbsp;РФ&nbsp;
+						em.em-bold от&nbsp;2&nbsp;дней
 					.header-quiz_wrap
 						form.header-quiz
 							h3.quiz_title Ответьте на 4 простых вопроса и узнайте какая модель вам нужна:
@@ -283,6 +283,8 @@ block content
 					em.unem-title некачественных изделий
 				p.section-subtitle.danger-subtitle Многие модели, которые сейчас есть на рынке, опасны для здоровья человека
 				.danger-container
+					.swiper-button-next.danger-next
+					.swiper-button-prev.danger-prev
 					.danger-left
 						p.danger_text В некачественных изделиях выход излучения во время работы и попадание на кожу и глаза 
 							em.em-bold МОЖЕТ ПРИВЕСТИ К ТЯЖЁЛЫМ ПОСЛЕДСТВИЯМ 
@@ -291,27 +293,67 @@ block content
 							em.em-bold РАЗЛАГАЕТ ОБЫЧНЫЕ ПЛАСТИКИ С ВЫДЕЛЕНИЕМ ПРОДУКТОВ РАСПАДА 
 							| и в некачественных устройствах эти продукты разгоняются вентилятором по помещению (сотрудники и посетители дышат этим весь день)
 					.danger-right
-						.danger-slider
-							.danger-slide.danger-slide-1
-								.danger_icon
+						.swiper-container.danger-slider-container
+							.danger-slider.swiper-wrapper
+
+								.danger-slide.danger-slide-1.swiper-slide
+									.danger_icon
+										+pic({
+											src: 'img/3-danger/danger',
+											ext: '.png',
+											alt: 'icon'
+										})
+									.danger-tag_wrap.danger-tag_left
+										.danger-tag Состоит из пластика
+
+									.danger-tag_wrap.danger-tag_right
+										.danger-tag УФ излучение
 									+pic({
-										src: 'img/3-danger/danger',
+										src: 'img/3-danger/replica',
 										ext: '.png',
+										pictureClass: 'danger-slide-1_pic',
 										alt: 'icon'
 									})
-								.danger-tag_wrap.danger-tag_left
-									.danger-tag Состоит из пластика
 
-								.danger-tag_wrap.danger-tag_right
-									.danger-tag УФ излучение
 
-								+pic({
-									src: 'img/3-danger/replica',
-									ext: '.png',
-									pictureClass: 'danger-slide-1_pic',
-									alt: 'icon'
-								})
 
+								.swiper-slide.danger-slide.danger-slide-2
+									.danger_icon
+										+pic({
+											src: 'img/3-danger/danger',
+											ext: '.png',
+											alt: 'icon'
+										})
+									.danger-tag_wrap.danger-tag_left
+										.danger-tag Ультрафиолетовые засветы
+
+
+									+pic({
+										src: 'img/3-danger/danger-2',
+										ext: '.png',
+										pictureClass: 'danger-slide-2_pic',
+										alt: 'icon'
+									})
+
+
+								.swiper-slide.danger-slide.danger-slide-3
+									.danger_icon
+										+pic({
+											src: 'img/3-danger/danger',
+											ext: '.png',
+											alt: 'icon'
+										})
+									.danger-tag_wrap.danger-tag_left
+										.danger-tag Ультрафиолетовые засветы
+
+									+pic({
+										src: 'img/3-danger/danger-3',
+										ext: '.png',
+										pictureClass: 'danger-slide-3_pic',
+										alt: 'icon'
+									})
+							.swiper-pagination.danger-pagination
+						
 
 
 
@@ -385,10 +427,10 @@ block content
 						alt: 'product',
 					})
 					.catalog-item-name
-						h3.catalog-item-name_model Модель 1
-						span.catalog-item-name_capability (Производительность)
+						h3.catalog-item-name_model ЭНЭЛ 60
+						span.catalog-item-name_capability 60 м³/ч
 					.catalog-item-price
-						span.catalog-item-price_value 1 290 000 ₽
+						span.catalog-item-price_value 17 000 ₽
 						span.catalog-item-price_vat (с НДС)
 					.catalog-item-buttons
 						button.catalog-item-buttons_more Подробнее
@@ -396,97 +438,130 @@ block content
 				+catalogItem({
 					src: 'img/5-catalog/white',
 					ext: '.png',
-					model: 'Модель 1',
-					cap: '(Производительность)',
-					price: '1 290 000 ₽',
+					model: 'ЭНЭЛ 60Т',
+					cap: '60 м³/ч',
+					price: '22 000 ₽',
+					id: '2',
+					volume: '',
+					u: '',
+					sizes: '',
+					weight: '',
 				})
 				+catalogItem({
 					src: 'img/5-catalog/black',
 					ext: '.png',
-					model: 'Модель 1',
-					cap: '(Производительность)',
-					price: '1 290 000 ₽',
+					model: 'ЭНЭЛ100',
+					cap: '100 м³/ч',
+					price: '35 000 ₽',
+					id: '3',
+					volume: '',
+					u: '',
+					sizes: '',
+					weight: '',
 				})
 				+catalogItem({
 					src: 'img/5-catalog/white',
 					ext: '.png',
-					model: 'Модель 1',
-					cap: '(Производительность)',
-					price: '1 290 000 ₽',
+					model: 'ЭНЭЛ200',
+					cap: '250 м³/ч',
+					price: '48 000 ₽',
+					id: '4',
+					volume: '',
+					u: '',
+					sizes: '',
+					weight: '',
 				})
 
 				+catalogItem({
 					src: 'img/5-catalog/black',
 					ext: '.png',
-					model: 'Модель 1',
-					cap: '(Производительность)',
-					price: '1 290 000 ₽',
+					model: 'ЭНЭЛ150',
+					cap: '150 м³/ч',
+					price: '36 000 ₽',
+					id: '5',
+					volume: '',
+					u: '',
+					sizes: '',
+					weight: '',
 				})
 				+catalogItem({
 					src: 'img/5-catalog/white',
 					ext: '.png',
-					model: 'Модель 1',
-					cap: '(Производительность)',
-					price: '1 290 000 ₽',
+					model: 'ЭНЭЛ300',
+					cap: '300 м³/ч',
+					price: '56 000 ₽',
+					id: '6',
+					volume: '',
+					u: '',
+					sizes: '',
+					weight: '',
 				})
 				+catalogItem({
 					src: 'img/5-catalog/black',
 					ext: '.png',
-					model: 'Модель 1',
-					cap: '(Производительность)',
-					price: '1 290 000 ₽',
+					model: 'ЭНЭЛ2000',
+					cap: '2000',
+					price: '185 000 ₽',
+					id: '7',
+					volume: '',
+					u: '',
+					sizes: '',
+					weight: '',
 				})
 				+catalogItem({
 					src: 'img/5-catalog/white',
 					ext: '.png',
-					model: 'Модель 1',
-					cap: '(Производительность)',
-					price: '1 290 000 ₽',
+					model: 'ЭНЭЛ5000',
+					cap: '5000',
+					price: '220 000 ₽',
+					id: '8',
+					volume: '',
+					u: '',
+					sizes: '',
+					weight: '',
 				})
 
 
+		.portfolio-and-pricing
+			.portfolio
+				h2.section-title.portfolio_title Выполненные проекты
+				.container
+					.swiper-container.portfolio-slider-container
+						.portfolio-slider.swiper-wrapper
+							.portfolio-slider_item.swiper-slide
+								+pic({
+									src: 'img/6-portfolio/2',
+									ext: '.png',
+									alt: 'portfolio-item',
+									pictureClass: 'portfolio_pic portfolio_pic--red'
+								})
+								.portfolio-text
+									h3.portfolio-text_title Опиание проекта
+									p.portfolio-text_descr Рециркулятор в Бизнес Центр «Сенатор». Пару слов о проекте : Модели ЭНЭЛ200 в фирменном стиле БЦ «Сенатор». Рециркуляторы были необходимы для обеспечения безопасности здоровья клиентов, а также для возможности работать в карантин.
+							.portfolio-slider_item.swiper-slide
+								+pic({
+									src: 'img/6-portfolio/1',
+									ext: '.png',
+									alt: 'portfolio-item',
+									pictureClass: 'portfolio_pic portfolio_pic--white'
+								})
+								.portfolio-text
+									h3.portfolio-text_title Опиание проекта
+									p.portfolio-text_descr Рециркулятор в кабинет частному специалисту. Пару слов о проекте : Модель ЭНЭЛ100 для кабинета психолога. Чтобы было разрешение и возможность полноценно работать в карантин безопасно.
+							.portfolio-slider_item.swiper-slide.portfolio-slider_item--2
+								+pic({
+									src: 'img/6-portfolio/2',
+									ext: '.png',
+									alt: 'portfolio-item',
+									pictureClass: 'portfolio_pic portfolio_pic--red'
+								})
+								.portfolio-text
+									h3.portfolio-text_title Опиание проекта
+									p.portfolio-text_descr Рециркулятор в Бизнес Центр «Сенатор». Пару слов о проекте : Модели ЭНЭЛ200 в фирменном стиле БЦ «Сенатор». Рециркуляторы были необходимы для обеспечения безопасности здоровья клиентов, а также для возможности работать в карантин.
+						.swiper-button-prev.portfolio-prev
+						.swiper-button-next.portfolio-next
 
-		.portfolio
-			h2.section-title.portfolio_title Выполненные проекты
-			.container
-				.swiper-container.portfolio-slider-container
-					.portfolio-slider.swiper-wrapper
-						.portfolio-slider_item.swiper-slide
-							+pic({
-								src: 'img/6-portfolio/2',
-								ext: '.png',
-								alt: 'portfolio-item',
-								pictureClass: 'portfolio_pic'
-							})
-							.portfolio-text
-								h3.portfolio-text_title Опиание проекта
-								p.portfolio-text_descr Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-						.portfolio-slider_item.swiper-slide
-							+pic({
-								src: 'img/6-portfolio/1',
-								ext: '.png',
-								alt: 'portfolio-item',
-								pictureClass: 'portfolio_pic'
-							})
-							.portfolio-text
-								h3.portfolio-text_title Опиание проекта
-								p.portfolio-text_descr Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-						.portfolio-slider_item.swiper-slide
-							+pic({
-								src: 'img/6-portfolio/2',
-								ext: '.png',
-								alt: 'portfolio-item',
-								pictureClass: 'portfolio_pic'
-							})
-							.portfolio-text
-								h3.portfolio-text_title Опиание проекта
-								p.portfolio-text_descr Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-					.swiper-button-prev.portfolio-prev
-					.swiper-button-next.portfolio-next
-
-								
-
-
+									
 
 
 
@@ -502,23 +577,25 @@ block content
 
 
 
-		.pricing#pricing
-			.container.pricing-container
-				.pricing-form_wrap.shader
-					form.pricing-form
-						h3.pricing-form_title Получить Оптовый<br>Прайс-лист в Whatsap
-						p.pricing-form_descr Скидка до 30% при больших объемах
-						.pricing-form_input-wrap
-							input(name="formName" type="text").form-name
-							input(name="tel" type="tel" autocorrect="off" autocomplete="tel" placeholder="Введите свой номер телефона" required).pricing-form_input.g-input
-							button.btn-prim.pricing-form_submit Получить Прайс-лист по Whatsap
-						.pricing-form_privacy При нажатии на кнопку «Получить Прайс-лист по Whatsap» Вы соглашаетесь на обработку персональных данных
 
-				+pic({
-					src: 'img/7-price/price',
-					ext: '.png',
-					pictureClass: 'pricing_pic'
-				})
+
+			.pricing#pricing
+				.container.pricing-container
+					.pricing-form_wrap.shader
+						form.pricing-form
+							h3.pricing-form_title Получить Оптовый<br>Прайс-лист в Whatsap
+							p.pricing-form_descr Скидка до 30% при больших объемах
+							.pricing-form_input-wrap
+								input(name="formName" type="text").form-name
+								input(name="tel" type="tel" autocorrect="off" autocomplete="tel" placeholder="Введите свой номер телефона" required).pricing-form_input.g-input
+								button.btn-prim.pricing-form_submit Получить Прайс-лист по Whatsap
+							.pricing-form_privacy При нажатии на кнопку «Получить Прайс-лист по Whatsap» Вы соглашаетесь на обработку персональных данных
+
+					+pic({
+						src: 'img/7-price/price',
+						ext: '.png',
+						pictureClass: 'pricing_pic'
+					})
 
 
 
@@ -637,4 +714,4 @@ block content
 							})
 					.swiper-button-prev
 					.swiper-button-next
-					.swiper-pagination
+				.swiper-pagination.certificate-pagination

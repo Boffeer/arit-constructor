@@ -71,7 +71,7 @@ exports.screens = screens;
 const pug2html = () => {
 	return gulp.src('dev/pages/*.pug')
 		.pipe(plumber())
-		.pipe(pugLinter({ reporter: 'default' }))
+		// .pipe(pugLinter({ reporter: 'default' }))
 		.pipe(pug())
 		.pipe(htmlValidator())
 		.pipe(gulp.dest('build'))
