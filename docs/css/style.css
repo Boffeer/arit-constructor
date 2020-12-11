@@ -2212,5 +2212,16 @@ input::-webkit-outer-spin-button {
   .about-features-item_text {
     margin-bottom: 26px;
   }
+
+  .hero-container {
+    margin-bottom: 550px;
+  }
+
+  .header-quiz_wrap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 90%;
+  }
 }
 /*# sourceMappingURL=style.css.map */
