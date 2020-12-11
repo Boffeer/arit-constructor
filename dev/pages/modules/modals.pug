@@ -381,7 +381,7 @@
 			p Передавая Оператору персональные и иные данные посредством Сайта, Пользователь подтверждает свое согласие на использование указанных данных на условиях, изложенных в настоящей Политике конфиденциальности.
 			p Если Пользователь не согласен с условиями настоящей Политики конфиденциальности, он обязан прекратить использование Сайта.
 			p Безусловным акцептом настоящей Политики конфиденциальности является начало использования Сайта Пользователем.<br><br>
-			
+
 			p 1. ТЕРМИНЫ
 
 			p 1.1. Сайт — сайты, расположенные в сети Интерне. Все исключительные права на Сайт и его отдельные элементы (включая программное обеспечение, дизайн) принадлежат Оператору в полном объеме. Передача исключительных прав Пользователю не является предметом настоящей Политики конфиденциальности.
@@ -465,7 +465,7 @@
 	.modal-inner
 		.modal-portfolio
 			.swiper-container.pop-portfolio-slider
-				.swiper-wrapper
+				.swiper-wrapper.portfolio-wrapper
 					.portfolio-slider_item.swiper-slide
 						+pic({
 							src: 'img/6-portfolio/2',
@@ -483,15 +483,12 @@
 				.swiper-button-prev
 				.swiper-button-next
 
-
-
-
 .modal_wrap.modal-portfolio_wrap.modal-portfolio_wrap--white
 	button.modal-close-btn(onclick="toggle('.modal-portfolio_wrap--white')") ×
 	.modal-inner
 		.modal-portfolio
 			.swiper-container.pop-portfolio-slider
-				.swiper-wrapper
+				.swiper-wrapper.portfolio-wrapper
 					.portfolio-slider_item.swiper-slide
 						+pic({
 							src: 'img/6-portfolio/1',
@@ -513,20 +510,20 @@
 							alt: 'portfolio-item',
 							pictureClass: 'portfolio_pic'
 						})
-					.portfolio-slider_item.swiper-slide
-						+pic({
-							src: 'img/6-portfolio/1/4',
-							ext: '.jpg',
-							alt: 'portfolio-item',
-							pictureClass: 'portfolio_pic'
-						})
-					.portfolio-slider_item.swiper-slide
-						+pic({
-							src: 'img/6-portfolio/1/5',
-							ext: '.jpg',
-							alt: 'portfolio-item',
-							pictureClass: 'portfolio_pic'
-						})
+					//- .portfolio-slider_item.swiper-slide
+					//- 	+pic({
+					//- 		src: 'img/6-portfolio/1/4',
+					//- 		ext: '.jpg',
+					//- 		alt: 'portfolio-item',
+					//- 		pictureClass: 'portfolio_pic'
+					//- 	})
+					//- .portfolio-slider_item.swiper-slide
+					//- 	+pic({
+					//- 		src: 'img/6-portfolio/1/5',
+					//- 		ext: '.jpg',
+					//- 		alt: 'portfolio-item',
+					//- 		pictureClass: 'portfolio_pic'
+					//- 	})
 				.swiper-button-prev
 				.swiper-button-next
 

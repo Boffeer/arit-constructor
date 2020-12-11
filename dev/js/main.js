@@ -74,8 +74,8 @@ modal(".certificate-slide", ".modal-certificate_wrap")
 modal(".footer-privacy", ".modal-privacy_wrap")
 
 
-modal(".portfolio_pic--red", ".modal-portfolio_wrap--red")
-modal(".portfolio_pic--white", ".modal-portfolio_wrap--white")
+// modal(".portfolio_pic--red", ".modal-portfolio_wrap--red")
+// modal(".portfolio_pic--white", ".modal-portfolio_wrap--white")
 
 
 
@@ -195,13 +195,46 @@ var productSlider = new Swiper('.modal-product-slider', {
 
 
 var portfolioPop = new Swiper('.pop-portfolio-slider', {
-  slidesPerGroup: 1,
+  slidesPerGroup: 3,
   slidesPerView: 1, 
 
+  // width: 300,
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
   },
+  breakpoints: {
+    768: {
+      slidesPerGroup: 1,
+      slidesPerView: 1, 
+    },
+    320:{
+    slidesPerGroup: 1,
+    slidesPerView: 1, 
+    }
+
+  }
+})
+var about = new Swiper('.about-slider', {
+  slidesPerGroup: 3,
+  slidesPerView: 1, 
+
+  // width: 300,
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  breakpoints: {
+    768: {
+      slidesPerGroup: 1,
+      slidesPerView: 1, 
+    },
+    320:{
+    slidesPerGroup: 1,
+    slidesPerView: 1, 
+    }
+
+  }
 })
 
 

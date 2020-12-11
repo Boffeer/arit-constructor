@@ -3,8 +3,12 @@ include common/mixins
 
 block content
 	main
+		.container
+			a(href=`${waLink}`).whatsapp-lnk
+				img(src="img/footer/whatsapp.svg")
 		.hero
 			.container.hero-container
+
 				.hero-left
 					h1.headliner Рециркуляторы, 
 						em.em-color предотвращающие распостронение вируса
@@ -521,7 +525,7 @@ block content
 					weight: '',
 				})
 
-
+		#portfolio
 		.portfolio-and-pricing
 			.portfolio
 				h2.section-title.portfolio_title Выполненные проекты
@@ -548,16 +552,16 @@ block content
 								.portfolio-text
 									h3.portfolio-text_title Опиание проекта
 									p.portfolio-text_descr Рециркулятор в кабинет частному специалисту. Пару слов о проекте : Модель ЭНЭЛ100 для кабинета психолога. Чтобы было разрешение и возможность полноценно работать в карантин безопасно.
-							.portfolio-slider_item.swiper-slide.portfolio-slider_item--2
-								+pic({
-									src: 'img/6-portfolio/2',
-									ext: '.png',
-									alt: 'portfolio-item',
-									pictureClass: 'portfolio_pic portfolio_pic--red'
-								})
-								.portfolio-text
-									h3.portfolio-text_title Опиание проекта
-									p.portfolio-text_descr Рециркулятор в Бизнес Центр «Сенатор». Пару слов о проекте : Модели ЭНЭЛ200 в фирменном стиле БЦ «Сенатор». Рециркуляторы были необходимы для обеспечения безопасности здоровья клиентов, а также для возможности работать в карантин.
+							//- .portfolio-slider_item.swiper-slide.portfolio-slider_item--2
+							//- 	+pic({
+							//- 		src: 'img/6-portfolio/2',
+							//- 		ext: '.png',
+							//- 		alt: 'portfolio-item',
+							//- 		pictureClass: 'portfolio_pic portfolio_pic--red'
+							//- 	})
+							//- 	.portfolio-text
+							//- 		h3.portfolio-text_title Опиание проекта
+							//- 		p.portfolio-text_descr Рециркулятор в Бизнес Центр «Сенатор». Пару слов о проекте : Модели ЭНЭЛ200 в фирменном стиле БЦ «Сенатор». Рециркуляторы были необходимы для обеспечения безопасности здоровья клиентов, а также для возможности работать в карантин.
 						.swiper-button-prev.portfolio-prev
 						.swiper-button-next.portfolio-next
 
@@ -600,7 +604,7 @@ block content
 
 
 
-
+		#about
 		.about
 			h2.section-title.about-title О компании
 			.container.about-container
@@ -645,11 +649,32 @@ block content
 
 
 				.about-right
-					.about-video-wrap
-						button.about-video_play-button
-							img(src="img/8-about/play.svg")
-
-
+					.about-slider-wrap
+						.swiper-container.about-slider
+							.swiper-wrapper
+								.swiper-slide
+									+pic({
+										src: 'img/8-about/about-1',
+										ext: '.png',
+										alt: 'about us',
+										pictureClass: 'about_pic'
+									})
+								.swiper-slide
+									+pic({
+										src: 'img/8-about/about-2',
+										ext: '.png',
+										alt: 'about us',
+										pictureClass: 'about_pic'
+									})
+								.swiper-slide
+									+pic({
+										src: 'img/8-about/about-3',
+										ext: '.png',
+										alt: 'about us',
+										pictureClass: 'about_pic'
+									})
+							.swiper-button-next
+							.swiper-button-prev
 
 
 

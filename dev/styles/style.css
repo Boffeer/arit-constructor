@@ -43,8 +43,12 @@ button {
 
 .em-bold {
   font-family: Moseo-600, sans-serif;
-  font-weight: 900;
+  font-weight: 700;
   font-style: normal;
+}
+
+.headliner .em-bold{
+  font-weight: 900;
 }
 
 .em-color {
@@ -159,6 +163,31 @@ button {
   font-weight: 700;
 }
 
+
+
+
+
+
+
+
+.whatsapp-lnk{
+  width: 60px;
+  height: 60px;
+  border-radius: 60px;
+  background: #33d16b;
+  background: linear-gradient(45deg, #33d16b, #5cda89);
+  position: fixed;
+  left: 10px;
+  bottom: 30px;
+  z-index: 30;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.whatsapp-lnk img {
+  width:  60%;
+  height: 60%;
+}
 
 
 
@@ -438,6 +467,14 @@ button {
 }
 
 
+.about_pi{
+  width: 5%;
+  /*height: 100%;*/
+}
+.about_pic img{
+  width: 50%;
+  /*height: 100%;*/
+}
 
 
 
@@ -966,7 +1003,7 @@ button {
 
 .feature-card_title {
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 12px;
   line-height: 1.3;
 }
@@ -1122,7 +1159,8 @@ button {
 }
 
 .portfolio-slider_item {
-  max-width: 327px;
+  max-width: 320px;
+  /*max-width: 100%;*/
   box-sizing: border-box;
   padding: 10px;
   background: #e6eff7;
@@ -1173,7 +1211,6 @@ button {
   line-height: 1.45;
   font-weight: 300;
 }
-
 
 /*
 .portfolio-slider-container{
@@ -1795,7 +1832,7 @@ button {
   line-height: 1;
 }
 .modal-product-pagination{
-  bottom: 90px !important;
+  bottom: 20px !important;
 }
 
 .modal-order_wrap {
@@ -1897,7 +1934,7 @@ input::-webkit-inner-spin-button {
   margin: auto;
   /*max-height: 80vw;*/
   max-height: 90vh;
-  max-width: 34vw;
+  max-width: 36vw;
 }
 
 .modal-certificate picture{
@@ -1923,6 +1960,8 @@ input::-webkit-inner-spin-button {
   background-color: #fff;
   border: 10px solid #E6EFF7;
   padding: 25px 21px 25px 21px;
+  max-height: 70vh;
+  overflow-y: auto;
 }
 .modal-privacy_title{
   margin-bottom: 17px;
@@ -1946,7 +1985,7 @@ input::-webkit-inner-spin-button {
 
 
 .modal-portfolio_wrap {
-  /*display: none;*/
+  display: none;
   visibility: hidden;
 }
 
@@ -1992,8 +2031,12 @@ input::-webkit-inner-spin-button {
 
 
 
-
-
+.portfolio_pic img {
+  width: 100%;
+}
+.portfolio-wrapper {
+  align-items: center;
+}
 
 
 
@@ -2008,7 +2051,9 @@ input::-webkit-inner-spin-button {
 
 
 
-
+.about-right{
+  width: 50%;
+}
 
 
 
@@ -2027,6 +2072,9 @@ input::-webkit-inner-spin-button {
 
 
 @media (max-width: 480px) {
+  .portfolio-slider{
+    justify-content: flex-start;
+  }
   .burger{
     display: block;
   }
@@ -2115,7 +2163,11 @@ input::-webkit-inner-spin-button {
 
   .modal-product_pic{
     margin-right: 30%;
+    margin-left: 15%;
+    margin-bottom: 20px;
   }
+
+
 
 
   .header-logo_descriptor {
@@ -2444,7 +2496,9 @@ input::-webkit-inner-spin-button {
   .pricing-form_descr:after {display: none;}
 
 
-
+  .header-contacts_phone{
+    font-size: 16px;
+  }
   .modal-privacy{
     max-height: 70vh;
     overflow-y: scroll;
@@ -2562,6 +2616,9 @@ input::-webkit-inner-spin-button {
 
 
 @media (max-width: 360px){
+  .hero{
+    padding-top: 110px;
+  }
   .header-quiz_wrap {
     top: 230vw;
   }
