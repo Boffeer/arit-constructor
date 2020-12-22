@@ -407,7 +407,7 @@ exports.default = gulp.series(
 		styles,
 		scripts,
 		copy,
-		imgDev
+		// imgDev
 	),
 	// 'paths',
 	gulp.parallel(

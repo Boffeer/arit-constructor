@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 const burgerButton = document.querySelector('.burger-btn');
 const burgerMenu = document.querySelector('.nav-mobile');
 let burgerIsOpen = false;
@@ -8,86 +17,22 @@ burgerButton.addEventListener('click', function() {
 })
 
 document.querySelector('.nav_item-lnk').addEventListener('click', function() {
-  console.log('this')
+  // console.log('this')
   document.querySelector('.burger-line').classList.toggle('burger-line--opened')
   document.querySelector('.nav-mobile').classList.toggle('nav-mobile--opened')
 })
 
 
 
-
+document.querySelector('.quiz-controls_prev').addEventListener('click', function(){
+	document.querySelector('.quiz-controls_next').classList.remove('hidden');
+});
 
 
 
 const callbackHeader = document.querySelector('.header-contacts_callback');
 const callbackModal = document.querySelector('.modal-callback_wrap');
 
-
-function toggle(wrap, inner){
-      let select = document.querySelector(wrap),
-          compStyle = window.getComputedStyle(select),
-          modal = document.querySelector('.modal-callback_wrap');
-      if (compStyle.getPropertyValue('visibility') == 'hidden'){
-        select.style.display = 'block';
-        select.style.visibility = 'visible';
-        select.style.opacity = '1';
-        modal.style.transform = 'scale(1)';
-      } else {
-        select.style.display = 'none';
-        select.style.visibility = 'hidden';
-        select.style.opacity = '0';
-        modal.style.transform = 'scale(0.2)';
-      }
-}
-function modal(btn, modal){
-  document.querySelector(btn).addEventListener("click", () => toggle(modal));
-}
-modal(".header-contacts_callback", ".modal-callback_wrap")
-modal(".footer-btn", ".modal-callback_wrap")
-
-
-modal(".catalog-item-buttons_more", ".modal-product-more_wrap")
-
-
-
-
-
-
-modal(".catalog-item-buttons_order", ".modal-order_wrap-1")
-
-modal(".catalog-item-buttons_order-2", ".modal-order_wrap-2")
-
-modal(".catalog-item-buttons_order-3", ".modal-order_wrap-3")
-modal(".catalog-item-buttons_order-4", ".modal-order_wrap-4")
-modal(".catalog-item-buttons_order-5", ".modal-order_wrap-5")
-modal(".catalog-item-buttons_order-6", ".modal-order_wrap-6")
-modal(".catalog-item-buttons_order-7", ".modal-order_wrap-7")
-modal(".catalog-item-buttons_order-8", ".modal-order_wrap-8")
-
-
-
-
-
-
-modal(".certificate-slide-1", ".modal-certificate_wrap-1")
-modal(".certificate-slide-2", ".modal-certificate_wrap-2")
-
-modal(".footer-privacy", ".modal-privacy_wrap")
-
-
-// modal(".portfolio_pic--red", ".modal-portfolio_wrap--red")
-// modal(".portfolio_pic--white", ".modal-portfolio_wrap--white")
-
-
-
-
-modal(".button-more2", ".modal-product-more_wrap2")
-modal(".button-more3", ".modal-product-more_wrap3")
-modal(".button-more4", ".modal-product-more_wrap4")
-modal(".button-more5", ".modal-product-more_wrap5")
-modal(".button-more6", ".modal-product-more_wrap6")
-modal(".button-more7", ".modal-product-more_wrap7")
-modal(".button-more8", ".modal-product-more_wrap8")
 
 
 
@@ -97,9 +42,37 @@ const quizPrev = document.querySelector('.quiz-controls_prev');
 const progressBar = document.querySelector('.progress-bar_wrap');
 const progressPoint = document.querySelector('.quiz-progress-bar_point');
 let currentQuestion = 1;
+let question1isAnswered = false;
+let question2isAnswered = false;
+let question3isAnswered = false;
+let question4isAnswered = false;
 
 
 quizNext.addEventListener('click', function(){
+	if ((question1isAnswered == false) && currentQuestion == 1) {
+		ym(70602433,'reachGoal','quiz-step-1')
+		question1isAnswered = true;
+		// console.log('is' + currentQuestion)
+	}
+	if ((currentQuestion == 2) && (question2isAnswered == false)) {
+		ym(70602433,'reachGoal','quiz-step-2')
+		question2isAnswered = true;
+		// console.log('is' + currentQuestion)
+	}
+
+	if ((currentQuestion == 3) && (question3isAnswered == false)) {
+		ym(70602433,'reachGoal','quiz-step-3')
+		question3isAnswered = true;
+		// console.log('is' + currentQuestion)
+	}
+
+	if ((currentQuestion == 4) && (question4isAnswered == false)) {
+		ym(70602433,'reachGoal','quiz-step-4')
+		question4isAnswered = true;
+		// console.log('is' + currentQuestion)
+	}
+
+
 	document.querySelector('.quiz-page-'+currentQuestion)
 		.classList.add('quiz-page--answered');
 	currentQuestion++;
@@ -121,7 +94,7 @@ quizNext.addEventListener('click', function(){
 
 quizPrev.addEventListener('click', function(){
 	if (currentQuestion > 1){
-		console.log(currentQuestion+ 'a')
+		// console.log(currentQuestion+ 'a')
 		
 		document.querySelector('.quiz-page-'+currentQuestion)
 			.classList.remove('quiz-page--current');
@@ -135,7 +108,7 @@ quizPrev.addEventListener('click', function(){
 			.classList.remove('quiz-point--current');
 		document.querySelector('.quiz-page-'+currentQuestion)
 			.classList.remove('quiz-page--answered');
-		console.log(currentQuestion+'b')
+		// console.log(currentQuestion+'b')
 		if (currentQuestion == 5){
 			quizNext.classList.remove('hidden')
 		}
@@ -165,7 +138,7 @@ quizPrev.addEventListener('click', function(){
 // stepperPlus.forEach((element) => {
 //   element.addEventListener('click', function(){
 //     stepper++
-//     console.log(stepper)
+    console.log(stepper)
 //     stepperInfo.forEach(element) => {
 //       stepperInfo.value = stepper
 //     }
@@ -195,27 +168,27 @@ var productSlider = new Swiper('.modal-product-slider', {
 
 
 
-var portfolioPop = new Swiper('.pop-portfolio-slider', {
-  slidesPerGroup: 3,
-  slidesPerView: 1, 
+// var portfolioPop = new Swiper('.pop-portfolio-slider', {
+//   // slidesPerGroup: 3,
+//   slidesPerView: 3, 
 
-  // width: 300,
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-  breakpoints: {
-    768: {
-      slidesPerGroup: 1,
-      slidesPerView: 1, 
-    },
-    320:{
-    slidesPerGroup: 1,
-    slidesPerView: 1, 
-    }
+//   // width: 300,
+//   navigation: {
+//     nextEl: '.swiper-button-next',
+//     prevEl: '.swiper-button-prev',
+//   },
+//   breakpoints: {
+//     768: {
+//       slidesPerGroup: 1,
+//       slidesPerView: 1, 
+//     },
+//     320:{
+//     slidesPerGroup: 1,
+//     slidesPerView: 1, 
+//     }
 
-  }
-})
+//   }
+// })
 var about = new Swiper('.about-slider', {
   slidesPerGroup: 3,
   slidesPerView: 1, 
@@ -227,12 +200,14 @@ var about = new Swiper('.about-slider', {
   },
   breakpoints: {
     768: {
+      spaceBetween: 30,
       slidesPerGroup: 1,
       slidesPerView: 1, 
     },
     320:{
-    slidesPerGroup: 1,
-    slidesPerView: 1, 
+      spaceBetween: 30,
+      slidesPerGroup: 1,
+      slidesPerView: 1, 
     }
 
   }
@@ -240,32 +215,40 @@ var about = new Swiper('.about-slider', {
 
 
 
-var portfolio = new Swiper('.portfolio-slider-container', {
+var portfolio = new Swiper('.swiper-container.portfolio-slider-container', {
   // loop: true,
-  slidesPerGroup: 3,
-  slidesPerView: 3,	
+  // slidesPerGroup: 1,
+  // slidesPerView: 'auto',
+  slidesPerView: 3,
+  // watchOverflow: true,
+  // centeredSlides: true,
+  // slidesOffsetBefore: 170,
   // slidesOffsetBefore: 20,
   // slidesOffsetAfter: 20,
   // spaceBetween: 29,
 //   // Navigation arrows
 //   // slidesOffsetAfter: 100,
   navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
+    nextEl: '.swiper-button-next.portfolio-next',
+    prevEl: '.swiper-button-prev.portfolio-prev',
   },
   breakpoints: {
   	768: {
-      slidesPerGroup: 1,
-      slidesPerView: 1, 
+	  spaceBetween: 20,
+
+      // slidesOffsetBefore: 20,
+      slidesPerGroup: 3,
+      slidesPerView: 3, 
   	},
     320:{
+	  spaceBetween: 20,
+    // slidesOffsetBefore: 20,
     slidesPerGroup: 1,
     slidesPerView: 1, 
     }
 
   }
 })
-
 
 
 
@@ -280,8 +263,8 @@ var certificate = new Swiper('.certificates-slider-wrap', {
 //   // Navigation arrows
 //   // slidesOffsetAfter: 100,
   navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
+    nextEl: '.swiper-button-next.certificates-next',
+    prevEl: '.swiper-button-prev.certificates-prev',
   },
   pagination: {
       el: '.swiper-pagination.certificate-pagination',
@@ -298,6 +281,16 @@ var certificate = new Swiper('.certificates-slider-wrap', {
     	}
     }
 })
+let countCerteficates = document.querySelectorAll('.certificate-slide').length
+
+if ((window.innerWidth > 768) && (countCerteficates < 3)) {
+  document.querySelector('.certificates-prev').classList.add('slider-hidden')
+  document.querySelector('.certificates-next').classList.add('slider-hidden')
+  document.querySelector('.certificate-pagination').classList.add('slider-hidden')
+}
+
+
+
 
 var danger = new Swiper('.danger-slider-container', {
   // loop: true,
@@ -316,7 +309,7 @@ var danger = new Swiper('.danger-slider-container', {
       el: '.swiper-pagination.danger-pagination',
       type: 'bullets',
     },
-})
+});
 
 
 // document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -329,13 +322,13 @@ var danger = new Swiper('.danger-slider-container', {
 //     });
 // });
 
-const anchors = document.querySelectorAll('a[href*="#"]')
+const anchorTag = document.querySelectorAll('a[href*="#"]');
 
-anchors.forEach((anchor) => {
-  anchor.addEventListener('click', function (e) {
+anchorTag.forEach((anchorItem) => {
+  anchorItem.addEventListener('click', function (e) {
     e.preventDefault()
     
-    const blockID = anchor.getAttribute('href').substr(1)
+    const blockID = anchorItem.getAttribute('href').substr(1)
     
     document.getElementById(blockID).scrollIntoView({
       behavior: 'smooth',
@@ -344,4 +337,208 @@ anchors.forEach((anchor) => {
     document.querySelector('.burger-line').classList.toggle('burger-line--opened')
     document.querySelector('.nav-mobile').classList.toggle('nav-mobile--opened')
   })
-})
+});
+
+
+
+jQuery( document ).ready(function($) {
+  
+
+
+  	$('.header-contacts_callback').click(function(){ 
+  		$('.modal-callback_wrap').fadeIn()
+  	})
+  	$('.footer-btn').click(function(){ 
+  		$('.modal-callback_wrap').fadeIn()
+  	})
+
+
+  	// order
+	$('.catalog-item-buttons_order').each(function(i, obj){
+		$(this).click(function(){
+			let id = $(this).data('id');
+			let info = $('.hidden-catalog-item_info-' + id);
+			let productName = info.data('name');
+			let productPrice = info.data('price');
+			let productVolume = info.data('volume');
+			let productU = info.data('u');
+			let productSize = info.data('size');
+			let productLamp = info.data('lamp');
+			let productCapacity = info.data('capacity');
+			let productDescr = info.data('descr');
+			let productPic = info.data('pic');
+
+
+			$('.order-details-name_model').text(productName)
+			$('.hidden-modal-order_product').val(productName).change()
+			$('.hidden-modal-order_price').val(productPrice).change()
+
+			$('.order-details_pic img').attr('src', productPic)
+			$('.order-details-name_capacity--inner').text(productCapacity)
+
+			$('.hidden-product-more-model').attr('value', productName);
+			$('.hidden-product-more-price').attr('value', productPrice);
+
+			$('.modal-order_wrap').fadeIn();
+		})
+	})
+
+	// more
+	$('.catalog-item-buttons_more').each(function(i, obj){
+		$(this).click(function(){
+			let id = $(this).data('id');
+			let info = $('.hidden-catalog-item_info-' + id);
+			let productName = info.data('name');
+			let productPrice = info.data('price');
+			let productVolume = info.data('volume');
+			let productU = info.data('u');
+			let productSize = info.data('size');
+			let productLamp = info.data('lamp');
+			let productWeight = info.data('weight');
+			let productCapacity = info.data('capacity');
+			let productDescr = info.data('descr');
+			let productPic = info.data('pic');
+			// console.log([productName, productPrice, productVolume, productU, productSize, productLamp, productCapacity, productDescr])
+
+			$('.modal-product-stats-name_model').text(productName);
+			$('.modal-product-stats-name_capability--value').text(productCapacity);
+			$('.modal-product-stats-name_volume--value').text(productVolume);
+			$('.modal-product-stats-name_u--value').text(productU);
+			$('.modal-product-stats-name_sizes--value').text(productSize);
+			$('.modal-product-sizes_value--weight').text(productWeight);
+			$('.modal-product-additional--lamp').text(productLamp);
+			$('.modal-product-includes_title').html(productDescr);
+
+			$('.hidden-product-more-model').attr('value', productName);
+			$('.hidden-product-more-price').attr('value', productPrice);			
+
+			// $('.hidden-modal-order_product').val(productName).change()
+			// $('.hidden-modal-order_price').val(productPrice).change()
+
+			$('.modal-product_pic img').attr('src', productPic)
+
+
+
+			$('.modal-product-more_wrap').fadeIn();
+		})
+	})
+
+
+
+	let stepperPosition = 1;
+	$('.order-stepper_plus').click(function(){
+		stepperPosition++;
+		$('.order-stepper_count').val(stepperPosition).change()
+		$('.hidden-product-quantity').val(stepperPosition).change()
+	})
+	$('.order-stepper_minus').click(function(){
+
+		if (stepperPosition > 0) {
+			stepperPosition--;
+			$('.order-stepper_count').val(stepperPosition).change()
+			$('.hidden-product-quantity').val(stepperPosition).change()
+		}
+	})
+
+
+
+
+
+	$('.modal-close-btn').click(function(){
+		let modalWrapper = $(this).data('close');
+		$(modalWrapper).fadeOut()
+	})
+
+	$('.certificate-slide').click(function(){
+		let modalWrapper = $(this).data('open')
+		$(modalWrapper).fadeIn()
+	})
+
+	let radioId;
+	let quizClickCounter = 0;
+	let lastRadio;
+	$('.quiz-anser-item_text').each(function(i, obj){
+		$(this).click(function(){
+			// if (quizClickCounter > 1) {
+			// 		lastRadio = radioId;
+			// 		$(lastRadio).removeClass('quiz-anser-item_chekbox--checked last-checked')
+					console.log(lastRadio)
+			// }
+			// radioId = $('.quiz-answer-item_input').prop('id');
+				console.log(radioId)
+			// quizClickCounter++;
+			console.log(quizClickCounter)
+
+
+
+				// $('#'+radioId+'s').addClass('quiz-anser-item_chekbox--checked last-checked')
+		});
+	})
+
+	jQuery('.quiz-answer-item_input').click(function() {
+		let anwser = $(this).val();
+		let memory = $(this).attr('name');
+		// console.log(anwser)
+		// console.log(memory)
+		$('#'+memory).attr('value', anwser);
+
+
+	});
+	// ready end
+
+
+
+
+
+
+	// Metrika
+
+	jQuery('.header-contacts_callback').click(function(){
+		ym(70602433,'reachGoal','phone-click')
+	});	
+
+	jQuery('.footer-phone').click(function(){
+		ym(70602433,'reachGoal','footer-phone')
+	});
+	jQuery('.whatsapp-lnk').click(function(){
+		ym(70602433,'reachGoal','wa-static')
+	});
+	jQuery('.footer-social-link').click(function(){
+		ym(70602433,'reachGoal','wa-static')
+	});
+
+
+
+	jQuery('.modal-callback form').submit(function(){
+		ym(70602433,'reachGoal','header-callback')
+	});
+
+
+
+	jQuery('.modal-order form').submit(function(){
+		ym(70602433,'reachGoal','catalog-order')
+	});
+
+	jQuery('.modal-product-form form').submit(function(){
+		ym(70602433,'reachGoal','catalog-more')
+	});
+
+	jQuery('.quiz-page-5 form').submit(function(){
+		ym(70602433,'reachGoal','quiz-finish')
+	});
+
+	jQuery('.pricing-form form').submit(function(){
+		ym(70602433,'reachGoal','wholesale-pricelist')
+	});
+
+	jQuery('main').activity({
+	    'achieveTime':60
+	    ,'testPeriod':10
+	    ,useMultiMode: 1
+	    ,callBack: function (e) {
+	      // ga('send', 'event', 'Activity', '60_sec');
+	      ym(70602433,'reachGoal','60-sec')
+	      // console.log('Минута');
+	    }
+	});
+});

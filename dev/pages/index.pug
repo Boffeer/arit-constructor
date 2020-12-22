@@ -5,7 +5,7 @@ block content
 	main
 		.container
 			a(href=`${waLink}`).whatsapp-lnk
-				img(src="img/footer/whatsapp.svg")
+				img(src="img/wa.svg")
 		.hero
 			.container.hero-container
 
@@ -13,7 +13,7 @@ block content
 					h1.headliner Рециркуляторы, 
 						em.em-color предотвращающие распостронение вируса
 						|  с гарантией 
-						| 12&nbsp;месяцев 
+						em.em-bold 12&nbsp;месяцев 
 						| &nbsp;и&nbsp;доставкой по&nbsp;РФ&nbsp;
 						em.em-bold от&nbsp;2&nbsp;дней
 					.header-quiz_wrap
@@ -32,7 +32,8 @@ block content
 								.quiz-answers
 									.quiz-answers-item_wrap
 										label.quiz-answers-item.quiz-ansers-item--checked
-											input(type="radio" name="quiz1").quiz-answer-item_input
+											input(type="radio" name="quiz1"
+											checked).quiz-answer-item_input
 											span.quiz-anser-item_text до 60м²
 											span.quiz-anser-item_chekbox
 									.quiz-answers-item_wrap
@@ -76,12 +77,15 @@ block content
 											span.quiz-anser-item_text Затрудняюсь ответить
 											span.quiz-anser-item_chekbox
 
+
+
 							.quiz-page-2
 								h4.quiz_question Какой Укажите какое среднее количество посетителей за 1 день
 								.quiz-answers
 									.quiz-answers-item_wrap
 										label.quiz-answers-item.quiz-ansers-item--checked
-											input(type="radio" name="quiz2").quiz-answer-item_input
+											input(type="radio" name="quiz2"
+											checked).quiz-answer-item_input
 											span.quiz-anser-item_text До 10 человек
 											span.quiz-anser-item_chekbox
 									.quiz-answers-item_wrap
@@ -125,12 +129,14 @@ block content
 											span.quiz-anser-item_text Затрудняюсь ответить
 											span.quiz-anser-item_chekbox
 
+
 							.quiz-page-3
 								h4.quiz_question Выберите вид помещения
 								.quiz-answers.quiz-answers--left
 									.quiz-answers-item_wrap
 										label.quiz-answers-item.quiz-answers-item--left
-											input(type="radio" name="quiz3").quiz-answer-item_input
+											input(type="radio" name="quiz3"
+											checked).quiz-answer-item_input
 											span.quiz-anser-item_text.quiz-anser-item_text--left Офисного типа, бизнес центры
 											span.quiz-anser-item_chekbox.quiz-anser-item_chekbox--left
 									.quiz-answers-item_wrap
@@ -183,7 +189,8 @@ block content
 								.quiz-answers.quiz-answers--left
 									.quiz-answers-item_wrap
 										label.quiz-answers-item.quiz-answers-item--left
-											input(type="radio" name="quiz4").quiz-answer-item_input
+											input(type="radio" name="quiz4"
+											checked).quiz-answer-item_input
 											span.quiz-anser-item_text.quiz-anser-item_text--left На номер Whatsapp
 											span.quiz-anser-item_chekbox.quiz-anser-item_chekbox--left
 									.quiz-answers-item_wrap
@@ -265,7 +272,7 @@ block content
 					})
 					h3.bullet-item_title Индивидуальный дизайн
 					p.bullet-item_text Брендируем под вашу кампанию.<br>Розница&nbsp;и&nbsp;ОПТ.
-				.bullet-item
+				.bullet-item.bullet-item--3
 					+pic({
 						src: 'img/2-bullets/plant',
 						ext: '.png',
@@ -273,7 +280,7 @@ block content
 						alt: 'icon'
 					})
 					h3.bullet-item_title Безопасно для здоровья
-					p.bullet-item_text Отсутсвие засветок (выхода) УФ-излучения из прибора сертифицировано<br>Роспатребнадзором.	
+					p.bullet-item_text Отсутсвие засветок (выхода) УФ-излучения из прибора. Сертифицировано<br>Роспатребнадзором.	
 
 
 
@@ -287,15 +294,13 @@ block content
 					em.unem-title некачественных изделий
 				p.section-subtitle.danger-subtitle Многие модели, которые сейчас есть на рынке, опасны для здоровья человека
 				.danger-container
-					.swiper-button-next.danger-next
-					.swiper-button-prev.danger-prev
 					.danger-left
 						p.danger_text В некачественных изделиях выход излучения во время работы и попадание на кожу и глаза 
 							em.em-bold МОЖЕТ ПРИВЕСТИ К ТЯЖЁЛЫМ ПОСЛЕДСТВИЯМ 
-							| ( Различные онкологические заболевания, катаракта и другие ). Даже если, лучи напрямую не светят на человека, они могут отражаться от различных поверхностей.
+							| ( Различные онкологические заболевания, катаракта и другие ). Даже если лучи напрямую не светят на человека, они могут отражаться от различных поверхностей.
 						p.danger_text УФ-излучение 
 							em.em-bold РАЗЛАГАЕТ ОБЫЧНЫЕ ПЛАСТИКИ С ВЫДЕЛЕНИЕМ ПРОДУКТОВ РАСПАДА 
-							| и в некачественных устройствах эти продукты разгоняются вентилятором по помещению (сотрудники и посетители дышат этим весь день)
+							| и в некачественных устройствах эти продукты разгоняются вентилятором по помещению (сотрудники и посетители дышат этим весь день).
 					.danger-right
 
 
@@ -303,6 +308,12 @@ block content
 							.danger-slider.swiper-wrapper
 
 								.danger-slide.danger-slide-1.swiper-slide
+									.danger_icon.danger-icon-1
+										+pic({
+											src: 'img/3-danger/danger',
+											ext: '.png',
+											alt: 'icon'
+										})
 									.danger-tag_wrap.danger-tag_left
 										.danger-tag Есть выходящие УФ-лучши
 
@@ -335,6 +346,12 @@ block content
 
 
 								.danger-slide.danger-slide-3.swiper-slide
+									.danger_icon.danger-icon-5
+										+pic({
+											src: 'img/3-danger/danger',
+											ext: '.png',
+											alt: 'icon'
+										})
 									.danger-tag_wrap.danger-tag_left.danger-tag-3
 										.danger-tag Есть выходящие УФ лучи
 
@@ -346,6 +363,12 @@ block content
 									})
 
 								.danger-slide.danger-slide-4.swiper-slide
+									.danger_icon.danger-icon-5
+										+pic({
+											src: 'img/3-danger/danger',
+											ext: '.png',
+											alt: 'icon'
+										})
 									.danger-tag_wrap.danger-tag_left.danger-tag-4
 										.danger-tag Есть выходящие УФ лучи
 
@@ -367,8 +390,8 @@ block content
 									.danger-tag_wrap.danger-tag_left.danger-tag-5
 										.danger-tag Есть выходящие УФ лучи
 
-									.danger-tag_wrap.danger-tag_right.danger-tag-5
-										.danger-tag Корпус из пластика
+									//- .danger-tag_wrap.danger-tag_right.danger-tag-5
+									//- 	.danger-tag Корпус из пластика
 									+pic({
 										src: 'img/3-danger/danger-5',
 										ext: '.jpg',
@@ -377,8 +400,9 @@ block content
 									})
 
 
-
 							.swiper-pagination.danger-pagination
+						.swiper-button-next.danger-next
+						.swiper-button-prev.danger-prev
 						
 
 
@@ -400,7 +424,7 @@ block content
 					.feature-card_wrap.features-card--left-1
 						.feature-card
 							h3.feature-card_title Можно использовать в присутсвии людей
-							p.feature-card_text Полностью безопасно за счет применения<br>решеток, не выпускающих УФ-излучение,<br>и отражающей фольги, защищающей<br>комплектующие от деформации
+							p.feature-card_text Полностью безопасно за счет применения<br>решеток, не выпускающих УФ-излучение,<br>и отражающей фольги, защищающей<br>комплектующие от деформации.
 					.feature-card_wrap.features-card--left-2
 						.feature-card
 							h3.feature-card_title Счетчик наработанных часов
@@ -554,6 +578,7 @@ block content
 				.container
 					.swiper-container.portfolio-slider-container
 						.portfolio-slider.swiper-wrapper
+
 							.portfolio-slider_item.swiper-slide
 								+pic({
 									src: 'img/6-portfolio/2',
@@ -562,8 +587,20 @@ block content
 									pictureClass: 'portfolio_pic portfolio_pic--red'
 								})
 								.portfolio-text
-									h3.portfolio-text_title Опиание проекта
-									p.portfolio-text_descr Рециркулятор в Бизнес Центр «Сенатор». Пару слов о проекте : Модели ЭНЭЛ200 в фирменном стиле БЦ «Сенатор». Рециркуляторы были необходимы для обеспечения безопасности здоровья клиентов, а также для возможности работать в карантин.
+									h3.portfolio-text_title Рециркулятор в Бизнес Центр «Сенатор»
+									p.portfolio-text_descr Модели ЭНЭЛ200 в фирменном стиле БЦ «Сенатор». Рециркуляторы были необходимы для обеспечения безопасности здоровья клиентов, а также для возможности работать в карантин.
+
+							.portfolio-slider_item.swiper-slide
+								+pic({
+									src: 'img/6-portfolio/2',
+									ext: '.png',
+									alt: 'portfolio-item',
+									pictureClass: 'portfolio_pic portfolio_pic--red'
+								})
+								.portfolio-text
+									h3.portfolio-text_title Рециркулятор в Бизнес Центр «Сенатор»
+									p.portfolio-text_descr Модели ЭНЭЛ200 в фирменном стиле БЦ «Сенатор». Рециркуляторы были необходимы для обеспечения безопасности здоровья клиентов, а также для возможности работать в карантин.
+
 							.portfolio-slider_item.swiper-slide
 								+pic({
 									src: 'img/6-portfolio/1',
@@ -572,18 +609,21 @@ block content
 									pictureClass: 'portfolio_pic portfolio_pic--white'
 								})
 								.portfolio-text
-									h3.portfolio-text_title Опиание проекта
-									p.portfolio-text_descr Рециркулятор в кабинет частному специалисту. Пару слов о проекте : Модель ЭНЭЛ100 для кабинета психолога. Чтобы было разрешение и возможность полноценно работать в карантин безопасно.
-							//- .portfolio-slider_item.swiper-slide.portfolio-slider_item--2
-							//- 	+pic({
-							//- 		src: 'img/6-portfolio/2',
-							//- 		ext: '.png',
-							//- 		alt: 'portfolio-item',
-							//- 		pictureClass: 'portfolio_pic portfolio_pic--red'
-							//- 	})
-							//- 	.portfolio-text
-							//- 		h3.portfolio-text_title Опиание проекта
-							//- 		p.portfolio-text_descr Рециркулятор в Бизнес Центр «Сенатор». Пару слов о проекте : Модели ЭНЭЛ200 в фирменном стиле БЦ «Сенатор». Рециркуляторы были необходимы для обеспечения безопасности здоровья клиентов, а также для возможности работать в карантин.
+									h3.portfolio-text_title Рециркулятор в кабинет частному специалисту
+									p.portfolio-text_descr Модель ЭНЭЛ100 для кабинета психолога. Чтобы было разрешение и возможность полноценно работать в карантин безопасно.
+
+							.portfolio-slider_item.swiper-slide
+								+pic({
+									src: 'img/6-portfolio/1',
+									ext: '.png',
+									alt: 'portfolio-item',
+									pictureClass: 'portfolio_pic portfolio_pic--white'
+								})
+								.portfolio-text
+									h3.portfolio-text_title Рециркулятор в кабинет частному специалисту
+									p.portfolio-text_descr Модель ЭНЭЛ100 для кабинета психолога. Чтобы было разрешение и возможность полноценно работать в карантин безопасно.
+									
+							
 						.swiper-button-prev.portfolio-prev
 						.swiper-button-next.portfolio-next
 
@@ -647,7 +687,7 @@ block content
 								pictureClass: 'about-features-item_pic'
 							})
 							p.about-features-item_text Собственные производственные мощности<br>в СПб  
-								em.em-only-color (Более 100м2 Металлобрабатывающий цех,&nbsp;офис,&nbsp;цех сварки, сборочный цех)
+								em.em-only-color (Более 1000м² Металлобрабатывающий цех,&nbsp;офис,&nbsp;цех сварки, сборочный цех)
 
 						.about-features-item
 							+pic({
@@ -745,6 +785,6 @@ block content
 								alt: '',
 								pictureClass: 'certificates_pic certificates_pic-2'
 							})
-					.swiper-button-prev
-					.swiper-button-next
+					.swiper-button-prev.certificates-prev
+					.swiper-button-next.certificates-next
 				.swiper-pagination.certificate-pagination
