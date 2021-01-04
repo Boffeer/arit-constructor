@@ -70,7 +70,14 @@ button {
   padding-bottom: 15px;
   border: none;
   cursor: pointer;
+	transition: background-color 0.3s;
+	box-sizing: border-box;
+	border: 3px solid var(--c-prim);
+}
 
+.btn-prim:hover {
+	background-color: #fff;
+	color: var(--c-prim);
 }
 .hidden {
   display: none;
@@ -1148,6 +1155,7 @@ button {
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: stretch;
+  flex-direction: row-reverse;
 }
 
 .catalog-item {
@@ -1714,7 +1722,7 @@ button {
   background-color: #2B313F;
   color: #fff;
   padding-top: 32px;
-  padding-bottom: 35px;
+  padding-bottom: 65px;
   /*display: flex;*/
   /*flex-direction: column;*/
 }
@@ -2312,8 +2320,8 @@ input::-webkit-inner-spin-button {
   }
 
   .modal-product_pic{
-    margin-right: 30%;
-    margin-left: 15%;
+    /*margin-right: 30%;*/
+    /*margin-left: 15%;*/
     margin-bottom: 20px;
   }
 
@@ -2513,7 +2521,8 @@ input::-webkit-inner-spin-button {
   }
 
   .portfolio-slider_item  {
-    max-width: 330px;
+    /*max-width: 330px;*/
+    min-width: 100%;
     margin-bottom: 15px;
     margin-right: 0;
     margin-left: 0;
@@ -2884,3 +2893,17 @@ input::-webkit-inner-spin-button {
     left: -50px;
   }
 }
+
+@media (min-width: 375px) and (max-width: 480px) {
+
+}
+
+
+.catalog-item picture {
+  margin-right: 8px;
+}
+.catalog-item picture img {
+  object-fit: cover;
+  object-position: center;
+  max-width: 250px;
+} 

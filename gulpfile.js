@@ -2,12 +2,12 @@ const gulp = require('gulp');
 const sourcemaps = require('gulp-sourcemaps');
 const plumber = require('gulp-plumber');
 const pug = require('gulp-pug');
-const pugLinter = require('gulp-pug-linter');
-const htmlValidator = require('gulp-w3c-html-validator');
 // const sass = require('gulp-sass');
     // sass.compiler = require('node-sass');
 const cleanCSS = require('gulp-clean-css');
 const shorthand = require('gulp-shorthand');
+//pug')const pugLinter/* = require('gulp-pug-l
+//ter')const htmlValidator/* = require('gulp-w3c-html-validator');
 const eslint = require('gulp-eslint');
 const babel = require('gulp-babel');
 const terser = require('gulp-terser');
@@ -73,11 +73,11 @@ const pug2html = () => {
 		.pipe(plumber())
 		// .pipe(pugLinter({ reporter: 'default' }))
 		.pipe(pug())
-		.pipe(htmlValidator())
 		.pipe(gulp.dest('build'))
 		.pipe(sync.stream());
 
 }
+//.pipe(htmlValidator())
 
 exports.pug2html = pug2html;
 // ---- pug ----
@@ -234,70 +234,70 @@ const imgDev = () => {
 exports.imgDev = imgDev;
 
 
-const imgMultiply = () => {
-	return gulp.src('dev/img/**/*.{png,jpg,jpeg}')
-		.pipe(
-			responsive({
-				'**/*.png':[
-					{ progressive: true, },
-					{ format: 'webp', },
-					{
-						withoutEnlargement: false,
-						width: '200%',
-						rename: { suffix: "@2" },
-					},
-					{
-						withoutEnlargement: false,
-						width: '200%',
-						format: 'webp',
-						rename: { suffix: "@2" },
-					},
-				],				
-				'**/*.jpg':[
-					{ progressive: true, },
-					{ format: 'webp', },
-					{
-						withoutEnlargement: false,
-						width: '200%',
-						rename: { suffix: "@2" },
-					},
-					{
-						withoutEnlargement: false,
-						width: '200%',
-						format: 'webp',
-						rename: { suffix: "@2" },
-					},
-				],
+// const imgMultiply = () => {
+// 	return gulp.src('dev/img/**/*.{png,jpg,jpeg}')
+// 		.pipe(
+// 			responsive({
+// 				'**/*.png':[
+// 					{ progressive: true, },
+// 					{ format: 'webp', },
+// 					{
+// 						withoutEnlargement: false,
+// 						width: '200%',
+// 						rename: { suffix: "@2" },
+// 					},
+// 					{
+// 						withoutEnlargement: false,
+// 						width: '200%',
+// 						format: 'webp',
+// 						rename: { suffix: "@2" },
+// 					},
+// 				],				
+// 				'**/*.jpg':[
+// 					{ progressive: true, },
+// 					{ format: 'webp', },
+// 					{
+// 						withoutEnlargement: false,
+// 						width: '200%',
+// 						rename: { suffix: "@2" },
+// 					},
+// 					{
+// 						withoutEnlargement: false,
+// 						width: '200%',
+// 						format: 'webp',
+// 						rename: { suffix: "@2" },
+// 					},
+// 				],
 
-			})
-		)
-		.pipe(gulp.dest('tempMultipliedImages/img'));
-}
+// 			})
+// 		)
+// 		.pipe(gulp.dest('tempMultipliedImages/img'));
+// }
 
-exports.imgMultiply = imgMultiply;
-
-
+// exports.imgMultiply = imgMultiply;
 
 
-const imgBuild = () => {
-	return gulp.src('tempMultipliedImages/img/**/*')
-		.pipe(image({
-			pngquant: true,
-			optipng: true,
-			zopflipng: true,
-			jpegRecompress: false,
-			mozjpeg: true,
-			gifsicle: true,
-			svgo: true,
-			concurrent: 10,
-			quiet: false
-		}))
-		// .pipe(gulp.dest('build-test/img'))
-		.pipe(gulp.dest('build/img'))
-	// преобразование в вебп, разные размеры картинок
-}
 
-exports.imgBuild = imgBuild;
+
+// const imgBuild = () => {
+// 	return gulp.src('tempMultipliedImages/img/**/*')
+// 		.pipe(image({
+// 			pngquant: true,
+// 			optipng: true,
+// 			zopflipng: true,
+// 			jpegRecompress: false,
+// 			mozjpeg: true,
+// 			gifsicle: true,
+// 			svgo: true,
+// 			concurrent: 10,
+// 			quiet: false
+// 		}))
+// 		// .pipe(gulp.dest('build-test/img'))
+// 		.pipe(gulp.dest('build/img'))
+// 	// преобразование в вебп, разные размеры картинок
+// }
+
+// exports.imgBuild = imgBuild;
 // ---- img ----
 
 
@@ -405,7 +405,7 @@ exports.default = gulp.series(
 	gulp.parallel(
 		pug2html,
 		styles,
-		scripts,
+		scripts,	
 		copy,
 		// imgDev
 	),
@@ -425,8 +425,8 @@ const build= gulp.series(
 		pug2html,
 		styles,
 		scripts,
-		imgMultiply,
-		imgBuild
+		// imgMultiply,
+		// imgBuild
 	)
 );
 
