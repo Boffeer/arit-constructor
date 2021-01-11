@@ -1,3 +1,4 @@
+const done = () => {}
 const gulp = require(`gulp`)
 const sourcemaps = require(`gulp-sourcemaps`)
 const plumber = require(`gulp-plumber`)
@@ -27,7 +28,9 @@ const pug2html = () => {
     return gulp.src(`dev/pages/*.pug`)
         .pipe(plumber())
         // .pipe(pugLinter({ reporter: `default` }))
-        .pipe(pug())
+        .pipe(pug({
+            pretty: true
+        }))
         .pipe(gulp.dest(`build`))
         .pipe(sync.stream());
     // .pipe(htmlValidator())
@@ -43,7 +46,7 @@ const cssnext = require(`postcss-preset-env`)
 // const cssnext = require(`cssnext`);
 const precss = require(`precss`)
 const cssnano = require(`cssnano`)
-const fs = require("fs")
+const fs = require(`fs`)
 const cssImport = require("postcss-import")
 const postcssFixes = require(`postcss-fixes`)
 // const andImport = fs.readFileSync("./dev/`tyles/style.css", "utf8`);
@@ -52,7 +55,7 @@ const animate = require(`postcss-animation`)
 const postcssCustomMedia = require(`postcss-custom-media`)
 const gap = require(`postcss-gap`)
 const negativePadding = require(`postcss-negative-padding`)
-const quantityQueries = require(`postcss-quantity-queries`);
+const quantityQueries = require(`postcss-quantity-queries`)
 const defineProperty = require(`postcss-define-property`)
 // const uncss = require(`postcss-uncss`)
 const stylelint = require(`stylelint`)
@@ -117,14 +120,14 @@ const styles = () => {
 
     return gulp.src(`./dev/styles/*.css`)
         .pipe(sourcemaps.init())
+        .pipe(concat(`style.css`))
         .pipe(postcss(plugins))
         .pipe(shorthand())
         .pipe(sourcemaps.write(`.`))
         .pipe(gulp.dest(`./build/css`))
-        .pipe(sync.stream());
+        .pipe(sync.stream())
 }
-
-exports.styles = styles;
+exports.styles = styles
 // ---- css ----
 
 
@@ -147,25 +150,19 @@ const scripts = () => {
         .pipe(sourcemaps.write())
         .pipe(rename({suffix: `.min`}))
         .pipe(gulp.dest(`build/js`))
-        .pipe(sync.stream());
+        .pipe(sync.stream())
 
 }
-
 exports.scripts = scripts;
-// ---- js ----
-
-
-
 
 
 // ==== IMG ====
 const svgDev = () => {
     return gulp.src(`dev/img/*.svg`)
         .pipe(svgo())
-        .pipe(gulp.dest(`build/img`));
+        .pipe(gulp.dest(`build/img`))
 }
-exports.svgDev = svgDev;
-
+exports.svgDev = svgDev
 
 
 
@@ -178,7 +175,6 @@ const imgDev = () => {
     })
         .pipe(gulp.dest(`build/`))
 }
-
 exports.imgDev = imgDev;
 
 
@@ -192,60 +188,56 @@ const imgMultiply = () => {
                     {
                         withoutEnlargement: false,
                         width: `200%`,
-                        rename: {suffix: "@2"},
+                        rename: {suffix: `@2`},
                     },
                     {
                         withoutEnlargement: false,
                         width: `200%`,
                         format: `webp`,
-                        rename: {suffix: "@2"},
+                        rename: {suffix: `@2`},
                     },
                 ],
                 "**/*.jpg": [
-                    {progressive: true, },
-                    {format: `webp`, },
+                    {progressive: true},
+                    {format: `webp`},
                     {
                         withoutEnlargement: false,
                         width: `200%`,
-                        rename: {suffix: "@2"},
+                        rename: {suffix: `@2`}
                     },
                     {
                         withoutEnlargement: false,
                         width: `200%`,
                         format: `webp`,
-                        rename: {suffix: "@2"},
+                        rename: {suffix: `@2`},
                     },
                 ],
-
             })
         )
-        .pipe(gulp.dest(`tempMultipliedImages/img`));
+        .pipe(gulp.dest(`tempImages/multiplied`));
 }
-
-// exports.imgMultiply = imgMultiply;
-
+exports.imgMultiply = imgMultiply
 
 
-
-// const imgBuild = () => {
-// 	return gulp.src(`tempMultipliedImages/img/**/*`)
-// 		.pipe(image({
-// 			pngquant: true,
-// 			optipng: true,
-// 			zopflipng: true,
-// 			jpegRecompress: false,
-// 			mozjpeg: true,
-// 			gifsicle: true,
-// 			svgo: true,
-// 			concurrent: 10,
-// 			quiet: false
-// 		}))
-// 		// .pipe(gulp.dest(`build-test/img`))
-// 		.pipe(gulp.dest(`build/img`))
-// 	// преобразование в вебп, разные размеры картинок
-// }
-
-// exports.imgBuild = imgBuild;
+const imgBuild = () => {
+    return gulp.src(`tempImages/multiplied/**/*`)
+        .pipe(image({
+            pngquant: true,
+            optipng: true,
+            zopflipng: true,
+            jpegRecompress: false,
+            mozjpeg: true,
+            gifsicle: true,
+            svgo: true,
+            concurrent: 10,
+            quiet: false
+        }))
+        // .pipe(gulp.dest(`build-test/img`))
+        .pipe(gulp.dest(`build/img`))
+        .pipe(gulp.dest(`tempImages/optimized`))
+    // преобразование в вебп, разные размеры картинок
+}
+exports.imgBuild = imgBuild
 // ---- img ----
 
 
@@ -260,16 +252,14 @@ const loadFtp = () => {
         // you need to have some kind of stream after gulp-ftp to make sure it`s flushed
         // this can be a gulp plugin, gulp.dest, or any kind of stream
         // here we use a passthrough stream
-        .pipe(gutil.noop());
+        .pipe(gutil.noop())
 }
-exports.loadFtp = loadFtp;
+exports.loadFtp = loadFtp
 // ---- ftp
 
 
-
-
 // ==== FONTS ====
-const convertFonts = () => {
+const convertFonts = async () => {
     return gulp.src(`dev/fonts/*`)
         .pipe(convertAllFonts({
             pathIn: `./dev/fonts`,
@@ -281,17 +271,9 @@ const convertFonts = () => {
         .pipe(gulp.dest(`build/fonts`))
         .pipe(sync.stream({
             once: true
-        }));
+        }))
 }
-// This will convert all ttf fonts to both woff and woff2
-exports.convertFonts = convertFonts;
-
-// ---- fonts
-
-const clean = async () => {
-    const delBuild = await del([`./build`])
-}
-exports.clean = clean;
+exports.convertFonts = convertFonts
 
 
 // ==== COPY ====
@@ -306,12 +288,19 @@ const copy = () => {
         .pipe(gulp.dest(`build`))
         .pipe(sync.stream({
             once: true
-        }));
+        }))
 }
+exports.copy = copy
 
-exports.copy = copy;
-// ---- copy ----
 
+// php
+// ===
+const php = () => {
+    return gulp.src([`dev/php/**/*`], {base: `dev`})
+        .pipe(gulp.dest(`build`))
+        .pipe(sync.stream({once: true}))
+}
+exports.php = php
 
 
 // ==== SERVER ====
@@ -322,29 +311,25 @@ const server = () => {
         server: {
             baseDir: `build`
         }
-    });
+    })
 }
-
-exports.server = server;
-// ---- server ----
+exports.server = server
 
 
-
-// ==== WATCH ====
+// WATCH
+// =====
 const watch = () => {
-    gulp.watch(`dev/pages/**/*.pug`, gulp.series(pug2html));
-    gulp.watch(`dev/styles/**/*.css`, gulp.series(styles));
-    gulp.watch(`dev/js/*.js`, gulp.series(scripts));
+    gulp.watch(`dev/pages/**/*.pug`, gulp.series(pug2html))
+    gulp.watch(`dev/styles/**/*.css`, gulp.series(styles))
+    gulp.watch(`dev/js/*.js`, gulp.series(scripts))
 
-    gulp.watch(`dev/img/**/*`, gulp.series(imgDev));
+    gulp.watch(`dev/img/**/*`, gulp.series(imgDev))
 
 
-    gulp.watch(`dev/fonts/**/*.{ttf, oft}`, gulp.series(convertFonts));
-    gulp.watch(`dev/fonts/**/*.{woff, woff2}`, gulp.series(copy));
+    gulp.watch(`dev/fonts/**/*.{ttf, oft}`, gulp.series(convertFonts))
+    gulp.watch(`dev/fonts/**/*.{woff, woff2}`, gulp.series(copy))
 }
-
-exports.watch = watch;
-// ---- watch ---
+exports.watch = watch
 
 
 
@@ -376,15 +361,16 @@ const build = gulp.series(
         // imgBuild
     )
 )
-
 exports.build = build
-// ---- build ----
 
 
 // Preparation
 // ===========
 const prepare = gulp.series(
-    gulp.parallel(
+    gulp.series(
+        php,
+        imgMultiply,
+        imgBuild,
         convertFonts
     )
 )

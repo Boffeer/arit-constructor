@@ -66,6 +66,7 @@
         "gulp-pug": "^4.0.1",
         "gulp-shorthand": "^1.1.0",
         "normalize.css": "^8.0.1",
+        "pageres": "^6.1.0",
         "postcss-preset-env": "^6.7.0",
         "webshot": "^0.18.0"
     }

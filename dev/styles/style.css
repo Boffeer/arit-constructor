@@ -58,17 +58,3 @@ button {
   display: none;
 }
 
-
-
-
-
-
-
-@font-face {
-  font-family: Museo-300;
-  src:
-    local("MuseoSansCyrl-300"),
-    url(../fonts/MuseoSansCyrl-300.woff),
-    url(../fonts/MuseoSansCyrl-300.woff2);
-  font-weight: 300;
-}

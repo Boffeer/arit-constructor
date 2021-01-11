@@ -6,4 +6,5 @@
 ## Features
 
 ### Screenshot Testing
-Just run `node webshot.js` and wait
+Just run `node pageres.js` and wait.
+Check the qa folder

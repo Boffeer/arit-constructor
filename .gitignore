@@ -14,3 +14,9 @@ package-lock.json
 
 # Папка с собранными файлами проекта
 build/
+
+
+# Остальные папки
+qa/
+tempImages/
+buildUgly/

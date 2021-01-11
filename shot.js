@@ -52,7 +52,7 @@ const options = {
     renderDelay: RENDER_DELAY,
 }
 
-const devicesBruteForce = () => {
+function devicesBruteForce() {
     for (let device in devicePull) {
         device = devicePull[device]
         for (let stat in device) {
@@ -62,22 +62,29 @@ const devicesBruteForce = () => {
             SCREENSHOT_NAME = WIDTH + `x` + HEIGHT + `-` + DEVICE_NAME
             SCREENSHOT_PATH = FODLER_NAME + `/` + SCREENSHOT_NAME
         }
-        console.log(SCREENSHOT_NAME)
+
+        console.log(SCREENSHOT_PATH)
+        console.log(typeof (SCREENSHOT_PATH))
 
         webshot(SITE_URL, SCREENSHOT_PATH, options, function (err) {
             if (!err) {
                 console.log(`screenshot of ` + SCREENSHOT_NAME + ` taken!`)
             }
+            if (err) {
+                console.log(`error`)
+            }
         })
     }
-    return `Screnshoting done!`
+    // return `Screnshoting done!`
 }
 
-module.exports.devicesBruteForce = devicesBruteForce
+devicesBruteForce()
 
 
-// webshot(SITE_URL, `qa/site.jpg`, options, function (err) {
-//    if (!err) {
-//        console.log(`screenshot of ` + SCREENSHOT_NAME + ` taken!`)
-//    }
-// })
+let screenName = `qa/site.jpg`
+webshot(SITE_URL, screenName + `.jpg`, options, function (err) {
+    if (!err) {
+        console.log(WIDTH)
+        console.log(`screenshot of ` + SCREENSHOT_NAME + ` taken!`)
+    }
+})
