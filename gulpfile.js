@@ -47,7 +47,7 @@ const cssnext = require(`postcss-preset-env`)
 const precss = require(`precss`)
 const cssnano = require(`cssnano`)
 const fs = require(`fs`)
-const cssImport = require("postcss-import")
+// const cssImport = require("postcss-import")
 const postcssFixes = require(`postcss-fixes`)
 // const andImport = fs.readFileSync("./dev/`tyles/style.css", "utf8`);
 const doiuse = require(`doiuse`)
@@ -61,10 +61,12 @@ const defineProperty = require(`postcss-define-property`)
 const stylelint = require(`stylelint`)
 const presetEnv = require(`postcss-preset-env`)
 const reporter = require(`postcss-reporter`)({clearReportedMessages: true})
+const uncss = require(`postcss-uncss`)({html: `./build/index.html`})
 
 const styles = () => {
     const plugins = [
-        cssImport,
+				// TODO 
+			//	what is this?
         defineProperty,
         autoprefixer({
             cascade: true,
@@ -78,14 +80,8 @@ const styles = () => {
         negativePadding,
         cssnext,
         precss,
-        // stylelint({}),
-        // presetEnv,
-        // reporter,
+        uncss,
         cssnano({preset: `default`, }),
-        // uncss({
-        // html: [`build/*.html`],
-        // ignore: [`.ignore`]
-        // }),
         doiuse({
             browsers: [
                 "> .5% and last 1 versions",
@@ -302,6 +298,12 @@ const php = () => {
 }
 exports.php = php
 
+const htaccess = () => {
+    return gulp.src([`dev/htaccess/**/*`], {base: `dev`})
+        .pipe(gulp.dest(`build`))
+        .pipe(sync.stream({once: true}))
+}
+exports.htaccess = htaccess
 
 // ==== SERVER ====
 const server = () => {
@@ -369,6 +371,7 @@ exports.build = build
 const prepare = gulp.series(
     gulp.series(
         php,
+        htaccess,
         imgMultiply,
         imgBuild,
         convertFonts
@@ -376,3 +379,11 @@ const prepare = gulp.series(
 )
 exports.prepare = prepare
 
+
+// ghpages
+// =======
+const ghpages = () => {
+    return gulp.src(`build`)
+        .pipe(gulp.dest(`docs/`))
+}
+exports.ghpages = ghpages

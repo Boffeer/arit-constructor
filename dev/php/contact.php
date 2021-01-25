@@ -3,14 +3,20 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require '../../vendor/phpmailer/phpmailer/src/Exception.php';
-require '../../vendor/phpmailer/phpmailer/src/PHPMailer.php';
-require '../../vendor/phpmailer/phpmailer/src/SMTP.php';
+require 'vendor/phpmailer/phpmailer/src/Exception.php';
+require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require 'vendor/phpmailer/phpmailer/src/SMTP.php';
 
 // Переменные
-$name = htmlspecialchars($_POST['name']);
-$tel = htmlspecialchars($_POST["tel"]);
-$formname = htmlspecialchars($_POST["formname"]);
+if (htmlspecialchars($_POST['name'])) {
+    $name = htmlspecialchars($_POST['name']);
+}
+if (htmlspecialchars($_POST['tel'])) {
+    $tel = htmlspecialchars($_POST["tel"]);
+}
+if (htmlspecialchars($_POST['formname'])) {
+    $formname = htmlspecialchars($_POST["formname"]);
+}
 
 
 $mail = new PHPMailer;
@@ -21,19 +27,19 @@ $mail->isSMTP();
 $mail->SMTPAuth = true;
 $mail->SMTPDebug = 0;
 
-$mail->Host = 'ssl://server93.hosting.reg.ru';
+$mail->Host = 'HOST';
 $mail->Port = 465;
-$mail->Username = 'leads@fadeevgroup.com';
+$mail->Username = 'mail@mail.com';
 $mail->Password = 'Q@8612241142';
 
 // От кого
-$mail->setFrom('leads@fadeevgroup.com', 'branding.fadeevgroup.com');
+$mail->setFrom('from@mail.com', 'Name');
 
 // Кому
-$mail->addAddress('boffeerleads@gmail.com', 'Принмающий лиды');
+$mail->addAddress('to@gmail.com', 'Принмающий лиды');
 
 // Тема письма
-$mail->Subject = 'Брендинг, заявка с формы'.$formname;
+$mail->Subject = 'Заявка с формы'.$formname;
 
 // Тело письма
 

@@ -10,7 +10,7 @@ let DEVICE_NAME
 let SCREENSHOT_NAME
 let SCREENSHOT_PATH
 
-const webshot = require(`webshot`)
+//const webshot = require(`webshot`)
 
 // Webshot
 // -------
@@ -52,7 +52,7 @@ const options = {
     renderDelay: RENDER_DELAY,
 }
 
-const devicesBruteForce = () => {
+//const devicesBruteForce = () => {
     for (let device in devicePull) {
         device = devicePull[device]
         for (let stat in device) {
