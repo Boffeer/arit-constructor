@@ -184,7 +184,6 @@ const stylesBuild = () => {
 }
 exports.stylesBuild = stylesBuild
 // --
-}
 
 
 // ==== JS ====
