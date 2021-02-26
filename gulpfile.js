@@ -23,7 +23,7 @@ const svgo = require(`gulp-svgo`)
 
 
 // PUG
-// ---
+// ===
 const pug2html = () => {
 	return gulp.src(`dev/pages/*.pug`)
 		.pipe(plumber())
@@ -229,6 +229,31 @@ const imgDev = () => {
 }
 exports.imgDev = imgDev;
 
+const getWebp = () => {
+	return gulp.src(`dev/img/**/*.{png,jpg}`)
+		.pipe(
+			responsive({
+				"**/*.png": [
+					{progressive: true, },
+					{format: `webp`, },
+					{
+						withoutEnlargement: false,
+						width: `100%`,
+					},
+				],
+				"**/*.jpg": [
+					{progressive: true},
+					{format: `webp`},
+					{
+						withoutEnlargement: false,
+						width: `100%`,
+					},
+				],
+			})
+		)
+		.pipe(gulp.dest(`build/img`));
+}
+exports.getWebp = getWebp
 
 const imgMultiply = () => {
 	return gulp.src(`dev/img/**/*.{png,jpg,jpeg}`)
@@ -271,7 +296,7 @@ const imgMultiply = () => {
 exports.imgMultiply = imgMultiply
 
 
-const imgBuild = () => {
+const imgBuildPhotoshopPics = () => {
 	return gulp.src(`tempImages/multiplied/**/*`)
 		.pipe(image({
 			pngquant: true,
@@ -288,6 +313,24 @@ const imgBuild = () => {
 		.pipe(gulp.dest(`build/img`))
 		.pipe(gulp.dest(`tempImages/optimized`))
 	// преобразование в вебп, разные размеры картинок
+}
+exports.imgBuildPhotoshopPics = imgBuildPhotoshopPics
+
+
+const imgBuild = () => {
+	return gulp.src(`dev/img/**/*`)
+		.pipe(image({
+			pngquant: true,
+			optipng: true,
+			zopflipng: true,
+			jpegRecompress: false,
+			mozjpeg: true,
+			gifsicle: true,
+			svgo: true,
+			concurrent: 10,
+			quiet: false
+		}))
+		.pipe(gulp.dest(`build/img`))
 }
 exports.imgBuild = imgBuild
 // ---- img ----
@@ -424,12 +467,11 @@ exports.build = build
 
 // Preparation
 // ===========
-const prepare = gulp.series(
+const prep = gulp.series(
 	gulp.series(
 		php,
 		htaccess,
-		imgMultiply,
-		imgBuild,
+		getWebp,
 		convertFonts
 	)
 )
