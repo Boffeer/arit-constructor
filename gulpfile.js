@@ -475,7 +475,7 @@ const prep = gulp.series(
 		convertFonts
 	)
 )
-exports.prepare = prepare
+exports.prep = prep
 
 
 // ghpages
