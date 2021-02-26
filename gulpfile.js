@@ -46,7 +46,7 @@ const cssnext = require(`postcss-preset-env`)
 const precss = require(`precss`)
 const cssnano = require(`cssnano`)
 const fs = require(`fs`)
-// const cssImport = require("postcss-import")
+const cssImport = require("postcss-import")
 const postcssFixes = require(`postcss-fixes`)
 // const andImport = fs.readFileSync("./dev/`tyles/style.css", "utf8`);
 const doiuse = require(`doiuse`)
@@ -110,9 +110,9 @@ const styles = () => {
 		}),
 	];
 
-	return gulp.src(`./dev/styles/*.css`)
+		// .pipe(concat(`style.css`))
+	return gulp.src(`./dev/styles/style.css`)
 		.pipe(sourcemaps.init())
-		.pipe(concat(`style.css`))
 		.pipe(postcss(plugins))
 		.pipe(shorthand())
 		.pipe(sourcemaps.write(`.`))

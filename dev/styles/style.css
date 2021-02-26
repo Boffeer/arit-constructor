@@ -1,3 +1,18 @@
+/* 
+ * === Table of content ===
+ *
+ * 1. Globals
+ *
+ * 2. 
+ *
+ * */
+
+
+/* 
+ * ==========
+ * 1. Globals
+ * ==========
+ * */
 :root {
     --c-font: #333;
     --c-font-2: #b9b9b9;
@@ -7,13 +22,7 @@
     margin: 0;
     padding: 0;
 }
-.hahaha{
-    display: flex;
-    justify-content: center;
-}
-.bro{
-    font-size: 50px;
-}
+
 body {
     margin: 0;
     padding: 0;
@@ -47,20 +56,21 @@ button {
     cursor: pointer;
 }
 .btn-prim {
-    border: none;
-    transition: background-color 0.3s;
     box-sizing: border-box;
-    border: 3px solid var(--c-prim);
+    border: none;
+    transition: all 0.3s;
 }
 
+.btn-prim:focus,
 .btn-prim:hover {
 }
 
-.g-hidden {
-    display: none;
-}
+/* 
+ * ==========
+ * 2. 
+ * ==========
+ * */
 
-.g-form-name {
-    display: none;
-}
 
+
+@import './m480.css';

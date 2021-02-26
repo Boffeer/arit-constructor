@@ -4,7 +4,3 @@
 3. Type `gulp` to run dev
 
 ## Features
-
-### Screenshot Testing
-Just run `node pageres.js` and wait.
-Check the qa folder
