@@ -41,20 +41,9 @@
 
 /* TEMP */
 .pop {
-	border-radius: 10px;
-	background-color: red;
-	color: #fff;
-	padding: 40px;
 	transform: scale(0.2);
 	transition: all 0.3s;
 }
 .pop--opened {
 	transform: scale(1);
-}
-
-main {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 200vh;
 }

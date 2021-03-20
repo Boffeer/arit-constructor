@@ -2,12 +2,279 @@ extends common/layout
 include common/mixins
 
 block content
+
+
+
 	main
-		button.pop-opener open
-		button not me
-		button.pop-opener open
-		.pop-wrap
-			button.pop-closer x
-			.pop-aligner
-				.pop
-					h1 Hello
+		.hero-wrapper
+			.container
+				.hero
+					.hero-start
+						p Старт:
+						time 29 марта 2021
+						.hero-start__shevron
+							svg(width="50" height="74" viewBox="0 0 50 74" fill="none" xmlns="http://www.w3.org/2000/svg")
+								path(d="M0 3C0 1.34315 1.34315 0 3 0H47C48.6569 0 50 1.34315 50 3V70.0035C50 72.224 47.6713 73.675 45.678 72.6965L26.322 63.1944C25.4882 62.7851 24.5118 62.7851 23.678 63.1944L4.32202 72.6965C2.32867 73.675 0 72.2241 0 70.0035V3Z" fill="#118A0F")
+							img(src="img/2-why-we/alarm.png", alt="time-icon")
+					.hero-content
+						.hero-offer
+							h1.headliner Получи практический навый радиоволновую ЛОР-хирургию за 1 день
+							.hero-bullets
+								p 6 операций на реальных пациентах с&nbsp;профессором-практиком
+								p Возможность проводить малокровные операции сразу после курса
+								p Документ о повышении квалификации (+ 18 баллов в системе НМО)
+							form(method="post").hero-form
+								.hidden
+									input(type="hidden" name="from")
+								.input-wrap
+									input(
+										type="tel"
+										placeholder="Ваш номер телефона"
+										required
+										name="tel"
+										autocorrect="off"
+										autocomplete="tel"
+										required).hero__input.input--phone
+								.input-wrap
+									button.hero-cta Получить консультацию
+						.hero-video
+							img(src="img/0-general/watch-video-big-button.svg", alt="")
+							button.video-button.video-button--hero Видео о курсе
+						.pop-video-wrapper.pop-wrap
+							.pop-aligner
+								.pop-video
+
+
+
+
+
+		section.why-we-wrapper
+			.container
+				.why-we
+					h2.section__title Лор-врачи и лор-хирурги приходят к нам
+					p.section__descriptor Потому что курс ведёт основоположник радиохирургии в России. А в ВУЗах нет курса по волновой отоларингологии.
+						strong  Радиоволны&nbsp;— это конкурентное преимущество среди коллег:
+					.why-we-list
+						.why-we-item
+							picture.why-we-pic
+								img(src="img/2-why-we/patient.png", alt="")
+							h3.why-we__title Больше пациентов
+							p.why-we__text Радиоволновая хирургия расширит спектр выполняемых операций и их качество: храп, гипертрофии язычной миндалины, рецидивирующие носовые кровотечений и т.д.
+						.why-we-item
+							picture.why-we-pic
+								img(src="img/2-why-we/troubles.png", alt="")
+							h3.why-we__title Меньше проблем
+							p.why-we__text Нет риска воспаления; минимальная вероятность образования рубцов после операции; контакт только с выбранным участком ткани, соседние не страдают
+						.why-we-item
+							picture.why-we-pic
+								img(src="img/2-why-we/alarm.png", alt="")
+							h3.why-we__title Больше времени и денег
+							p.why-we__text Вы сможете проводить больше операций: сухое поле сократит время манипуляций, а малокровность ускорит заживление
+
+
+
+
+
+		section.after-wrapper
+			.container
+				.after
+					h2.section__title.section__title--left После курса сможете сразу оперировать 
+					p.section__descriptor.section__descriptor--left (пустышка) (пустышка) (пустышка) (пустышка) (пустышка)
+					h3.after__descriptor Пустышка:
+					.after-bullets.list-dotted-bullets
+						p Мы подобрали пациентов со сложными и интересными патологиями, чтобы на практике освоить все возможности волновой хирургии
+						p Вы закроете все вопросы по выбору оборудования и организации рабочего места
+						p У вас будет возможнось опробовать в работе дорогостоящий аппарат CURIS
+						p Практика длится 1 день, а вся необходимая теория изучается заранее на учебном портале (без отрыва от работы или учебы)
+
+
+
+		section.program-wrapper
+			.container
+				h2.section__title Программа курса
+				.program
+					.program-tabs-controls
+						button.program-tabs__control.program-tabs__control--current 10 часов теории
+						button.program-tabs__control 8 часов практики
+					.program-tabs
+						.program-tab.program-tab--theory.program-tab--current
+							.program-tab-descr-wrapper
+								h3.program-tab__title 10 часов теории
+								p.program-tab__descr Доступ к теоретической части врач получает сразу после оплаты. Материал можно изучить до начала практики с любого устройства: телефона, ноутбука, планшета. 
+							.program-tab-bullets.list-dotted-bullets
+								.program-tab-bullets--left
+									p Воздействие радиоволны на ЛОР-органы: какие возможности открываются и в чем опасность
+									p Показания и противопоказания для применения радиоволн: от чего лучше воздержаться, даже если нет прямого запрета
+									p Деструктивное хирургическое воздействие в оториноларингологии: что позволяет радиохирургия, а что ей недоступно
+									p Современные радиохирургические аппараты: как выбрать и не переплатить
+								.program-tab-bullets--right
+									p Наличие обязательных функций радиочастотника для ЛОРа: выясняем ключевые моменты до покупки
+									p Топовые аппараты на рынке: бессмысленные траты или безграничные возможности
+									p Секреты безопасной работы: как проводить интенсивные операции без вреда для здоровья 
+
+						.program-tab.program-tab--practice(hidden)
+							.program-tab-descr-wrapper
+								h3.program-tab__title 8 часов практики
+								ul.practice-bullets
+									li.practice-bullet
+										picture.practice-picture
+											img(src="img/4-program/tools.png", alt="")
+										p Подготовим инструменты, настроим аппаратуру, набьем руку на учебном материале
+									li.practice-bullet
+										picture.practice-picture
+											img(src="img/4-program/operating.png", alt="")
+										p Проведем 6 операций по устранению патологий: с полным разбором нюансов и комментариями профессора
+									li.practice-bullet
+										picture.practice-picture
+											img(src="img/4-program/bell.png", alt="")
+										p Преподаватель уделит внимание каждому участнику и проверит готовность к самостоятельной практике
+									
+							.program-tab-bullets.list-dotted-bullets
+								.program-tab-bullets--left
+									p Стерилизация радиоволнового инструмента: лайфхаки от практика
+									p Тонкости настройки аппаратуры, о которых не пишут в инструкциях
+									p Распространенные ошибки при использовании радионожа и как их избежать
+									p Радиохирургия в амбулаторной и стационарной ЛОР-практике: чем отличается и что предпочтительнее
+									p Как избежать осложнений после радиохирургического вмешательства: что зависит от врача, а что от пациента
+								.program-tab-bullets--right
+									p Радиохирургия в оториноларингологии:
+										| - тонзиллотомия и тонзиллэктомия<br>
+										| - объемная редукция тканей (вазотомия)<br>
+										| - лечение храпа<br>
+										| - лечение рецидивирующего носового кровотечения<br>
+										| - лечение гипертрофии язычной миндалины<br>
+									p Базовое оснащение операционной и смотрового кабинета оториноларинголога: без чего не обойтись, а что можно заменить
+									p ЛОР-комбайн: новая концепция организации рабочего места врача-оториноларинголога
+
+
+
+
+		section.after-complete-wrapper
+			.container
+				.after-complete
+					h2.section__title.section__title--mini По окончанию курса
+					.after-complete-bullets
+						p Отработанный алгоритм действий во всех внештатных ситуациях: отказ оборудования, нехватка медикаментов, неопытный ассистент, риск заражения и т.д.
+						p Навыки неотложной/экстренной медпомощи на выезде и в стационаре
+						p Удостоверение о повышении квалификации
+						p Правовая грамотность, которая избавит от судебных тяжб
+						p Опыт слаженной работы в команде спасателей
+						.clearfix
+
+
+
+
+		section.autor-wrapper
+			.container
+				.autor
+					.autor-about--more-one
+						h2.section__title Автор курса
+						picture.autor__picture
+							img(src="img/6-autor/autor.png", alt="")
+						.autor-descr
+							h3.autor__name Лейзерман Михаил Григорьевич
+							.autor-bullets.list-dotted-bullets
+								p Доктор медицинских наук
+								p Профессор
+								p Врач-оториноларинголог
+								p Заместитель главного врача по хирургии ГКБ 29 им. Н.Э. Баумана
+								p 20 лет практики на радиохирургичесом оборудовании
+					.autor-about--more-one
+						h2.section__title Ассистирует
+						picture.autor__picture
+							img(src="img/6-autor/helper.png", alt="")
+						.autor-descr
+							h3.autor__name Быков Алексей Юрьевич
+							.autor-bullets.list-dotted-bullets
+								p Врач-нейрохирург
+								p Эксперт по радиохирургическим методам лечения
+								p Член Европейской ассоциации клинической гипертермии
+								p 15 лет опыта
+
+
+
+		section.testimonials-wrapper
+			.container
+				.testimonials
+					a.testimonials-video
+						picture.testimonials-watch
+							img(src="img/0-general/watch-video-big-button.svg", alt="")
+						span Посмотреть видео
+					.testimonials-latest
+						h2.section__title.section__title--left.testimonials__title Отзывы
+
+						div.testimonials-list
+							p Очень благодарны за возможность пройти этот курс...
+							p Материал очень подробный
+							p «Очень понятно, лектор отвечает на абсолютно все вопросы...»
+							p "Детальное пособие по оказанию практической помощи..."
+
+
+
+
+
+		section.lead-form-wrapper
+			.container
+				h2.section__title Курс проводится редко
+				p.section__descriptor
+					strong А желающих обычно больше, чем мест
+				.lead-form
+					.lead-form-bullets
+						h3.lead-form-bullets__title А желающих обычно больше, чем мест
+						p Поэтому, если хотите:
+						.lead-form-list.list-dotted-bullets
+							p освоить перспективное ЛОР-направление
+							p расширить спектр операций 
+							p повысить свою востребованность и&nbsp;увеличить доход
+
+					form(method="post").lead-form__form
+						h3.form__title Бронируйте место со скидкой до ...
+						.hidden
+							input(type="hidden" name="from")
+						.input-wrap
+							input(
+								type="tel"
+								placeholder="Ваш номер телефона"
+								required
+								name="tel"
+								autocorrect="off"
+								autocomplete="tel"
+								required).form__input.input__regular.input--phone
+						.input-wrap
+							button.form_button.primary-button Узнать есть ли места
+						.gdpr Нажимая на кнопку, вы принимаете
+							strong
+								a(href="").gdpr__link  политику конфиденциальности
+				p.nmo и напоминаем про 18 баллов в системе НМО
+
+
+
+
+
+		footer.footer-wrapper
+			.container
+				.footer
+					a.footer-logo
+						picture.footer__picture
+							img(src="img/0-general/logo.svg", alt="logo")
+						p.footer-logo__descriptor Занятия проходят на базе Академии развития инновационных технологий АРИТ
+					.footer-center
+
+						.socials
+							a.socials-item(href=`${vk}`)
+								img(src="img/0-general/vk-footer.svg", alt="vk")
+							a.socials-item(href=`${instagram}`)
+								img(src="img/0-general/instagram-footer.svg", alt="instagram")
+							a.socials-item(href=`${facebook}`)
+								img(src="img/0-general/facebook-footer.svg", alt="facebook")
+							a.socials-item(href=`${youtube}`)
+								img(src="img/0-general/youtube-footer.svg", alt="youtube")
+						.footer-copy © 2021 Инновационный центр Сколково, Большой бульвар, 46с1
+
+					.contacts.contacts--footer
+						a.contacts-item.contacts-item--email(href=`mailto:${email}`)
+							img.contacts__icon(src="img/0-general/email-footer.svg", alt="email")
+							span.contacts__text #{email}
+						a.contacts-item.contacts-item--phone(href=`tel:${phoneLink}`)
+							img.contacts__icon(src="img/0-general/phone-footer.svg", alt="phone")
+							span.contacts__text #{phoneText}

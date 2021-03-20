@@ -1,2 +1,325 @@
-@media (max-width: 480px) {
+@media (max-width: 1300px) {
+	.header .socials,
+	.header .contacts-item--email,
+	.hero-video,
+	.header-logo__descriptor{
+		display: none;
+	}
+
+	.header-wrapper {
+		margin-bottom: 32px;
+	}
+	.header-logo__pic {
+		margin-right: 0;
+		max-width: 40px;
+	}
+
+	.contacts-item {
+		margin-right: 0;
+	}
+	.contacts__icon {
+		max-width: 24px;
+		margin-right: 10px;
+	}
+	.contacts__text {
+		font-size: 14px;
+	}
+
+
+
+	.hero-start {
+		margin-bottom: 15px;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		padding-left: 55px;
+		margin-left: 0;
+		display: flex;
+		justify-content: flex-start;
+	}
+	.hero-start time,
+	.hero-start p {
+		font-size: 14px;
+		margin-right: 5px;
+	}
+
+	.hero-start__shevron {
+		margin-right: 0;
+		margin-left: 0;
+		left: 0;
+		right: unset;
+		/* width: 40px; */
+		width: 100%;
+		/* height: 40px; */
+		height: 100%;
+	}
+
+	.hero-start__shevron svg {
+		display: none;
+	}
+	.hero-start__shevron img{
+		left: 0;
+		top: 0;
+		right: unset;
+	}
+
+
+	.hero-offer {
+		max-width: 100%;
+		margin-right: 0;
+	}
+	.headliner {
+		font-size: 20px;
+		margin-bottom: 15px;
+	}
+	.hero-bullets {
+		padding-left: 30px;
+		padding-right: 5px;
+	}
+	.hero-bullets p {
+		font-size: 14px;
+		margin-bottom: 12px;
+	}
+	.hero-bullets p:before {
+		transform: scale(0.7);
+		left: -35px;
+		top: -6px;
+	}
+
+
+	.hero-wrapper {
+		min-height: 730px;
+		/* background-size: 100%; */
+		background: url(../img/1-hero/hero-mobile.png);
+		background-position: bottom;
+		background-repeat: no-repeat;
+	}
+	.hero-form {
+		flex-wrap: wrap;
+		height: 106px;
+	}
+	
+	.hero-form .input-wrap{
+		margin-bottom: 0;
+		height: 50%;
+	}
+	.hero-form .input--phone {
+		text-align: center;
+		padding-left: 0;
+	}
+	.hero-cta {
+		transform: none;
+		font-size: 14px;
+	}
+
+	section {
+		padding-top: 50px;
+	}
+	.section__title {
+		font-size: 18px;
+	}
+	.section__descriptor {
+		font-size: 14px;
+		margin-bottom: 20px;
+	}
+	.why-we-wrapper {
+		padding-bottom: 0px;
+	}
+	.why-we-wrapper .section__descriptor {
+		display: none;
+	}
+	.why-we-item {
+		margin-bottom: 16px;
+	}
+	.why-we-pic {
+		margin-bottom: 0;
+		max-height: 180px;
+	}
+	.why-we__title {
+		font-size: 16px;
+	}
+	.why-we__text {
+		font-size: 14px;
+		padding-right: 0;
+	}
+
+
+	.testimonials,
+	.lead-form,
+	.autor,
+	.why-we-list {
+		flex-wrap: wrap;
+	}
+
+
+
+
+
+
+
+
+
+
+	.after-wrapper {
+		/* padding-top: 30px; */
+	}
+
+	.after__descriptor {
+		font-size: 16px;
+	}
+	.list-dotted-bullets p {
+		font-size: 14px;
+	}
+
+
+
+
+
+
+
+
+
+
+	.program-tab {
+		padding-bottom: 10px;
+	}
+	.program-tabs-controls {
+		flex-wrap: wrap;
+		background-color: #fff;
+		padding: 5px;
+		border: none;
+		margin-bottom: 20px;
+	}
+	.program-tabs__control {
+		width: 100%;
+		background-color: #eee;
+		margin-bottom: 5px;
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.program-tabs__control--current {
+		background: var(--bg-prim);
+	}
+
+	.program-tab__title {
+		text-align: left;
+		font-size: 16px;
+	}.program-tab__descr {
+		text-align: left;
+		margin-bottom: 20px;
+		font-size: 14px;
+	}
+	.program-tab-bullets {
+		max-width: 80%;
+		margin-left: auto;
+		flex-wrap: wrap;
+		display: flex;
+	}
+	.program-tab-descr-wrapper {
+		border: none;
+		margin-bottom: 0;
+	}
+	.program-tab-bullets--left,
+	.program-tab-bullets--right {
+		max-width: 100%;
+	}
+
+
+
+
+
+
+
+
+
+
+
+	.after-complete-wrapper {
+		padding-top: 0;
+	}
+	.after-complete {
+		box-shadow: none;
+		padding-right: 0;
+		padding-left: 0;
+	}
+	.after-complete-bullets p {
+		margin-right: 0;
+		margin-left: 0;
+	}
+
+
+
+
+
+
+
+
+
+
+	.autor:before {
+		display: none;
+	}
+	.autor-about--more-one {
+		margin-right: 0;
+		margin-left: 0;
+		margin-bottom: 50px;
+	}
+	.autor__picture {
+		height: 290px;
+	}
+	.autor-descr {
+		padding: 15px 15px 20px;
+	}
+	.autor__name {
+		font-size: 15px;
+		margin-bottom: 20px;
+	}
+	.autor-bullets {
+		font-size: 14px;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	.footer {
+		flex-wrap: wrap;
+	}
+	.footer-logo__descriptor {
+		display: none;
+	}
+	.footer-logo {
+		order: -2;
+	}
+	.contacts--footer {
+		order: -1;
+		margin-bottom: 40px;
+		flex-direction: column-reverse;
+	}
+
+	.footer-center {
+		align-self: center;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.footer-copy {
+		font-size: 14px;
+		padding-top: 15px;
+	}
 }
