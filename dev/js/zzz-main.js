@@ -25,3 +25,12 @@ phoneInput.map(item => {
 		}
 	})
 })
+
+
+
+popa({
+	clickTrigger: '.hero-video',
+	popWrap: '.pop-video-wrapper',
+	pop: '.pop-video',
+	popCloser: '.pop-closer',
+})

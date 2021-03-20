@@ -162,6 +162,7 @@
 
 	--bs-form: inset 0px 4px 4px #EAEAEF;
 	--bs-block: 0px 5px 25px rgba(187, 187, 187, 0.25);
+	--bs-bg: 0px 40px 0px -25px #f9f9f9;
 
 	--z-contorls: 2;
 	--z-dropdown: 70;
@@ -403,6 +404,7 @@ button {
 	border: none;
 	background-color: transparent;
 	outline: none;
+	color: var(--c-prim);
 	padding-top: 0px;
 	padding-bottom: 14px;
 	/* background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='black' stroke-width='6' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e"); */
@@ -429,6 +431,13 @@ button {
 	/* padding-bottom: 85px; */
 	transition: all 0.3s;
 }
+.hero-video:hover .hero-play {
+	transform: scale(1.2);
+	transition: all 0.3s;
+}
+.hero-play {
+	transition: all 0.3s;
+}
 .video-button{
 	background-color: var(--c-prim);
 	font-size: 12px;
@@ -440,6 +449,19 @@ button {
 	transform: scale(1.1);
 }
 
+
+
+.pop-video {
+	background-color: #fff;
+	border-radius: 10px;
+	width: 80%;
+	height: 80%;
+}
+.pop-video--youtube {
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+}
 
 
 
@@ -561,11 +583,11 @@ strong {
 
 }
 .program {
-	box-shadow: var(--bs-block);
+	box-shadow: var(--bs-block), var(--bs-bg);
 	border-radius: 10px;
 }
 .program-tabs-controls {
-	background-color: #eee;
+	background-color: #fbfbfb;
 	border: 1px solid var(--c-lines);
 	border-radius: 10px;
 	display: flex;
@@ -589,12 +611,12 @@ strong {
 	background: transparent;
 	transition: all 0.3s;
 }
-.program-tabs__control:hover {
-	background: var(--c-prim);
-	opacity: 0.6;
-	color: #fff;
-	transition: all 0.3s;
-}
+/* .program-tabs__control:hover { */
+/*   background: var(--c-prim); */
+/*   opacity: 0.6; */
+/*   color: #fff; */
+/*   transition: all 0.3s; */
+/* } */
 .program-tabs__control--current {
 	background-color: var(--c-prim);
 	color: #fff;
@@ -603,6 +625,10 @@ strong {
 
 .program-tab {
 	padding-bottom: 50px;
+	display: none;
+}
+.program-tab--current {
+	display: block;
 }
 /* .program-tab h1, */
 /* .program-tab h2, */
@@ -697,7 +723,7 @@ strong {
 	padding-bottom: 80px;
 }
 .after-complete {
-	box-shadow: var(--bs-block);
+	box-shadow: var(--bs-block), var(--bs-bg);
 	padding-top: 50px;
 	border-radius: 10px;
 	padding-right: 30px;
@@ -852,6 +878,13 @@ strong {
 .testimonials-list p {
 	font-size: 16px;
 	line-height: 1.5em;
+	position: relative;
+}
+.testimonials-list p:before {
+	content: '«';
+}
+.testimonials-list p:after {
+	content: '»';
 }
 
 
@@ -879,7 +912,8 @@ strong {
 	max-width: 417px;
 	width: 100%;
 	box-sizing: border-box;
-	box-shadow: var(--bs-block);
+	box-shadow: var(--bs-block), var(--bs-bg);
+	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
 	padding-top: 35px;

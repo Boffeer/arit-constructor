@@ -30,7 +30,6 @@ block content
 									input(
 										type="tel"
 										placeholder="Ваш номер телефона"
-										required
 										name="tel"
 										autocorrect="off"
 										autocomplete="tel"
@@ -38,11 +37,14 @@ block content
 								.input-wrap
 									button.hero-cta Получить консультацию
 						.hero-video
-							img(src="img/0-general/watch-video-big-button.svg", alt="")
+							//- +watchVideo()
+							img(src="img/0-general/watch-video-big-button.svg", alt="").hero-play
 							button.video-button.video-button--hero Видео о курсе
-						.pop-video-wrapper.pop-wrap
+						.pop-video-wrapper
+							button.pop-closer ×
 							.pop-aligner
 								.pop-video
+									iframe(src='https://www.youtube.com/embed/-w99BreXD3M' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen='').pop-video--youtube
 
 
 
@@ -92,10 +94,10 @@ block content
 		section.program-wrapper
 			.container
 				h2.section__title Программа курса
-				.program
+				.program#program
 					.program-tabs-controls
-						button.program-tabs__control.program-tabs__control--current 10 часов теории
-						button.program-tabs__control 8 часов практики
+						button.program-tabs__control.program-tabs__control--current.js-program-tabs__control--theory 10 часов теории
+						button.program-tabs__control.js-program-tabs__control--practice 8 часов практики
 					.program-tabs
 						.program-tab.program-tab--theory.program-tab--current
 							.program-tab-descr-wrapper
@@ -112,7 +114,7 @@ block content
 									p Топовые аппараты на рынке: бессмысленные траты или безграничные возможности
 									p Секреты безопасной работы: как проводить интенсивные операции без вреда для здоровья 
 
-						.program-tab.program-tab--practice(hidden)
+						.program-tab.program-tab--practice
 							.program-tab-descr-wrapper
 								h3.program-tab__title 8 часов практики
 								ul.practice-bullets
@@ -206,11 +208,15 @@ block content
 						div.testimonials-list
 							p Очень благодарны за возможность пройти этот курс...
 							p Материал очень подробный
-							p «Очень понятно, лектор отвечает на абсолютно все вопросы...»
-							p "Детальное пособие по оказанию практической помощи..."
+							p Очень понятно, лектор отвечает на абсолютно все вопросы...
+							p Детальное пособие по оказанию практической помощи...
 
 
 
+		.hero-video-pop-wrap
+			.pop-aligner
+				.hero-video-pop
+					p hello
 
 
 		section.lead-form-wrapper
@@ -235,7 +241,6 @@ block content
 							input(
 								type="tel"
 								placeholder="Ваш номер телефона"
-								required
 								name="tel"
 								autocorrect="off"
 								autocomplete="tel"

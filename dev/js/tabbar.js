@@ -1,41 +1,45 @@
 
 // Learning tabs
 //
-const skillupTabHandler = document.querySelector('.learning-tab__control--skillup');
-const skillupTab = document.querySelector('.learning-tab--skillup');
-const retrainTabHandler = document.querySelector('.learning-tab__control--retrain');
-const retrainTab = document.querySelector('.learning-tab--retrain');
+const firstTabHandler = document.querySelector('.js-program-tabs__control--theory');
+const firstTab = document.querySelector('.program-tab--theory');
+const secondTabHandler = document.querySelector('.js-program-tabs__control--practice');
+const secondTab = document.querySelector('.program-tab--practice');
+const activeHandlerClass = 'program-tabs__control--current';
+const activeTabClass = 'program-tab--current';
 
-if ((skillupTabHandler != null ) && (retrainTab != null)) {
-	skillupTabHandler.addEventListener('click', function(){
-		this.classList.add('learning-tab__control--active')
-		skillupTab.classList.add('learning-tab--active');
-		retrainTabHandler.classList.remove('learning-tab__control--active')
-		retrainTab.classList.remove('learning-tab--active')
+firstTabHandler.addEventListener('click', function(){
+	this.classList.add(activeHandlerClass);
+	firstTab.classList.add(activeTabClass);
+	secondTabHandler.classList.remove(activeHandlerClass);
+	secondTab.classList.remove(activeTabClass);
+	document.getElementById('program').scrollIntoView({
+		behavior: 'smooth',
+		block: 'start'
 	})
-	retrainTabHandler.addEventListener('click', function(){
-		this.classList.add('learning-tab__control--active');
-		retrainTab.classList.add('learning-tab--active');
-		skillupTabHandler.classList.remove('learning-tab__control--active');
-		skillupTab.classList.remove('learning-tab--active');
+})
+secondTabHandler.addEventListener('click', function(){
+	this.classList.add(activeHandlerClass);
+	secondTab.classList.add(activeTabClass);
+	firstTabHandler.classList.remove(activeHandlerClass);
+	firstTab.classList.remove(activeTabClass);
+	document.getElementById('program').scrollIntoView({
+		behavior: 'smooth',
+		block: 'start'
+	})
+})
+
+
+const anchors = document.querySelectorAll('a[href*="#"]')
+
+for (let anchor of anchors) {
+	anchor.addEventListener('click', function (e) {
+		e.preventDefault()
+		const blockID = anchor.getAttribute('href').substr(1)
+		document.getElementById(blockID).scrollIntoView({
+			  behavior: 'smooth',
+			  block: 'start'
+		})
 	})
 }
 
-
-if (window.innerWidth < 1200){
-	showmore({
-		items: '.learning-tab--skillup .learning-tab-list-item',
-		initialShow: 6,
-		itemsToShow: 6,
-		currentItem: 0,
-		clickHandler: '.learning-more--skillup'
-	})
-
-	showmore({
-		items: '.learning-tab--retrain .learning-tab-list-item',
-		initialShow: 6,
-		itemsToShow: 6,
-		currentItem: 0,
-		clickHandler: '.learning-more--retrain'
-	})
-}
