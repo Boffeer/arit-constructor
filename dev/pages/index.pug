@@ -213,10 +213,6 @@ block content
 
 
 
-		.hero-video-pop-wrap
-			.pop-aligner
-				.hero-video-pop
-					p hello
 
 
 		section.lead-form-wrapper
@@ -267,19 +263,21 @@ block content
 
 						.socials
 							a.socials-item(href=`${vk}`)
-								img(src="img/0-general/vk-footer.svg", alt="vk")
+								+vkIcon({className: '', color: '#ffffff'})
 							a.socials-item(href=`${instagram}`)
-								img(src="img/0-general/instagram-footer.svg", alt="instagram")
+								+instagramIcon({className: '', color: '#ffffff'})
 							a.socials-item(href=`${facebook}`)
-								img(src="img/0-general/facebook-footer.svg", alt="facebook")
+								+facebookIcon({className: '', color: '#ffffff'})
 							a.socials-item(href=`${youtube}`)
-								img(src="img/0-general/youtube-footer.svg", alt="youtube")
+								+youtubeIcon({className: '', color: '#ffffff'})
 						.footer-copy © 2021 Инновационный центр Сколково, Большой бульвар, 46с1
 
 					.contacts.contacts--footer
 						a.contacts-item.contacts-item--email(href=`mailto:${email}`)
-							img.contacts__icon(src="img/0-general/email-footer.svg", alt="email")
+							//- img.contacts__icon(src="img/0-general/email-footer.svg", alt="email")
+							+emailIcon({className: 'contacts__icon', colorBg: '#ffffff', colorIcon: '#333333'})
 							span.contacts__text #{email}
 						a.contacts-item.contacts-item--phone(href=`tel:${phoneLink}`)
-							img.contacts__icon(src="img/0-general/phone-footer.svg", alt="phone")
+							+phoneIcon({className: 'contacts__icon', colorBg: '#ffffff', colorIcon: '#333333'})
+							//- img.contacts__icon(src="img/0-general/phone-footer.svg", alt="phone")
 							span.contacts__text #{phoneText}

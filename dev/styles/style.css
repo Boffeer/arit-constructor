@@ -278,8 +278,20 @@ button {
 	background-color: var(--c-lines);
 	margin-right: 22px;
 }
+.socials {
+	display: flex;
+	height: 100%;
+}
 .socials-item {
 	margin-right: 15px;
+	height: 100%;
+}
+.socials-item path {
+	transition: all 0.3s;
+}
+.socials-item:hover path {
+	fill: var(--c-prim);
+	transition: all 0.3s;
 }
 
 .contacts {
@@ -290,6 +302,14 @@ button {
 	align-items: center;
 	text-decoration: none;
 	font-family: var(--ff-bold);
+}
+.contacts-item:hover span {
+	color: var(--c-prim) !important;
+	transition: all 0.3s;
+}
+.contacts-item:hover rect {
+	fill: var(--c-prim);
+	transition: all 0.3s;
 }
 .contacts-item--email {
 	margin-right: 30px;

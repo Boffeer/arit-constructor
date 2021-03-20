@@ -6,17 +6,19 @@ header.header-wrapper
 				p.header-logo__descriptor Практический курс «Хирургическое лечение ЛОР-заболеваний с использованием радиоволновой аппаратуры» 
 			.socials
 				a.socials-item(href=`${vk}`)
-					img(src="img/0-general/vk-header.svg", alt="vk")
+					+vkIcon({className: '', color: '#333333'})
 				a.socials-item(href=`${instagram}`)
-					img(src="img/0-general/instagram-header.svg", alt="instagram")
+					+instagramIcon({className: '', color: '#333333'})
 				a.socials-item(href=`${facebook}`)
-					img(src="img/0-general/facebook-header.svg", alt="facebook")
+					+facebookIcon({className: '', color: '#333333'})
 				a.socials-item(href=`${youtube}`)
-					img(src="img/0-general/youtube-header.svg", alt="youtube")
+					+youtubeIcon({className: '', color: '#333333'})
 			.contacts
 				a.contacts-item.contacts-item--email(href=`mailto:${email}`)
-					img.contacts__icon(src="img/0-general/email-header.svg", alt="email")
+					+emailIcon({className: 'contacts__icon', colorBg: '#333333', colorIcon: '#ffffff'})
+					//- img.contacts__icon(src="img/0-general/email-header.svg", alt="email")
 					span.contacts__text #{email}
 				a.contacts-item.contacts-item--phone(href=`tel:${phoneLink}`)
-					img.contacts__icon(src="img/0-general/phone-header.svg", alt="phone")
+					+phoneIcon({className: 'contacts__icon', colorBg: '#333333', colorIcon: '#ffffff'})
+					//- img.contacts__icon(src="img/0-general/phone-header.svg", alt="phone")
 					span.contacts__text #{phoneText}

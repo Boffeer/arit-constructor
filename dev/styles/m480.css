@@ -69,7 +69,7 @@
 	.hero-offer {
 		max-width: 100%;
 		margin-right: 0;
-		margin-bottom: 90px;
+		margin-bottom: 170px;
 	}
 	.headliner {
 		font-size: 20px;
@@ -92,6 +92,7 @@
 
 	.hero-wrapper {
 		min-height: 730px;
+		background-size: cover !important;
 		/* background-size: 100%; */
 		background: url(../img/1-hero/hero-mobile.png);
 		background-position: bottom;
@@ -107,6 +108,7 @@
 	.hero-form .input-wrap{
 		margin-bottom: 0;
 		height: 50%;
+		background: transparent;
 	}
 	.hero-form .input--phone {
 		text-align: center;
@@ -179,6 +181,14 @@
 
 	.after-wrapper {
 		/* padding-top: 30px; */
+		margin-bottom: 0;
+		padding-bottom: 410px;
+		background: url(../img/3-after/after-course-mobile.png);
+		background-size: cover;
+		background-position: bottom;
+	}
+	.autor__picture img {
+		object-fit: contain;
 	}
 
 	.after__descriptor {
