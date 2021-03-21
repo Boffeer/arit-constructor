@@ -34,3 +34,25 @@ popa({
 	pop: '.pop-video',
 	popCloser: '.pop-closer',
 })
+
+
+
+if (startTestimonialSlider) {
+	const testimonialsSlider = new Swiper('.testimonials-slider', {
+		slidesPerView: 1,
+		spaceBetween: 19,
+		pagination: {
+			el: '.swiper-pagination.testimonials-pagination',
+		},
+		breakpoints: {
+			1300: {
+				slidesPerView: 3,
+				navigation: {
+					nextEl: '.swiper-button-next.testimonials-button-next',
+					prevEl: '.swiper-button-prev.testimonials-button-prev',
+				},
+			}
+		},
+			
+	})
+}
