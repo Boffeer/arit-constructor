@@ -27,7 +27,7 @@ function arit_landing_page_options()
 				->set_value_type('url')
 				->set_width(50),
 			Field::make('date', 'crb_landing_block_1_date', __('Дата')),
-			Field::make('url', 'crb_landing_block_1_video', __('Ссылка на видео о курсе')),
+			Field::make('text', 'crb_landing_block_1_video', __('Ссылка на видео о курсе')),
 			Field::make('text', 'crb_landing_block_1_button_submit', __('Текст на кнопке в форме на первом экране'))
 				->set_default_value('Получить консультацию'),
 			Field::make('text', 'crb_landing_block_1_button_video', __('Текст на кнопке в форме на первом экране'))
@@ -248,5 +248,117 @@ function arit_landing_page_options()
 							))
 					)
 				)
+		))
+		->add_tab(__('Блок 5, Текстовые отзывы'), array(
+			Field::make('complex', 'crb_landing_block_5_reviews', __('Отзывы'))
+				->setup_labels(array(
+					'plural_name' => 'текстовые отзывы',
+					'singular_name' => 'текстовый отзыв',
+				))
+				->add_fields(array(
+					Field::make('image', 'review_img', __('Картинка отзыва'))
+						->set_value_type('url'),
+					Field::make('text', 'review_name', __('Имя отзыва')),
+					Field::make('textarea', 'review_desc', __('Отзыв')),
+				))
+		))
+		->add_tab(__('Блок 6, Отзывы с видео'), array(
+			Field::make('complex', 'crb_landing_block_6_videoreviews', __('Отзывы'))
+				->setup_labels(array(
+					'plural_name' => 'отзывы с видео',
+					'singular_name' => 'отзыв с видео',
+				))
+				->add_fields(array(
+					Field::make('text', 'review_desc', __('Ссылка на видео на YouTube')),
+				))
+		))
+		->add_tab(__('Блок 7, Тарифы'), array(
+			Field::make('text', 'crb_landing_block_7_title', __('Заголовок блока'))
+				->set_default_value('Тарифы'),
+			Field::make('complex', 'crb_landing_block_7_pricing', __('Тарифы'))
+				->setup_labels(array(
+					'plural_name' => 'тарифы',
+					'singular_name' => 'тарифы',
+				))
+				->add_fields(array(
+					Field::make('text', 'title', __('Название тарифа')),
+					Field::make('complex', 'bullets_positive', __('Позитивные буллеты'))
+						->setup_labels(array(
+							'plural_name' => 'позитивные буллеты',
+							'singular_name' => 'позитивный буллет',
+						))
+						->add_fields(array(
+							Field::make('text', 'bullet', __('Буллет')),
+						)),
+					Field::make('complex', 'bullets_positive', __('Негативные буллеты'))
+						->setup_labels(array(
+							'plural_name' => 'негативные буллеты',
+							'singular_name' => 'негативный буллет',
+						))
+						->add_fields(array(
+							Field::make('text', 'bullet', __('Буллет')),
+						))
+				)),
+			Field::make('complex', 'crb_landing_block_7_bullets', __('Буллеты под тарифами'))
+				->setup_labels(array(
+					'plural_name' => 'буллеты под тарифами',
+					'singular_name' => 'буллет под тарифами',
+				))
+				->add_fields(array(
+					Field::make('image', 'img', __('Картинка')),
+					Field::make('text', 'bullet', __('Буллет')),
+				))
+		))
+		->add_tab(__('Блок 8, Думаете над предложением'), array(
+			Field::make('text', 'crb_landing_block_8_title', __('Заголовок блока'))
+				->set_default_value('Думаете над предложением или собираетесь уходить?'),
+			Field::make('textarea', 'crb_landing_block_8_subtitle', __('Подзаголовок блока'))
+				->set_default_value('Мы не оставим вас без подарка, получите запись вебинара:'),
+			Field::make('textarea', 'crb_landing_block_8_desc', __('Описание блока'))
+				->set_default_value('Доброкачественные заболевания молочной железы | Алгоритм диагностики и лечения с профессором, доктором медицинских наук, Карташовой Аллой Федоровной'),
+			Field::make('image', 'crb_landing_block_8_img', __('Картинка'))
+				->set_value_type('url'),
+			Field::make('text', 'crb_landing_block_8_form_title', __('Заголовок формы'))
+				->set_default_value('Бронируйте место со скидкой'),
+			Field::make('text', 'crb_landing_block_8_form_button', __('Текст на кнопке в форме'))
+				->set_default_value('Узнать есть ли места'),
+		))
+		->add_tab('Блок 9, Автор курса', array(
+			Field::make('text', 'crb_landing_block_9_spec', __('Спициальность автора, если он 1')),
+			Field::make('complex', 'crb_landing_block_9_author', __('Автор курса'))
+				->setup_labels(array(
+					'plural_name' => 'авторы курса',
+					'singular_name' => 'автора курса',
+				))
+				->set_max(2)
+				->add_fields(array(
+					Field::make('text', 'title', __('Заголовок над автором'))
+						->set_default_value('Автор курса'),
+					Field::make('image', 'img', __('Фото автора'))
+						->set_value_type('url'),
+					Field::make('text', 'name', __('Имя автора')),
+					Field::make('complex', 'bullets', __('Буллеты автора'))
+						->setup_labels(array(
+							'plural_name' => 'буллеты автора',
+							'singular_name' => 'буллет автора',
+						))
+						->add_fields(array(
+							Field::make('text', 'bullet', __('Буллет')),
+						))
+				))
+		))
+		->add_tab('Блок 10, Курс проводится редко, получить консультацию', array(
+			Field::make('text', 'crb_landing_block_10_title', __('Заголовок блока'))
+				->set_default_value('Курс проводится редко'),
+			Field::make('text', 'crb_landing_block_10_subtitle', __('Подзаголовок блока'))
+				->set_default_value('А желающих обычно больше, чем мест'),
+			Field::make('complex', 'crb_landing_block_10_bullets', __('Буллеты'))
+				->setup_labels(array(
+					'plural_name' => 'буллеты',
+					'singular_name' => 'буллет',
+				))
+				->add_fields(array(
+					Field::make('text', 'bullet', __('Буллет')),
+				)),
 		));
 }
