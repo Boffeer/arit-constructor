@@ -1,0 +1,34 @@
+.autor-single__image {
+  right: 0;
+  max-width: 720px;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 1300px) {
+  .autor-single__who {
+    margin-bottom: -20px;
+  }
+  .autor-single {
+    box-shadow: inset 0 -25px 10px -20px rgba(0, 0, 0, 0.1);
+  }
+  .autor-single-image {
+    max-width: 100%;
+    order: 2;
+  }
+  .autor-single__who {
+    order: -1;
+    &::after {
+      content: "";
+      display: block;
+      width: 70%;
+      height: 30px;
+      background-image: url("../img/6-autor/author_line.svg");
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      margin-left: -20px;
+    }
+  }
+}
