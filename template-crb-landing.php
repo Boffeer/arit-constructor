@@ -369,6 +369,7 @@ Template Name: CRB Лендинг
 
 					</div>
 				</div>
+				<div class="swiper-scrollbar slider__scrollbar testimonials__scrollbar"></div>
 				<div class="swiper-pagination testimonials-pagination"></div>
 				<div class="swiper-button-next testimonials-button-next"></div>
 				<div class="swiper-button-prev testimonials-button-prev"></div>
@@ -390,6 +391,10 @@ Template Name: CRB Лендинг
 								slidesPerView: 2,
 							}
 						},
+						scrollbar: {
+							el: '.testimonials__scrollbar',
+							draggable: true,
+						},
 
 					})
 				</script>
@@ -406,15 +411,24 @@ Template Name: CRB Лендинг
 
 	<section class="video-reviews__wrap">
 		<div class="container">
+			<h2 class="section__title video-reviews__title">Видео отзывы</h2>
 			<div class="video-reviews">
 				<div class="swiper video-reviews-slider">
 					<div class="swiper-wrapper">
 						<?php foreach ($video_reviews['reviews'] as $review) : ?>
+							<?php
+							$yt_id = preg_replace('/.+\?v\=/i', '', $review['review_link']);
+							$thumbnail = "https://i.ytimg.com/vi/{$yt_id}/hqdefault.jpg";
+							$embed_url = "https://www.youtube.com/embed/{$yt_id}";
+							?>
 							<div class="swiper-slide video-reviews-slider-slide">
-								<?php echo $review['review_link']; ?>
+								<img src="<?php echo $thumbnail; ?>" alt="" class="video-reviews-slider-slide__media video-reviews-slider-slide__img">
+								<iframe class="video-reviews-slider-slide__media video-reviews-slider-slide__video" data-src="<?php echo $embed_url; ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 							</div>
 						<?php endforeach; ?>
 					</div>
+					<div class="swiper-scrollbar slider__scrollbar video-reviews-slider__scrollbar"></div>
 					<div class="swiper-pagination video-reviews-slider__pagination slider__pagination"></div>
 					<div class="swiper-button-prev video-reviews-slider__button-prev slider__button slider__button-prev"></div>
 					<div class="swiper-button-next video-reviews-slider__button-next slider__button slider__button-next"></div>
@@ -426,24 +440,46 @@ Template Name: CRB Лендинг
 		window.addEventListener('DOMContentLoaded', (event) => {
 
 			let videoReviews = new Swiper('.video-reviews-slider', {
-				grabCursor: true,
-				effect: 'creative',
-				creativeEffect: {
-					prev: {
-						shadow: true,
-						translate: [0, 0, -400],
-					},
-					next: {
-						translate: ['100%', 0, 0],
-					},
-				},
 				navigation: {
 					nextEl: '.video-reviews-slider__button-next',
 					prevEl: '.video-reviews-slider__button-prev',
 				},
-				pagination: {
-					el: '.video-reviews-slider__pagination'
+				centeredSlides: true,
+				slidesPerView: 'auto',
+				effect: "creative",
+				creativeEffect: {
+					prev: {
+						translate: ["-35%", 0, 0],
+						opacity: 0.3,
+						scale: 0.7,
+					},
+					next: {
+						translate: ["35%", 0, 0],
+						opacity: 0.3,
+						scale: 0.7,
+					},
+					limitProgress: 2,
 				},
+				pagination: {
+					el: '.video-reviews-slider__pagination',
+					dynamicBullets: true,
+				},
+				scrollbar: {
+					el: '.video-reviews-slider__scrollbar',
+					draggable: true,
+				},
+			});
+			const videoSlides = document.querySelectorAll('.video-reviews-slider-slide ');
+			videoSlides.forEach((slide) => {
+				slide.addEventListener('click', (event) => {
+					let video = slide.querySelector('.video-reviews-slider-slide__video');
+					let thumb = slide.querySelector('.video-reviews-slider-slide__img');
+					let videoSrc = video.dataset.src;
+					video.src = videoSrc;
+					thumb.classList.add('video-reviews-slider-slide__img--hidden');
+					video.classList.add('video-reviews-slider-slide__video--visible');
+					slide.classList.add('video-reviews-slider-slide--active');
+				});
 			});
 		});
 	</script>
@@ -556,8 +592,6 @@ Template Name: CRB Лендинг
 		'author' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_9_author'),
 	);
 	?>
-
-
 	<?php if (count($author['author']) == 1) : ?>
 		<section class="autor-single-wrapper">
 			<div class="container autor-single">
@@ -613,7 +647,6 @@ Template Name: CRB Лендинг
 				</div>
 			</div>
 		</section>
-
 	<?php endif; ?>
 
 </main>

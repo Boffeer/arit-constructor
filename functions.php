@@ -8,13 +8,14 @@ function arit_styles()
 	}
 
 	wp_enqueue_style('swipercss', 'https://unpkg.com/swiper/swiper-bundle.min.css');
+	wp_enqueue_style('poppa-css', get_template_directory_uri() . '/assets/poppa/poppa.min.css');
 	wp_enqueue_style('style', get_template_directory_uri() . '/css/style.css');
 	wp_register_script('swiperjs', 'https://unpkg.com/swiper/swiper-bundle.min.js', '', '1.0.0', false);
 	wp_enqueue_script('swiperjs');
-	wp_enqueue_script('scripts', get_template_directory_uri() . '/js/main.min.js', '', '1.0.0', true);
+	wp_enqueue_script('poppa-js', get_template_directory_uri() . '/assets/poppa/poppa.js', array(), '1.0.0', true);
+	wp_enqueue_script('incdex-scripts', get_template_directory_uri() . '/js/index.js', '', '1.0.0', true);
+
 	if (get_page_template_slug() == 'template-crb-landing.php') {
-		wp_enqueue_style('poppa-css', get_template_directory_uri() . '/assets/poppa/poppa.min.css');
-		wp_enqueue_script('poppa-js', get_template_directory_uri() . '/assets/poppa/poppa.js', array(), '1.0.0', true);
 		wp_enqueue_style('crb-landing', get_template_directory_uri() . '/css/crb-landing.min.css');
 		wp_enqueue_script('crb-landing-scripts', get_template_directory_uri() . '/js/crb-landing.js', '', '1.0.0', true);
 	}

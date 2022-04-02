@@ -70,3 +70,77 @@
     font-size: 14px;
   }
 }
+
+.video-reviews-slider-slide {
+  max-width: 745px;
+  width: 100%;
+  position: relative;
+  background-color: #000;
+  border-radius: 16px;
+  cursor: pointer;
+  &::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 120px;
+    height: 72px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 16px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url("../img/0-general/play-icon.svg");
+    background-size: 32px;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  &:hover::before {
+    transition: all 0.3s ease;
+    background-color: #f00;
+  }
+  &--active {
+    &::before {
+      display: none;
+    }
+  }
+}
+.video-reviews-slider-slide__media {
+  width: 100%;
+  border-radius: 16px;
+  height: 420px;
+}
+.video-reviews-slider-slide__img {
+  display: block;
+  object-fit: cover;
+  &--hidden {
+    display: none;
+  }
+}
+.video-reviews-slider-slide__video {
+  display: none;
+  opacity: 0;
+  &--visible {
+    display: block;
+    opacity: 1;
+  }
+}
+.video-reviews-slider__pagination {
+  position: static;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 40px;
+}
+
+@media (max-width: 1199px) {
+  .video-reviews-slider__pagination {
+    display: none;
+  }
+  .video-reviews-slider-slide__media {
+    height: 220px;
+  }
+  .testimonials-pagination {
+    display: none;
+  }
+}
