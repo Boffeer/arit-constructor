@@ -24,3 +24,24 @@ phones.forEach(function (e) {
     .addEventListener("submit", function () {
       ym(74415211, "reachGoal", "footer-form");
     });
+
+const tabsButtons = document.querySelectorAll(".program-tabs__control ");
+if (tabsButtons) {
+  tabsButtons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      tabsButtons.forEach((button) => {
+        button.classList.remove("program-tabs__control--current");
+      });
+      button.classList.add("program-tabs__control--current");
+      const tabId = button.dataset.tab;
+
+      const tabs = document.querySelectorAll(".program-tab");
+      tabs.forEach((tab) => {
+        tab.classList.remove("program-tab--current");
+        if (tab.dataset.tab === tabId) {
+          tab.classList.add("program-tab--current");
+        }
+      });
+    });
+  });
+}

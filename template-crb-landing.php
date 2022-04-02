@@ -236,12 +236,24 @@ Template Name: CRB Лендинг
 			<div class="program" id="program">
 				<div class="program-tabs-controls">
 					<?php foreach ($program['tabs'] as $key => $tab) : ?>
-						<button data-tab="<?php echo $key; ?>" class="program-tabs__control program-tabs__control--current js-program-tabs__control--theory js-program-tabs__control--practice"><?php echo $tab['tab_title'] ?></button>
+						<?php
+						$classes = '';
+						if ($key == 0) {
+							$classes = 'program-tabs__control--current';
+						}
+						?>
+						<button data-tab="<?php echo $key; ?>" class="program-tabs__control <?php echo $classes; ?>"><?php echo $tab['tab_title'] ?></button>
 					<?php endforeach; ?>
 				</div>
 				<div class="program-tabs">
 					<?php foreach ($program['tabs'] as $key => $tab) : ?>
-						<div data-tab="<?php echo $key; ?>" class="program-tab program-tab--theory program-tab--current">
+						<?php
+						$tab_classes = '';
+						if ($key == 0) {
+							$tab_classes = 'program-tab--current';
+						}
+						?>
+						<div data-tab="<?php echo $key; ?>" class="program-tab program-tab--theory <?php echo $tab_classes; ?>">
 							<?php if ($tab['tab_top_type'] == 'text') : ?>
 								<div class="program-tab-descr-wrapper">
 									<p class="program-tab__descr"><?php echo $tab['tab_top_text']; ?></p>
