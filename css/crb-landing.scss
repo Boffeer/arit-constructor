@@ -63,3 +63,31 @@
 // 		height: calc(100 * 1vh);
 // 	}
 // }
+
+.cards__list {
+  display: grid;
+  // grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 50px;
+}
+.card__img {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  height: 165px;
+  object-fit: contain;
+  object-position: left;
+}
+.card__title {
+  font-family: var(--ff-bold);
+  font-size: 18px;
+  line-height: 23px;
+  color: #333333;
+  margin-bottom: 10px;
+}
+.card__desc {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 145%;
+  color: #333333;
+}

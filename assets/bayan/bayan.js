@@ -3,7 +3,7 @@
  */
 const bayans = [...document.querySelectorAll(".bayan")];
 const bayanOpenedClass = "bayan--opened";
-const bayanHeight = 1000;
+const bayanHeight = 5000;
 
 function openBayan(bayanObject) {
   bayanObject.bottom.bayan.style.maxHeight = `${bayanHeight}px`;

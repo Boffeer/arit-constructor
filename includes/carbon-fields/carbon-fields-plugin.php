@@ -111,7 +111,8 @@ function arit_landing_page_options()
 							))
 							->add_fields(
 								array(
-									Field::make('image', 'img', __('Картинка')),
+									Field::make('image', 'img', __('Картинка'))
+										->set_value_type('url'),
 									Field::make('text', 'title', __('Заголовок'))
 										->set_help_text('Если оставить пустым, то будет отображаться карточки без подложки'),
 									Field::make('textarea', 'desc', __('Текст'))
@@ -120,6 +121,9 @@ function arit_landing_page_options()
 						Field::make('text', 'program_bullet_name', __('Название части программы'))
 							->set_help_text('Например День или Модуль. Будет отображаться как «День 1», «День 2» или «Модуль 1», «Модуль 2»')
 							->set_default_value('День'),
+
+
+
 
 						Field::make('radio', 'tab_programm_type', 'Тип выпадайки в программе')
 							->add_options(array(
@@ -171,7 +175,7 @@ function arit_landing_page_options()
 							))
 							->add_fields(
 								array(
-									Field::make('text', 'title', __('Нвазвание модуля')),
+									Field::make('textarea', 'title', __('Нвазвание модуля')),
 									Field::make('text', 'duration', __('Длительность'))
 										->set_default_value('8 часов'),
 									Field::make('text', 'plan_name', __('Название пунктов плана'))
@@ -254,7 +258,8 @@ function arit_landing_page_options()
 										'singular_name' => 'результат',
 									))
 									->add_fields(array(
-										Field::make('image', 'result_img', __('Картинка результата')),
+										Field::make('image', 'result_img', __('Картинка результата'))
+											->set_value_type('url'),
 										Field::make('text', 'result_title', __('Заголовок результата')),
 										Field::make('textarea', 'result_desc', __('Результат')),
 									)),

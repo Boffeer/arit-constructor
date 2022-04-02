@@ -242,67 +242,266 @@ Template Name: CRB Лендинг
 				<div class="program-tabs">
 					<?php foreach ($program['tabs'] as $key => $tab) : ?>
 						<div data-tab="<?php echo $key; ?>" class="program-tab program-tab--theory program-tab--current">
-							<div class="program-tab-descr-wrapper">
-								<h3 class="program-tab__title"><?php echo $program['tab_1']['title'] ?></h3>
-								<p class="program-tab__descr"><?php echo $program['tab_1']['descr'] ?></p>
-							</div>
-							<div class="program-tab-bullets list-dotted-bullets">
+							<?php if ($tab['tab_top_type'] == 'text') : ?>
+								<div class="program-tab-descr-wrapper">
+									<p class="program-tab__descr"><?php echo $tab['tab_top_text']; ?></p>
+								</div>
+							<?php elseif ($tab['tab_top_type'] == 'cards') : ?>
+								<?php
+								$cards_gallery_class = 'gallery--2';
+								if ($tab['tab_top_cards'][0]['title'] == '') {
+									$cards_gallery_class = 'gallery--3';
+								}
+								?>
+								<div class="program-tab__cards <?php echo $cards_gallery_class; ?>">
+									<?php foreach ($tab['tab_top_cards'] as $card) : ?>
+										<?php
+										$card_class = '';
+										if (!empty($card['title'])) {
+											$card_class = 'program-tab__card--material';
+										}
+										?>
+										<div class="program-tab-card <?php echo $card_class; ?>">
+											<?php if ($card['img']) : ?>
+												<img src="<?php echo $card['img']; ?>" alt="" class="program-tab-card__img">
+											<?php endif; ?>
+											<?php if ($card['title']) : ?>
+												<h3 class="program-tab-card__title">
+													<?php echo $card['title']; ?>
+												</h3>
+											<?php endif; ?>
+											<p class="program-tab-card__desc">
+												<?php echo $card['desc']; ?>
+											</p>
+										</div>
+									<?php endforeach; ?>
+								</div>
+							<?php endif; ?>
+
+							<!-- <div class="program-tab-bullets list-dotted-bullets">
 								<div class="program-tab-bullets--left">
 									<?php echo $program['tab_1']['bullets_left'] ?>
 								</div>
 								<div class="program-tab-bullets--right">
 									<?php echo $program['tab_1']['bullets_right'] ?>
 								</div>
+							</div> -->
+
+							<div class="program__modules">
+								<?php
+								$modules = array();
+								$modules_classes = '';
+								if ($tab['tab_programm_type'] == 'table') {
+									$modules = $tab['tab_progarmm_1'];
+								} elseif ($tab['tab_programm_type'] == 'theory_and_practice') {
+									$modules = $tab['tab_progarmm_2'];
+									$modules_classes = 'programm-module__heading--splitted';
+								} elseif ($tab['tab_programm_type'] == 'task_theory_and_practice') {
+									$modules = $tab['tab_progarmm_3'];
+								}
+								?>
+								<?php if (!empty($modules)) : ?>
+									<?php foreach ($modules as $key => $module) : ?>
+										<div class="programm-module bayan">
+											<div class="programm-module__heading <?php echo $modules_classes; ?>">
+												<div class="programm-module__heading-name">
+													<p class="programm-module__suptitle">
+														<?php echo $tab['program_bullet_name']; ?>
+													</p>
+													<h3 class="programm-module__title">
+														<?php echo $module['title']; ?>
+													</h3>
+												</div>
+												<?php if ($tab['tab_programm_type'] == 'theory_and_practice') : ?>
+													<div class="programm-module__heading-duration">
+														<p class="programm-module__suptitle programm-module__stat-title">
+															Длительность
+														</p>
+														<p class="programm-moudle__stat-value">
+															<?php echo $module['duration']; ?>
+														</p>
+													</div>
+												<?php endif; ?>
+											</div>
+											<div class="programm-module__content">
+												<?php if ($tab['tab_programm_type'] == 'table') : ?>
+													<div class="programm-module__task">
+														<div class="program-module__stat">
+															<p class="programm-module__stat-title">
+																Задача:
+															</p>
+															<p class="programm-moudle__stat-value">
+																<?php echo $module['task']; ?>
+															</p>
+														</div>
+														<div class="program-module__stat">
+															<p class="programm-module__stat-title">
+																Длительность:
+															</p>
+															<p class="programm-moudle__stat-value">
+																<?php echo $module['duration']; ?>
+															</p>
+														</div>
+														<div class="program-module__stat">
+															<p class="programm-module__stat-title programm-module__stat-title--result">
+																Результат:
+															</p>
+															<p class="programm-moudle__stat-value">
+																<?php echo $module['result']; ?>
+															</p>
+														</div>
+													</div>
+													<div class="programm-module-bullets">
+														<h3 class="programm-moudle-bullets__title">
+															План модудей:
+														</h3>
+														<ul class="programm-module-bullets__list">
+															<?php foreach ($module['plan'] as $bullet) : ?>
+																<li data-prefix="<?php echo $module['plan_name']; ?>" class="programm-module-bullets__item">
+																	<?php echo $bullet['bullet']; ?>
+																</li>
+															<?php endforeach; ?>
+														</ul>
+													</div>
+												<?php elseif ($tab['tab_programm_type'] == 'theory_and_practice') : ?>
+													<div class="programm-module-bullets">
+														<h3 class="programm-moudle-bullets__title">
+															<?php echo $module['theory_title']; ?>
+														</h3>
+														<ul class="programm-module-bullets__list">
+															<?php foreach ($module['theory'] as $bullet) : ?>
+																<li data-prefix="<?php echo $module['plan_name']; ?>" class="programm-module-bullets__item">
+																	<?php echo $bullet['bullet']; ?>
+																</li>
+															<?php endforeach; ?>
+														</ul>
+													</div>
+													<div class="programm-module-bullets">
+														<h3 class="programm-moudle-bullets__title">
+															<?php echo $module['practice_title']; ?>
+														</h3>
+														<ul class="programm-module-bullets__list">
+															<?php foreach ($module['practice'] as $bullet) : ?>
+																<li data-prefix="<?php echo $module['plan_name']; ?>" class="programm-module-bullets__item">
+																	<?php echo $bullet['bullet']; ?>
+																</li>
+															<?php endforeach; ?>
+														</ul>
+													</div>
+													<div class="programm-module-bullets">
+														<h3 class="programm-moudle-bullets__title">
+															Результат:
+														</h3>
+														<ul class="programm-module-bullets__list programm-module-bullets__list--results">
+															<?php foreach ($module['results'] as $bullet) : ?>
+																<li class="programm-module-bullets__item--result programm-module-bullets__item">
+																	<?php echo $bullet['result']; ?>
+																</li>
+															<?php endforeach; ?>
+														</ul>
+													</div>
+												<?php elseif ($tab['tab_programm_type'] == 'task_theory_and_practice') : ?>
+													<div class="programm-module-bullets">
+														<h3 class="programm-moudle-bullets__title">
+															<?php echo $module['theory_title']; ?>
+														</h3>
+														<ul class="programm-module-bullets__list">
+															<?php foreach ($module['theory'] as $bullet) : ?>
+																<li data-prefix="<?php echo $module['plan_name']; ?>" class="programm-module-bullets__item">
+																	<?php echo $bullet['bullet']; ?>
+																</li>
+															<?php endforeach; ?>
+														</ul>
+													</div>
+													<div class="programm-module-bullets">
+														<h3 class="programm-moudle-bullets__title">
+															<?php echo $module['practice_title']; ?>
+														</h3>
+														<ul class="programm-module-bullets__list">
+															<?php foreach ($module['practice'] as $bullet) : ?>
+																<li data-prefix="<?php echo $module['plan_name']; ?>" class="programm-module-bullets__item">
+																	<?php echo $bullet['bullet']; ?>
+																</li>
+															<?php endforeach; ?>
+														</ul>
+													</div>
+													<div class="programm-module-bullets programm-module-bullets--results">
+														<h4 class="programm-module-cards__title programm-module-cards__title--result">
+															Результат:
+														</h4>
+														<div class="programm-module-cards cards__list cards__list--3">
+															<?php foreach ($module['results'] as $card) : ?>
+																<article class="card">
+																	<?php if ($card['result_img']) : ?>
+																		<img src="<?php echo $card['result_img'] ?>" alt="<?php echo $card['result_desc'] ?>" class="card__img">
+																	<?php endif; ?>
+																	<?php if ($card['result_title']) : ?>
+																		<h3 class="card__title">
+																			<?php echo $card['result_title'] ?>
+																		</h3>
+																	<?php endif; ?>
+																	<p class="card__desc">
+																		<?php echo $card['result_desc'] ?>
+																	</p>
+																</article>
+															<?php endforeach; ?>
+														</div>
+
+													</div>
+
+											</div>
+										<?php endif; ?>
+										</div>
 							</div>
-						</div>
-					<?php endforeach; ?>
-					<div class="program-tab program-tab--practice">
-						<div class="program-tab-descr-wrapper">
-							<h3 class="program-tab__title"><?php echo $program['tab_2']['title'] ?></h3>
-							<ul class="practice-bullets">
-
-								<li class="practice-bullet">
-									<?php if (!empty($program['tab_2']['bullets_pics']['pic_1'])) { ?>
-										<picture class="practice-picture"><img src="<?php echo $program['tab_2']['bullets_pics']['pic_1'] ?>" alt="<?php $program['tab_2']['bullets_pics']['bullet_1'] ?>"></picture>
-									<?php } ?>
-									<p><?php echo $program['tab_2']['bullets_pics']['bullet_1'] ?></p>
-								</li>
-
-								<li class="practice-bullet">
-									<?php if (!empty($program['tab_2']['bullets_pics']['pic_2'])) { ?>
-										<picture class="practice-picture"><img src="<?php echo $program['tab_2']['bullets_pics']['pic_2'] ?>" alt="<?php $program['tab_2']['bullets_pics']['bullet_2'] ?>"></picture>
-									<?php } ?>
-									<p><?php echo $program['tab_2']['bullets_pics']['bullet_2'] ?></p>
-								</li>
-
-								<li class="practice-bullet">
-									<?php if (!empty($program['tab_2']['bullets_pics']['pic_3'])) { ?>
-										<picture class="practice-picture"><img src="<?php echo $program['tab_2']['bullets_pics']['pic_3'] ?>" alt="<?php $program['tab_2']['bullets_pics']['bullet_3'] ?>"></picture>
-									<?php } ?>
-									<p><?php echo $program['tab_2']['bullets_pics']['bullet_3'] ?></p>
-								</li>
-
-							</ul>
-						</div>
-						<div class="program-tab-bullets list-dotted-bullets">
-							<div class="program-tab-bullets--left">
-								<?php echo $program['tab_2']['bullets_left'] ?>
-							</div>
-							<div class="program-tab-bullets--right">
-								<?php echo $program['tab_2']['bullets_right'] ?>
-							</div>
+						<?php endforeach; ?>
+					<?php endif; ?>
 						</div>
 
+				</div>
+			<?php endforeach; ?>
+			<div class="program-tab program-tab--practice">
+				<div class="program-tab-descr-wrapper">
+					<h3 class="program-tab__title"><?php echo $program['tab_2']['title'] ?></h3>
+					<ul class="practice-bullets">
 
+						<li class="practice-bullet">
+							<?php if (!empty($program['tab_2']['bullets_pics']['pic_1'])) { ?>
+								<picture class="practice-picture"><img src="<?php echo $program['tab_2']['bullets_pics']['pic_1'] ?>" alt="<?php $program['tab_2']['bullets_pics']['bullet_1'] ?>"></picture>
+							<?php } ?>
+							<p><?php echo $program['tab_2']['bullets_pics']['bullet_1'] ?></p>
+						</li>
+
+						<li class="practice-bullet">
+							<?php if (!empty($program['tab_2']['bullets_pics']['pic_2'])) { ?>
+								<picture class="practice-picture"><img src="<?php echo $program['tab_2']['bullets_pics']['pic_2'] ?>" alt="<?php $program['tab_2']['bullets_pics']['bullet_2'] ?>"></picture>
+							<?php } ?>
+							<p><?php echo $program['tab_2']['bullets_pics']['bullet_2'] ?></p>
+						</li>
+
+						<li class="practice-bullet">
+							<?php if (!empty($program['tab_2']['bullets_pics']['pic_3'])) { ?>
+								<picture class="practice-picture"><img src="<?php echo $program['tab_2']['bullets_pics']['pic_3'] ?>" alt="<?php $program['tab_2']['bullets_pics']['bullet_3'] ?>"></picture>
+							<?php } ?>
+							<p><?php echo $program['tab_2']['bullets_pics']['bullet_3'] ?></p>
+						</li>
+
+					</ul>
+				</div>
+				<div class="program-tab-bullets list-dotted-bullets">
+					<div class="program-tab-bullets--left">
+						<?php echo $program['tab_2']['bullets_left'] ?>
+					</div>
+					<div class="program-tab-bullets--right">
+						<?php echo $program['tab_2']['bullets_right'] ?>
 					</div>
 				</div>
+
+
+			</div>
 			</div>
 		</div>
+		</div>
 	</section>
-
-
-
-
 
 
 
