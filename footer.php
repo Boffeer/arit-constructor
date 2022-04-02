@@ -1,8 +1,9 @@
 <?php
 $final_form = get_field('final_form');
+$privacy_url = carbon_get_theme_option('privacy');
 ?>
 <section class="lead-form-wrapper">
-<img class="lead-form-img--left" src="<?php echo get_stylesheet_directory_uri() ?>/img/8-cta/pills.png" alt="pills">
+	<img class="lead-form-img--left" src="<?php echo get_stylesheet_directory_uri() ?>/img/8-cta/pills.png" alt="pills">
 	<img class="lead-form-img--right" src="<?php echo get_stylesheet_directory_uri() ?>/img/8-cta/aid.png" alt="aid">
 	<div class="container">
 		<h2 class="section__title"><?php echo $final_form['title'] ?></h2>
@@ -17,16 +18,16 @@ $final_form = get_field('final_form');
 			</div>
 
 			<?php
-				$current_domain = $_SERVER['HTTP_HOST'];
-				$current_page_url = get_permalink();
+			$current_domain = $_SERVER['HTTP_HOST'];
+			$current_page_url = get_permalink();
 
-				$current_page_url = str_replace('xn--h1aitq.xn--80aqxj.xn--p1ai', $current_domain, $current_page_url);
+			$current_page_url = str_replace('xn--h1aitq.xn--80aqxj.xn--p1ai', $current_domain, $current_page_url);
 			?>
 			<form class="lead-form__form form" method="post">
-			<h3 class="form__title"><?php echo $final_form['form_title'] ?></h3>
+				<h3 class="form__title"><?php echo $final_form['form_title'] ?></h3>
 				<div class="hidden">
-				<input type="hidden" name="from" value="Заявка с нижней формы на «<?php the_title() ?>»">
-				<input type="hidden" name="page" value="<?php echo $current_page_url; ?>">
+					<input type="hidden" name="from" value="Заявка с нижней формы на «<?php the_title() ?>»">
+					<input type="hidden" name="page" value="<?php echo $current_page_url; ?>">
 				</div>
 				<div class="input-wrap">
 					<input class="form__input input__regular input--phone" type="text" placeholder="Ваше имя" name="name" required>
@@ -35,9 +36,9 @@ $final_form = get_field('final_form');
 					<input class="form__input input__regular input--phone" type="tel" placeholder="Ваш номер телефона" name="tel" autocorrect="off" autocomplete="tel" required>
 				</div>
 				<div class="input-wrap">
-				<button class="form_button primary-button"><?php echo $final_form['form_button'] ?></button>
+					<button class="form_button primary-button"><?php echo $final_form['form_button'] ?></button>
 				</div>
-				<div class="gdpr">Нажимая на кнопку, вы принимаете<strong><a class="gdpr__link" href=""> политику конфиденциальности</a></strong></div>
+				<div class="gdpr">Нажимая на кнопку, вы принимаете<strong><a class="gdpr__link" href="<?php echo $privacy_url; ?>"> политику конфиденциальности</a></strong></div>
 			</form>
 		</div>
 		<?php if (!empty($final_form['nmo'])) { ?>
@@ -47,15 +48,16 @@ $final_form = get_field('final_form');
 </section>
 <footer class="footer-wrapper">
 	<div class="container">
-	<style>
-.footer-logo {
-color: #e8e8e8;
-text-decoration: none;
-}
-</style>
+		<style>
+			.footer-logo {
+				color: #e8e8e8;
+				text-decoration: none;
+			}
+		</style>
 		<div class="footer"><a href="https://арит.рф" class="footer-logo">
-		<picture class="footer__picture"><img src="<?php echo get_stylesheet_directory_uri() ?>/img/0-general/logo.svg" alt="logo"></picture>
-				<p class="footer-logo__descriptor">Занятия проходят на базе Академии развития инновационных технологий АРИТ</p></a>
+				<picture class="footer__picture"><img src="<?php echo get_stylesheet_directory_uri() ?>/img/0-general/logo.svg" alt="logo"></picture>
+				<p class="footer-logo__descriptor">Занятия проходят на базе Академии развития инновационных технологий АРИТ</p>
+			</a>
 			<div class="footer-center">
 				<div class="socials"><a class="socials-item" href="<?php the_field('vk', 402) ?>">
 						<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -73,8 +75,9 @@ text-decoration: none;
 							<path d="M10.9429 14.8418L15.009 12.5L10.9429 10.1582V14.8418Z" fill="#ffffff"></path>
 							<path d="M12.5 0C5.5975 0 0 5.5975 0 12.5C0 19.4025 5.5975 25 12.5 25C19.4025 25 25 19.4025 25 12.5C25 5.5975 19.4025 0 12.5 0ZM20.3106 12.5128C20.3106 12.5128 20.3106 15.0478 19.989 16.2703C19.8088 16.9394 19.2812 17.4669 18.6121 17.647C17.3897 17.9688 12.5 17.9688 12.5 17.9688C12.5 17.9688 7.6231 17.9688 6.3879 17.6342C5.7188 17.4541 5.19123 16.9264 5.01099 16.2573C4.68922 15.0478 4.68922 12.5 4.68922 12.5C4.68922 12.5 4.68922 9.96513 5.01099 8.74271C5.19104 8.07362 5.73158 7.53307 6.3879 7.35302C7.61032 7.03125 12.5 7.03125 12.5 7.03125C12.5 7.03125 17.3897 7.03125 18.6121 7.3658C19.2812 7.54585 19.8088 8.07362 19.989 8.74271C20.3236 9.96513 20.3106 12.5128 20.3106 12.5128Z" fill="#ffffff"></path>
 						</svg></a></div>
-						<!--<div class="footer-copy">© 2021 Инновационный центр<br><?php //the_field('footer_address') ?></div>-->
-						<div class="footer-copy"><?php the_field('footer_address') ?></div>
+				<!--<div class="footer-copy">© 2021 Инновационный центр<br><?php //the_field('footer_address')
+																																		?></div>-->
+				<div class="footer-copy"><?php the_field('footer_address') ?></div>
 			</div>
 			<div class="contacts contacts--footer"><a class="contacts-item contacts-item--email" href="mailto:dpo@dpoarit.ru">
 					<svg class="contacts__icon" width="30" height="30" viewbox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -102,75 +105,84 @@ text-decoration: none;
 </footer>
 
 
-<?php wp_footer();?>
+<?php wp_footer(); ?>
 <style>
-.form_button--pressed {
-opacity: 0.8;
-transition: all 0.3s;
-}
-.primary-button:hover {
-	transform: scale(1) !important;
-}
+	.form_button--pressed {
+		opacity: 0.8;
+		transition: all 0.3s;
+	}
+
+	.primary-button:hover {
+		transform: scale(1) !important;
+	}
 </style>
-	<script>
-		// var formElement = document.querySelector("#mainform");
-		var getForms = [...document.querySelectorAll(".form")];
-    var formData = new FormData(); 
-		var actor = "<?php echo get_template_directory_uri() . '/form.php' ?>";
+<script>
+	// var formElement = document.querySelector("#mainform");
+	var getForms = [...document.querySelectorAll(".form")];
+	var formData = new FormData();
+	var actor = "<?php echo get_template_directory_uri() . '/form.php' ?>";
 
-		var strToSend = '';
-		
+	var strToSend = '';
 
-		getForms.map(function(formItem){
-			formItem.addEventListener('submit', function(e){
-				e.preventDefault();
-				var inputs = [...this.querySelectorAll("input")];
-				inputs.map(function(inputItem){
-					strToSend = strToSend + inputItem.name + '=' + inputItem.value + '&';
-				})	
 
-					console.log(strToSend)
-				var xhr = new XMLHttpRequest;
-				xhr.onload = function() {
-					if (xhr.status != 200) {
-						console.log('статус',xhr.status);
-						console.log(xhr.statusText);
-					} else {
-						console.log('Форма отправлена')
-					}
-				}
-
-				xhr.open('POST', actor);
-				xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-				xhr.send(strToSend);
-
-				setTimeout(function() {
-					formItem.querySelector('.form_button').classList.add('form_button--pressed');
-					formItem.querySelector('.form_button').setAttribute('disabled', 'disabled')
-					formItem.querySelector('.form_button').innerText = 'Заявка отправлена!'
-				}, 200);
-
-				return false
+	getForms.map(function(formItem) {
+		formItem.addEventListener('submit', function(e) {
+			e.preventDefault();
+			var inputs = [...this.querySelectorAll("input")];
+			inputs.map(function(inputItem) {
+				strToSend = strToSend + inputItem.name + '=' + inputItem.value + '&';
 			})
-		});
 
+			console.log(strToSend)
+			var xhr = new XMLHttpRequest;
+			xhr.onload = function() {
+				if (xhr.status != 200) {
+					console.log('статус', xhr.status);
+					console.log(xhr.statusText);
+				} else {
+					console.log('Форма отправлена')
+				}
+			}
+
+			xhr.open('POST', actor);
+			xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhr.send(strToSend);
+
+			setTimeout(function() {
+				formItem.querySelector('.form_button').classList.add('form_button--pressed');
+				formItem.querySelector('.form_button').setAttribute('disabled', 'disabled')
+				formItem.querySelector('.form_button').innerText = 'Заявка отправлена!'
+			}, 200);
+
+			return false
+		})
+	});
+</script>
+<!— Facebook Pixel Code —>
+	<script>
+		! function(f, b, e, v, n, t, s) {
+			if (f.fbq) return;
+			n = f.fbq = function() {
+				n.callMethod ?
+					n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+			};
+			if (!f._fbq) f._fbq = n;
+			n.push = n;
+			n.loaded = !0;
+			n.version = '2.0';
+			n.queue = [];
+			t = b.createElement(e);
+			t.async = !0;
+			t.src = v;
+			s = b.getElementsByTagName(e)[0];
+			s.parentNode.insertBefore(t, s)
+		}(window, document, 'script',
+			'https://connect.facebook.net/en_US/fbevents.js');
+		fbq('init', '432801571357457');
+		fbq('track', 'PageView');
 	</script>
- <!— Facebook Pixel Code —>
-  <script>
-   !function(f,b,e,v,n,t,s)
-   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-   n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-   if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-   n.queue=[];t=b.createElement(e);t.async=!0;
-   t.src=v;s=b.getElementsByTagName(e)[0];
-   s.parentNode.insertBefore(t,s)}(window, document,'script',
-   'https://connect.facebook.net/en_US/fbevents.js');
-   fbq('init', '432801571357457');
-   fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-   src="https://www.facebook.com/tr?id=432801571357457&ev=PageView&noscript=1"
-  /></noscript>
-  <!— End Facebook Pixel Code —>
-</body>
-</html>
+	<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=432801571357457&ev=PageView&noscript=1" /></noscript>
+	<!— End Facebook Pixel Code —>
+		</body>
+
+		</html>

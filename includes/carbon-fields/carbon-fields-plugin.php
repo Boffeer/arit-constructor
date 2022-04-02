@@ -3,6 +3,15 @@
 use Carbon_Fields\Container;
 use Carbon_Fields\Field;
 
+add_action('carbon_fields_register_fields', 'crb_attach_theme_options');
+function crb_attach_theme_options()
+{
+	Container::make('theme_options', 'Настройки темы')
+		->add_fields(array(
+			Field::make('text', 'privacy', 'Ссылка на политику конфиденциальности'),
+		));
+}
+
 add_action('carbon_fields_register_fields', 'arit_landing_page_options');
 function arit_landing_page_options()
 {
@@ -279,6 +288,8 @@ function arit_landing_page_options()
 		->add_tab(__('Блок 7, Тарифы'), array(
 			Field::make('text', 'crb_landing_block_7_title', __('Заголовок блока'))
 				->set_default_value('Тарифы'),
+			Field::make('text', 'crb_landing_block_7_pop_title', __('Заголовок всплывающей формы'))
+				->set_default_value('Бронируйте место со скидкой'),
 			Field::make('complex', 'crb_landing_block_7_pricing', __('Тарифы'))
 				->setup_labels(array(
 					'plural_name' => 'тарифы',
@@ -294,7 +305,7 @@ function arit_landing_page_options()
 						->add_fields(array(
 							Field::make('text', 'bullet', __('Буллет')),
 						)),
-					Field::make('complex', 'bullets_positive', __('Негативные буллеты'))
+					Field::make('complex', 'bullets_negative', __('Негативные буллеты'))
 						->setup_labels(array(
 							'plural_name' => 'негативные буллеты',
 							'singular_name' => 'негативный буллет',
@@ -309,7 +320,8 @@ function arit_landing_page_options()
 					'singular_name' => 'буллет под тарифами',
 				))
 				->add_fields(array(
-					Field::make('image', 'img', __('Картинка')),
+					Field::make('image', 'img', __('Картинка'))
+						->set_value_type('url'),
 					Field::make('text', 'bullet', __('Буллет')),
 				))
 		))
