@@ -1,0 +1,13 @@
+{
+    "version": 3,
+    "mappings": "AAKA,AAAA,oBAAoB,AAAC,CACnB,KAAK,CAAE,CAAC,CACR,SAAS,CAAE,KAAK,CAChB,MAAM,CAAE,IAAI,CACZ,KAAK,CAAE,IAAI,CACX,UAAU,CAAE,OAAO,CACpB",
+    "sources": [
+        "crb-landing.scss",
+        "blocks/_pricing.scss",
+        "blocks/_catcher.scss",
+        "blocks/_programm.scss",
+        "blocks/_video-reviews.scss"
+    ],
+    "names": [],
+    "file": "crb-landing.min.css"
+}

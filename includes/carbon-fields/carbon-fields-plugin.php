@@ -11,12 +11,13 @@ function arit_landing_page_options()
 		'singular_name' => 'буллет',
 	);
 
-	Container::make('post_meta', 'Langin info')
+	Container::make('post_meta', 'Лендинг')
 		->where('post_type', '=', 'page')
 		->where('post_template', '=', 'template-crb-landing.php')
 		->add_tab(__('Блок 1. Первый экран'), array(
 			Field::make('textarea', 'crb_landing_block_1_title', __('Оффер')),
 			Field::make('complex', 'crb_landing_block_1_bullets', __('Буллеты'))
+				->setup_labels($bullets_labels)
 				->add_fields(array(
 					Field::make('text', 'bullet', __('Буллет')),
 				)),
@@ -26,7 +27,8 @@ function arit_landing_page_options()
 			Field::make('image', 'crb_landing_block_1_background', __('Фон'))
 				->set_value_type('url')
 				->set_width(50),
-			Field::make('date', 'crb_landing_block_1_date', __('Дата')),
+			Field::make('date', 'crb_landing_block_1_date', __('Дата'))
+				->set_storage_format('d.m.Y'),
 			Field::make('text', 'crb_landing_block_1_video', __('Ссылка на видео о курсе')),
 			Field::make('text', 'crb_landing_block_1_button_submit', __('Текст на кнопке в форме на первом экране'))
 				->set_default_value('Получить консультацию'),
@@ -37,8 +39,10 @@ function arit_landing_page_options()
 			Field::make('textarea', 'crb_landing_block_2_title', __('Заголовок')),
 			Field::make('textarea', 'crb_landing_block_2_subtitle', __('Подзаголовок')),
 			Field::make('complex', 'crb_landing_block_2_bullets', __('Буллеты'))
+				->setup_labels($bullets_labels)
 				->add_fields(array(
-					Field::make('image', 'img', __('Картинка')),
+					Field::make('image', 'img', __('Картинка'))
+						->set_value_type('url'),
 					Field::make('text', 'title', __('Заголовок')),
 					Field::make('textarea', 'desc', __('Текст')),
 				)),
@@ -52,9 +56,9 @@ function arit_landing_page_options()
 				->add_fields(array(
 					Field::make('textarea', 'bullet', __('Буллет')),
 				)),
-			Field::make('image', 'crb_landing_block_3_background-desktop', __('Фон, компьютер'))
+			Field::make('image', 'crb_landing_block_3_background_desktop', __('Фон, компьютер'))
 				->set_value_type('url'),
-			Field::make('image', 'crb_landing_block_3_background-mobile', __('Фон, компьютер'))
+			Field::make('image', 'crb_landing_block_3_background_mobile', __('Фон, мобилка'))
 				->set_value_type('url'),
 		))
 		->add_tab(__('Блок 4, Программа курса. Теория и практика'), array(
@@ -76,11 +80,11 @@ function arit_landing_page_options()
 							)),
 						Field::make('textarea', 'tab_top_text', 'Текст вверху вкладки')
 							->set_conditional_logic(array(
-								'relation' => 'AND', // Optional, defaults to "AND"
+								'relation' => 'AND',
 								array(
 									'field' => 'tab_top_type',
-									'value' => 'text', // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
-									'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+									'value' => 'text',
+									'compare' => '=',
 								)
 							)),
 						Field::make('complex', 'tab_top_cards', 'Карточки вверху вкладки')
@@ -89,11 +93,11 @@ function arit_landing_page_options()
 								'singular_name' => 'карточку вверху вкладки программы',
 							))
 							->set_conditional_logic(array(
-								'relation' => 'AND', // Optional, defaults to "AND"
+								'relation' => 'AND',
 								array(
 									'field' => 'tab_top_type',
-									'value' => 'cards', // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
-									'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+									'value' => 'cards',
+									'compare' => '=',
 								)
 							))
 							->add_fields(
@@ -269,7 +273,7 @@ function arit_landing_page_options()
 					'singular_name' => 'отзыв с видео',
 				))
 				->add_fields(array(
-					Field::make('text', 'review_desc', __('Ссылка на видео на YouTube')),
+					Field::make('text', 'review_link', __('Ссылка на видео на YouTube')),
 				))
 		))
 		->add_tab(__('Блок 7, Тарифы'), array(

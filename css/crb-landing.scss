@@ -1,0 +1,12 @@
+@import "blocks/pricing";
+@import "blocks/catcher";
+@import "blocks/programm";
+@import "blocks/video-reviews";
+
+.autor-single__image {
+  right: 0;
+  max-width: 720px;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}

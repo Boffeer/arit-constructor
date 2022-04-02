@@ -1,6 +1,13 @@
 <?php
 function arit_styles()
 {
+
+	if (get_page_template_slug() == 'template-crb-landing.php') {
+		wp_enqueue_style('crb-landing', get_template_directory_uri() . '/css/crb-landing.min.css');
+		wp_enqueue_style('bayan-css', get_template_directory_uri() . '/assets/bayan/bayan.min.css');
+		wp_enqueue_script('bayan-js', get_template_directory_uri() . '/assets/bayan/bayan.js');
+	}
+
 	wp_enqueue_style('swipercss', 'https://unpkg.com/swiper/swiper-bundle.min.css');
 	wp_enqueue_style('style', get_template_directory_uri() . '/css/style.css');
 	wp_register_script('swiperjs', 'https://unpkg.com/swiper/swiper-bundle.min.js', '', '1.0.0', false);

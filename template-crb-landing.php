@@ -6,12 +6,22 @@ Template Name: CRB Лендинг
 <?php get_header(); ?>
 <main>
 	<?php
-	$hero = get_field('hero');
-	$color = get_field('colors');
+	$page_id = get_the_ID();
+	$hero = array(
+		'offer' => carbon_get_post_meta($page_id, 'crb_landing_block_1_title'),
+		'bullets' => carbon_get_post_meta($page_id, 'crb_landing_block_1_bullets'),
+		'hero' => carbon_get_post_meta($page_id, 'crb_landing_block_1_hero'),
+		'background' => carbon_get_post_meta($page_id, 'crb_landing_block_1_background'),
+		'date' => carbon_get_post_meta($page_id, 'crb_landing_block_1_date'),
+		'video' => carbon_get_post_meta($page_id, 'crb_landing_block_1_video'),
+		'button_submit' => carbon_get_post_meta($page_id, 'crb_landing_block_1_button_submit'),
+		'button_video' => carbon_get_post_meta($page_id, 'crb_landing_block_1_button_video'),
+	);
 	?>
+
 	<style>
 		.hero-wrapper {
-			background: url(<?php echo $hero['hero_img_desktop'] ?>);
+			background: url(<?php echo $hero['background'] ?>);
 			background-size: cover;
 		}
 
@@ -21,7 +31,6 @@ Template Name: CRB Лендинг
 
 		@media (min-width: 130000px) {
 			.hero-wrapper {
-				background: url(<?php echo $hero['hero_img_mobile'] ?>);
 				background-size: cover;
 				background-position: bottom;
 				background-repeat: no-repeat;
@@ -54,7 +63,13 @@ Template Name: CRB Лендинг
 					<div class="hero-offer">
 						<h1 class="headliner"><?php echo $hero['offer'] ?></h1>
 						<div class="hero-bullets">
-							<?php echo $hero['bullets'] ?>
+							<?php if ($hero['bullets']) : ?>
+								<?php foreach ($hero['bullets'] as $bullet) : ?>
+									<p>
+										<?php echo $bullet['bullet'] ?>
+									</p>
+								<?php endforeach; ?>
+							<?php endif; ?>
 						</div>
 						<?php
 						$current_domain = $_SERVER['HTTP_HOST'];
@@ -74,7 +89,7 @@ Template Name: CRB Лендинг
 								<input class="hero__input input--phone" type="tel" placeholder="Ваш номер телефона" name="tel" autocorrect="off" autocomplete="tel" required>
 							</div>
 							<div class="input-wrap">
-								<button class="hero-cta form_button"><?php echo $hero['button'] ?></button>
+								<button class="hero-cta form_button"><?php echo $hero['button_submit'] ?></button>
 							</div>
 						</form>
 					</div>
@@ -82,7 +97,7 @@ Template Name: CRB Лендинг
 
 
 					<div class="hero-character">
-						<img class="hero__character" src="<?php echo $hero['character'] ?>" alt="">
+						<img class="hero__character" src="<?php echo $hero['hero'] ?>" alt="<?php echo $hero['title']; ?>">
 					</div>
 
 
@@ -91,13 +106,13 @@ Template Name: CRB Лендинг
 		</div>
 		<?php
 		//https://www.youtube.com/embed/-w99BreXD3M
-		$get_embed_link = $hero['video_link'];
+		$get_embed_link = $hero['video'];
 
-		if (!empty($hero['video_link'])) {
+		if (!empty($hero['video'])) {
 			$get_embed_link = str_replace('watch?v=', 'embed/', $get_embed_link);
 		?>
 			<div class="hero-video"><img class="hero-play" src="<?php echo get_stylesheet_directory_uri() ?>/img/0-general/watch-video-big-button.svg" alt="">
-				<button class="video-button video-button--hero"><?php echo $hero['video_button'] ?></button>
+				<button class="video-button video-button--hero"><?php echo $hero['button_video'] ?></button>
 			</div>
 
 			<div class="pop-video-wrapper">
@@ -118,11 +133,17 @@ Template Name: CRB Лендинг
 
 
 
-
-
 	<?php
-	$why_we = get_field('why_we');
+	$why_we = array(
+		'title' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_2_title'),
+		'subtitle' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_2_subtitle'),
+		'bullets' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_2_bullets'),
+	)
 	?>
+	<pre>
+		<?php //var_dump($why_we);
+		?>
+	</pre>
 	<section class="why-we-wrapper">
 		<div class="container">
 			<div class="why-we">
@@ -130,34 +151,19 @@ Template Name: CRB Лендинг
 				<p class="section__descriptor"><?php echo $why_we['subtitle'] ?></strong></p>
 				<div class="why-we-list">
 
-					<div class="why-we-item">
-						<?php if (!empty($why_we['bullet_1']['img'])) { ?>
-							<picture class="why-we-pic"><img src="<?php echo $why_we['bullet_1']['img'] ?>" alt=""></picture>
-						<?php } ?>
-						<?php if (!empty($why_we['bullet_1']['title'])) { ?>
-							<h3 class="why-we__title"><?php echo $why_we['bullet_1']['title'] ?></h3>
-						<?php } ?>
-						<div class="why-we__text"><?php echo $why_we['bullet_1']['description'] ?></div>
-					</div>
-					<div class="why-we-item">
-						<?php if (!empty($why_we['bullet_2']['img'])) { ?>
-							<picture class="why-we-pic"><img src="<?php echo $why_we['bullet_2']['img'] ?>" alt=""></picture>
-						<?php } ?>
-						<?php if (!empty($why_we['bullet_2']['title'])) { ?>
-							<h3 class="why-we__title"><?php echo $why_we['bullet_2']['title'] ?></h3>
-						<?php } ?>
-						<div class="why-we__text"><?php echo $why_we['bullet_2']['description'] ?></div>
-					</div>
-					<div class="why-we-item">
-						<?php if (!empty($why_we['bullet_3']['img'])) { ?>
-							<picture class="why-we-pic"><img src="<?php echo $why_we['bullet_3']['img'] ?>" alt=""></picture>
-						<?php } ?>
-						<?php if (!empty($why_we['bullet_3']['title'])) { ?>
-							<h3 class="why-we__title"><?php echo $why_we['bullet_3']['title'] ?></h3>
-						<?php } ?>
-						<div class="why-we__text"><?php echo $why_we['bullet_3']['description'] ?></div>
-					</div>
-
+					<?php if (!empty($why_we['bullets'])) : ?>
+						<?php foreach ($why_we['bullets'] as $bullet) : ?>
+							<div class="why-we-item">
+								<?php if (!empty($bullet['img'])) { ?>
+									<picture class="why-we-pic"><img src="<?php echo $bullet['img'] ?>" alt="<?php echo $bullet['title'] ?>"></picture>
+								<?php } ?>
+								<?php if (!empty($bullet['title'])) { ?>
+									<h3 class="why-we__title"><?php echo $bullet['title'] ?></h3>
+								<?php } ?>
+								<div class="why-we__text"><?php echo $bullet['desc'] ?></div>
+							</div>
+						<?php endforeach; ?>
+					<?php endif; ?>
 				</div>
 			</div>
 		</div>
@@ -172,20 +178,27 @@ Template Name: CRB Лендинг
 
 	<section class="after-wrapper">
 		<?php
-		$after = get_field('after');
+		$after = array(
+			'title' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_3_title'),
+			'subtitle' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_3_subtitle'),
+			'bullets' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_3_bullets'),
+			'bullets' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_3_bullets'),
+			'image_desktop' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_3_image'),
+			'image_mobile' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_3_image_mobile'),
+		);
 		?>
-		<?php if (!empty($after['bg_desktop'])) { ?>
+		<?php if (!empty($after['image_desktop'])) { ?>
 			<style>
 				.after-wrapper {
-					background: url(<?php echo $after['bg_desktop'] ?>);
+					background: url(<?php echo $after['image_desktop'] ?>);
 				}
 			</style>
 		<?php } ?>
-		<?php if (!empty($after['bg_mobile'])) { ?>
+		<?php if (!empty($after['image_mobile'])) { ?>
 			<style>
 				@media (max-width: 1300px) {
 					.after-wrapper {
-						background: url(<?php echo $after['bg_mobile'] ?>);
+						background: url(<?php echo $after['image_mobile'] ?>);
 						background-size: cover;
 						background-position: bottom;
 					}
@@ -198,7 +211,13 @@ Template Name: CRB Лендинг
 				<p class="section__descriptor section__descriptor--left"><?php echo $after['subtitle'] ?></p>
 				<h3 class="after__descriptor"><?php echo $after['bullets_title'] ?></h3>
 				<div class="after-bullets list-dotted-bullets">
-					<?php echo $after['bullets'] ?>
+					<?php if (!empty($after['bullets'])) : ?>
+						<?php foreach ($after['bullets'] as $bullet) : ?>
+							<p>
+								<?php echo $bullet['bullet'] ?>
+							</p>
+						<?php endforeach; ?>
+					<?php endif; ?>
 				</div>
 			</div>
 		</div>
@@ -210,30 +229,37 @@ Template Name: CRB Лендинг
 
 	<section class="program-wrapper">
 		<?php
-		$program = get_field('program');
+		// $program = get_field('program');
+		$program = array(
+			'title' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_4_title'),
+			'tabs' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_4_tabs'),
+		)
 		?>
 		<div class="container">
 			<h2 class="section__title"><?php echo $program['title'] ?></h2>
 			<div class="program" id="program">
 				<div class="program-tabs-controls">
-					<button class="program-tabs__control program-tabs__control--current js-program-tabs__control--theory"><?php echo $program['tab_1']['title'] ?></button>
-					<button class="program-tabs__control js-program-tabs__control--practice"><?php echo $program['tab_2']['title'] ?></button>
+					<?php foreach ($program['tabs'] as $key => $tab) : ?>
+						<button data-tab="<?php echo $key; ?>" class="program-tabs__control program-tabs__control--current js-program-tabs__control--theory js-program-tabs__control--practice"><?php echo $tab['tab_title'] ?></button>
+					<?php endforeach; ?>
 				</div>
 				<div class="program-tabs">
-					<div class="program-tab program-tab--theory program-tab--current">
-						<div class="program-tab-descr-wrapper">
-							<h3 class="program-tab__title"><?php echo $program['tab_1']['title'] ?></h3>
-							<p class="program-tab__descr"><?php echo $program['tab_1']['descr'] ?></p>
-						</div>
-						<div class="program-tab-bullets list-dotted-bullets">
-							<div class="program-tab-bullets--left">
-								<?php echo $program['tab_1']['bullets_left'] ?>
+					<?php foreach ($program['tabs'] as $key => $tab) : ?>
+						<div data-tab="<?php echo $key; ?>" class="program-tab program-tab--theory program-tab--current">
+							<div class="program-tab-descr-wrapper">
+								<h3 class="program-tab__title"><?php echo $program['tab_1']['title'] ?></h3>
+								<p class="program-tab__descr"><?php echo $program['tab_1']['descr'] ?></p>
 							</div>
-							<div class="program-tab-bullets--right">
-								<?php echo $program['tab_1']['bullets_right'] ?>
+							<div class="program-tab-bullets list-dotted-bullets">
+								<div class="program-tab-bullets--left">
+									<?php echo $program['tab_1']['bullets_left'] ?>
+								</div>
+								<div class="program-tab-bullets--right">
+									<?php echo $program['tab_1']['bullets_right'] ?>
+								</div>
 							</div>
 						</div>
-					</div>
+					<?php endforeach; ?>
 					<div class="program-tab program-tab--practice">
 						<div class="program-tab-descr-wrapper">
 							<h3 class="program-tab__title"><?php echo $program['tab_2']['title'] ?></h3>
@@ -285,16 +311,13 @@ Template Name: CRB Лендинг
 
 
 
-	<section class="after-complete-wrapper">
+	<!-- <section class="after-complete-wrapper">
 
 		<?php
 		$complete = get_field('course_complete');
+		// $complete = array()
 		?>
 		<div class="container">
-
-
-
-
 			<?php if (empty($complete['pic']) && !empty($complete['bullets'])) { ?>
 
 				<div class="after-complete after-complete--list">
@@ -315,22 +338,207 @@ Template Name: CRB Лендинг
 			<?php } ?>
 
 		</div>
+	</section> -->
+
+
+
+	<?php
+	$text_reviews = array(
+		'reviews' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_5_reviews'),
+	);
+	?>
+
+	<?php if (count($text_reviews) > 0) : ?>
+		<section class="testimonials-wrapper">
+			<h2 class="section__title testimonials__title">Отзывы</h2>
+			<div class="container testimonials">
+				<div class="swiper-container testimonials-slider">
+					<div class="swiper-wrapper">
+						<?php foreach ($text_reviews['reviews'] as $review) : ?>
+							<article class="swiper-slide testimonials-item">
+								<div class="testimonial-top">
+									<?php if (!empty($review['review_img'])) { ?>
+										<img src="<?php echo $review['review_img']; ?>" alt="<?php echo $review['review_name']; ?>?>">
+									<?php } ?>
+									<div class="testiomoial-person">
+										<h3 class="testiomoial-person__name"><?php echo $review['review_name']; ?></h3>
+										<?php if (false) { ?>
+											<a href="<?php //the_field('profile_link', $id)
+																?>" class="testiomoial-person__social"><?php //the_field('profile', $id)
+																																				?></a>
+										<?php } ?>
+									</div>
+									<?php if (false) {  ?>
+										<time class="testimonial-date"><?php //the_field('date', $id)
+																										?></time>
+									<?php } ?>
+								</div>
+								<div class="testimonial-text"><?php echo $review['review_desc']; ?></div>
+							</article>
+						<?php endforeach; ?>
+
+
+					</div>
+				</div>
+				<div class="swiper-pagination testimonials-pagination"></div>
+				<div class="swiper-button-next testimonials-button-next"></div>
+				<div class="swiper-button-prev testimonials-button-prev"></div>
+				<script>
+					// startTestimonialSlider = true;
+					var testimonialsSlider = new Swiper('.testimonials-slider', {
+						autoHeight: true,
+						slidesPerView: 1,
+						spaceBetween: 19,
+						pagination: {
+							el: '.swiper-pagination.testimonials-pagination',
+						},
+						breakpoints: {
+							1300: {
+								slidesPerView: 2,
+								navigation: {
+									nextEl: '.swiper-button-next.testimonials-button-next',
+									prevEl: '.swiper-button-prev.testimonials-button-prev',
+								},
+							}
+						},
+
+					})
+				</script>
+			</div>
+		</section>
+	<?php endif; ?>
+
+
+	<?php
+	$video_reviews = array(
+		'reviews' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_6_videoreviews'),
+	);
+	// echo '<pre>';
+	// var_dump($video_reviews);
+	// echo '</pre>';
+	?>
+
+	<section class="video-reviews__wrap">
+		<div class="container">
+			<div class="video-reviews">
+				<div class="swiper video-reviews-slider">
+					<div class="swiper-wrapper">
+						<?php foreach ($video_reviews['reviews'] as $review) : ?>
+							<div class="swiper-slide video-reviews-slider-slide">
+								<?php echo $review['review_link']; ?>
+							</div>
+						<?php endforeach; ?>
+					</div>
+					<div class="swiper-pagination video-reviews-slider__pagination slider__pagination"></div>
+					<div class="swiper-button-prev video-reviews-slider__button-prev slider__button slider__button-prev"></div>
+					<div class="swiper-button-next video-reviews-slider__button-next slider__button slider__button-next"></div>
+				</div>
+			</div>
+		</div>
 	</section>
+	<script>
+		window.addEventListener('DOMContentLoaded', (event) => {
+
+			let videoReviews = new Swiper('.video-reviews-slider', {
+				grabCursor: true,
+				effect: 'creative',
+				creativeEffect: {
+					prev: {
+						shadow: true,
+						translate: [0, 0, -400],
+					},
+					next: {
+						translate: ['100%', 0, 0],
+					},
+				},
+				navigation: {
+					nextEl: '.video-reviews-slider__button-next',
+					prevEl: '.video-reviews-slider__button-prev',
+				},
+				pagination: {
+					el: '.video-reviews-slider__pagination'
+				},
+			});
+		});
+	</script>
+
+	<?php if (false) : ?>
+		<section class="testimonials-wrapper">
+			<div class="container">
+				<div class="testimonials"><a class="testimonials-video">
+						<picture class="testimonials-watch"><img src="<?php echo get_stylesheet_directory_uri() ?>/img/0-general/watch-video-big-button.svg" alt=""></picture><span>Посмотреть видео</span>
+					</a>
+					<div class="testimonials-latest">
+						<h2 class="section__title section__title--left testimonials__title">Отзывы</h2>
+						<div class="testimonials-list">
+							<p>Очень благодарны за возможность пройти этот курс...</p>
+							<p>Материал очень подробный</p>
+							<p>Очень понятно, лектор отвечает на абсолютно все вопросы...</p>
+							<p>Детальное пособие по оказанию практической помощи...</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	<?php endif; ?>
+
+	<?php
+	// if ($testimonialsCheckbox['slider']) {
+	// $args = array(
+	//   'supress_filters' => false,
+	//   'post_type' => 'testimonials',
+	//   'numberposts' => 20,
+	// );
+	// $testimonial_posts = get_posts($args);
 
 
 
+	// echo '<pre>';
+	// var_dump($page_testimonials);
+	// echo '</pre>';
 
 
-
+	?>
 
 
 
 
 	<?php
-	$autor = get_field('autor');
+	$author = array(
+		'spec' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_9_spec'),
+		'author' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_9_author'),
+	);
+
+	echo '<pre>';
+	// var_dump($author);
+	echo '</pre>';
 	?>
 
-	<?php if (!empty($autor['name_2'])) { ?>
+
+	<?php if (count($author['author']) == 1) : ?>
+		<section class="autor-single-wrapper">
+			<div class="container autor-single">
+				<h2 class="section__title section__title--left">
+					<?php echo $author['spec']; ?>
+				</h2>
+				<?php foreach ($author['author'] as $speaker) : ?>
+					<div class="autor-single-bullets list-dotted-bullets">
+						<?php foreach ($speaker['bullets'] as $bullet) : ?>
+							<p>
+								<?php echo $bullet['bullet']; ?>
+							</p>
+						<?php endforeach; ?>
+					</div>
+					<div class="autor-single-image">
+						<div class="autor-single__who">
+							<h3 class="autor-single__name"><?php echo $speaker['name'] ?></h3>
+							<!-- <p class="autor-single__post"></p> -->
+						</div><img class="autor-single__image" src="<?php echo $speaker['img'] ?>" alt="<?php echo $speaker['name'] ?>">
+					</div>
+				<?php endforeach; ?>
+			</div>
+		</section>
+	<?php elseif (count($author['author']) > 1) : ?>
 		<section class="autor-wrapper">
 			<div class="container">
 				<div class="autor">
@@ -362,152 +570,9 @@ Template Name: CRB Лендинг
 				</div>
 			</div>
 		</section>
-	<?php } else { ?>
 
-		<section class="autor-single-wrapper">
-			<div class="container autor-single">
-				<h2 class="section__title section__title--left"><?php echo $autor['title_1'] ?></h2>
-				<div class="autor-single-bullets list-dotted-bullets">
-					<?php echo $autor['bullets_1'] ?>
-				</div>
-				<div class="autor-single-image">
-					<div class="autor-single__who">
-						<h3 class="autor-single__name"><?php echo $autor['name_1'] ?></h3>
-						<p class="autor-single__post"><?php echo $autor['post'] ?></p>
-					</div><img class="autor-single__image" src="<?php echo $autor['pic_1'] ?>" alt="<?php echo $autor['name_1'] ?>" style="right: <?php echo $autor['offset'] ?>">
-				</div>
-			</div>
-		</section>
-	<?php } //end only one autor
-	?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<?php
-	$testimonialsCheckbox = get_field('testimonials');
-	if ($testimonialsCheckbox['video']) {
-	?>
-
-		<section class="testimonials-wrapper">
-			<div class="container">
-				<div class="testimonials"><a class="testimonials-video">
-						<picture class="testimonials-watch"><img src="<?php echo get_stylesheet_directory_uri() ?>/img/0-general/watch-video-big-button.svg" alt=""></picture><span>Посмотреть видео</span>
-					</a>
-					<div class="testimonials-latest">
-						<h2 class="section__title section__title--left testimonials__title">Отзывы</h2>
-						<div class="testimonials-list">
-							<p>Очень благодарны за возможность пройти этот курс...</p>
-							<p>Материал очень подробный</p>
-							<p>Очень понятно, лектор отвечает на абсолютно все вопросы...</p>
-							<p>Детальное пособие по оказанию практической помощи...</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-	<?php } ?>
-
-	<?php
-	// if ($testimonialsCheckbox['slider']) {
-	// $args = array(
-	//   'supress_filters' => false,
-	//   'post_type' => 'testimonials',
-	//   'numberposts' => 20,
-	// );
-	// $testimonial_posts = get_posts($args);
-
-
-	$page_id = get_the_ID();
-
-	$page_args = array(
-		'parent' => $page_id,
-	);
-	$page_testimonials = get_pages($page_args);
-
-	// echo '<pre>';
-	// var_dump($page_testimonials);
-	// echo '</pre>';
-
-
-	if (count($page_testimonials) > 1) {
-	?>
-		<section class="testimonials-wrapper">
-			<h2 class="section__title testimonials__title">Отзывы</h2>
-			<div class="container testimonials">
-				<div class="swiper-container testimonials-slider">
-					<div class="swiper-wrapper">
-
-
-						<?php foreach ($page_testimonials as $testimonial) {
-							// $id = $testimonial->to_array['ID'];
-							setup_postdata($testimonial);
-							// echo '<pre>';
-							// var_dump($testimonial);
-							// echo '</pre>';
-						?>
-							<div class="swiper-slide testimonials-item">
-								<div class="testimonial-top">
-									<?php if (!empty(get_field('pic', $id))) { ?>
-										<img src="<?php the_field('pic', $id) ?>" alt="<?php the_field('name', $id) ?>">
-									<?php } ?>
-									<div class="testiomoial-person">
-										<h3 class="testiomoial-person__name"><?php the_field('name', $id) ?></h3>
-										<?php if (!empty(get_field('profile', $id))) { ?>
-											<a href="<?php the_field('profile_link', $id) ?>" class="testiomoial-person__social"><?php the_field('profile', $id) ?></a>
-										<?php } ?>
-									</div>
-									<?php if (!empty(get_field('date', $id))) {  ?>
-										<time class="testimonial-date"><?php the_field('date', $id) ?></time>
-									<?php } ?>
-								</div>
-								<div class="testimonial-text"><?php the_field('testimonial', $id) ?></div>
-							</div>
-						<?php }
-						wp_reset_postdata(); ?>
-						<?php //тут уже кончились отзывы
-						?>
-
-
-					</div>
-				</div>
-				<div class="swiper-pagination testimonials-pagination"></div>
-				<div class="swiper-button-next testimonials-button-next"></div>
-				<div class="swiper-button-prev testimonials-button-prev"></div>
-				<script>
-					// startTestimonialSlider = true;
-					var testimonialsSlider = new Swiper('.testimonials-slider', {
-						autoHeight: true,
-						slidesPerView: 1,
-						spaceBetween: 19,
-						pagination: {
-							el: '.swiper-pagination.testimonials-pagination',
-						},
-						breakpoints: {
-							1300: {
-								slidesPerView: 2,
-								navigation: {
-									nextEl: '.swiper-button-next.testimonials-button-next',
-									prevEl: '.swiper-button-prev.testimonials-button-prev',
-								},
-							}
-						},
-
-					})
-				</script>
-			</div>
-		</section>
-	<?php } ?>
+	<?php endif; ?>
 
 </main>
+
 <?php get_footer(); ?>
