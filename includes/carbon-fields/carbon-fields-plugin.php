@@ -265,7 +265,13 @@ function arit_landing_page_options()
 									)),
 							))
 					)
-				)
+				),
+			Field::make('complex', 'crb_landing_block_4_completion', __('Блок с буллетами после всей программы'))
+				->setup_labels($bullets_labels)
+				->add_fields(array(
+					Field::make('textarea', 'bullet', __('Буллет')),
+				)),
+
 		))
 		->add_tab(__('Блок 5, Текстовые отзывы'), array(
 			Field::make('complex', 'crb_landing_block_5_reviews', __('Отзывы'))

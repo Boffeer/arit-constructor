@@ -125,4 +125,9 @@
   .pricing-bundle__bullet {
     font-size: 14px;
   }
+  .pricing__list,
+  .pricing-bullets__list {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    justify-content: center;
+  }
 }

@@ -146,19 +146,22 @@ Template Name: CRB Лендинг
 			<div class="why-we">
 				<h2 class="section__title"><?php echo $why_we['title'] ?></h2>
 				<p class="section__descriptor"><?php echo $why_we['subtitle'] ?></strong></p>
-				<div class="why-we-list">
-
+				<div class="programm-module-cards cards__list cards__list--3">
 					<?php if (!empty($why_we['bullets'])) : ?>
-						<?php foreach ($why_we['bullets'] as $bullet) : ?>
-							<div class="why-we-item">
-								<?php if (!empty($bullet['img'])) { ?>
-									<picture class="why-we-pic"><img src="<?php echo $bullet['img'] ?>" alt="<?php echo $bullet['title'] ?>"></picture>
-								<?php } ?>
-								<?php if (!empty($bullet['title'])) { ?>
-									<h3 class="why-we__title"><?php echo $bullet['title'] ?></h3>
-								<?php } ?>
-								<div class="why-we__text"><?php echo $bullet['desc'] ?></div>
-							</div>
+						<?php foreach ($why_we['bullets'] as $card) : ?>
+							<article class="card">
+								<?php if ($card['img']) : ?>
+									<img src="<?php echo $card['img'] ?>" alt="<?php echo $card['desc'] ?>" class="card__img">
+								<?php endif; ?>
+								<?php if ($card['title']) : ?>
+									<h3 class="card__title">
+										<?php echo $card['title'] ?>
+									</h3>
+								<?php endif; ?>
+								<p class="card__desc">
+									<?php echo $card['desc'] ?>
+								</p>
+							</article>
 						<?php endforeach; ?>
 					<?php endif; ?>
 				</div>
@@ -229,6 +232,7 @@ Template Name: CRB Лендинг
 		$program = array(
 			'title' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_4_title'),
 			'tabs' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_4_tabs'),
+			'completion' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_4_completion'),
 		)
 		?>
 		<div class="container">
@@ -521,37 +525,22 @@ Template Name: CRB Лендинг
 		</div>
 	</section>
 
-
-
-
-	<!-- <section class="after-complete-wrapper">
-
-		<?php
-		$complete = get_field('course_complete');
-		// $complete = array()
-		?>
-		<div class="container">
-			<?php if (empty($complete['pic']) && !empty($complete['bullets'])) { ?>
-
+	<?php if (!empty($program['completion'])) : ?>
+		<section class="after-complete-wrapper">
+			<?php $complete = $program['completion']; ?>
+			<div class="container">
 				<div class="after-complete after-complete--list">
 					<h2 class="section__title section__title--mini">По окончанию курса</h2>
 					<div class="after-complete-bullets">
-						<?php echo $complete['bullets'] ?>
+						<?php foreach ($complete as $bullet) : ?>
+							<p><?php echo $bullet['bullet'] ?></p>
+						<?php endforeach; ?>
 						<div class="clearfix"></div>
 					</div>
 				</div>
-
-			<?php } else if (!empty($complete['pic']) && !empty($complete['bullets'])) { ?>
-
-				<div class="after-course"><img class="after-course__pic" src="<?php echo $complete['pic'] ?>" alt="По окончанию курса">
-					<div class="after-course-text">
-						<?php echo $complete['bullets'] ?>
-					</div>
-				</div>
-			<?php } ?>
-
-		</div>
-	</section> -->
+			</div>
+		</section>
+	<?php endif; ?>
 
 
 
@@ -626,100 +615,81 @@ Template Name: CRB Лендинг
 	);
 	?>
 
-	<section class="video-reviews__wrap">
-		<div class="container">
-			<h2 class="section__title video-reviews__title">Видео отзывы</h2>
-			<div class="video-reviews">
-				<div class="swiper video-reviews-slider">
-					<div class="swiper-wrapper">
-						<?php foreach ($video_reviews['reviews'] as $review) : ?>
-							<?php
-							$yt_id = preg_replace('/.+\?v\=/i', '', $review['review_link']);
-							$thumbnail = "https://i.ytimg.com/vi/{$yt_id}/hqdefault.jpg";
-							$embed_url = "https://www.youtube.com/embed/{$yt_id}";
-							?>
-							<div class="swiper-slide video-reviews-slider-slide">
-								<img src="<?php echo $thumbnail; ?>" alt="" class="video-reviews-slider-slide__media video-reviews-slider-slide__img">
-								<iframe class="video-reviews-slider-slide__media video-reviews-slider-slide__video" data-src="<?php echo $embed_url; ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-							</div>
-						<?php endforeach; ?>
-					</div>
-					<div class="swiper-scrollbar slider__scrollbar video-reviews-slider__scrollbar"></div>
-					<div class="swiper-pagination video-reviews-slider__pagination slider__pagination"></div>
-					<div class="swiper-button-prev video-reviews-slider__button-prev slider__button slider__button-prev"></div>
-					<div class="swiper-button-next video-reviews-slider__button-next slider__button slider__button-next"></div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<script>
-		window.addEventListener('DOMContentLoaded', (event) => {
-
-			let videoReviews = new Swiper('.video-reviews-slider', {
-				navigation: {
-					nextEl: '.video-reviews-slider__button-next',
-					prevEl: '.video-reviews-slider__button-prev',
-				},
-				centeredSlides: true,
-				slidesPerView: 'auto',
-				effect: "creative",
-				creativeEffect: {
-					prev: {
-						translate: ["-35%", 0, 0],
-						opacity: 0.3,
-						scale: 0.7,
-					},
-					next: {
-						translate: ["35%", 0, 0],
-						opacity: 0.3,
-						scale: 0.7,
-					},
-					limitProgress: 2,
-				},
-				pagination: {
-					el: '.video-reviews-slider__pagination',
-					dynamicBullets: true,
-				},
-				scrollbar: {
-					el: '.video-reviews-slider__scrollbar',
-					draggable: true,
-				},
-			});
-			const videoSlides = document.querySelectorAll('.video-reviews-slider-slide ');
-			videoSlides.forEach((slide) => {
-				slide.addEventListener('click', (event) => {
-					let video = slide.querySelector('.video-reviews-slider-slide__video');
-					let thumb = slide.querySelector('.video-reviews-slider-slide__img');
-					let videoSrc = video.dataset.src;
-					video.src = videoSrc;
-					thumb.classList.add('video-reviews-slider-slide__img--hidden');
-					video.classList.add('video-reviews-slider-slide__video--visible');
-					slide.classList.add('video-reviews-slider-slide--active');
-				});
-			});
-		});
-	</script>
-
-	<!-- Если 1 отзыв, то это, если больше, то то, что выше -->
-	<?php if (false) : ?>
-		<section class="testimonials-wrapper">
+	<?php if (!empty($video_reviews['reviews'])) : ?>
+		<section class="video-reviews__wrap">
 			<div class="container">
-				<div class="testimonials"><a class="testimonials-video">
-						<picture class="testimonials-watch"><img src="<?php echo get_stylesheet_directory_uri() ?>/img/0-general/watch-video-big-button.svg" alt=""></picture><span>Посмотреть видео</span>
-					</a>
-					<div class="testimonials-latest">
-						<h2 class="section__title section__title--left testimonials__title">Отзывы</h2>
-						<div class="testimonials-list">
-							<p>Очень благодарны за возможность пройти этот курс...</p>
-							<p>Материал очень подробный</p>
-							<p>Очень понятно, лектор отвечает на абсолютно все вопросы...</p>
-							<p>Детальное пособие по оказанию практической помощи...</p>
+				<h2 class="section__title video-reviews__title">Видео отзывы</h2>
+				<div class="video-reviews">
+					<div class="swiper video-reviews-slider">
+						<div class="swiper-wrapper">
+							<?php foreach ($video_reviews['reviews'] as $review) : ?>
+								<?php
+								$yt_id = preg_replace('/.+\?v\=/i', '', $review['review_link']);
+								$thumbnail = "https://i.ytimg.com/vi/{$yt_id}/hqdefault.jpg";
+								$embed_url = "https://www.youtube.com/embed/{$yt_id}";
+								?>
+								<div class="swiper-slide video-reviews-slider-slide">
+									<img src="<?php echo $thumbnail; ?>" alt="" class="video-reviews-slider-slide__media video-reviews-slider-slide__img">
+									<iframe class="video-reviews-slider-slide__media video-reviews-slider-slide__video" data-src="<?php echo $embed_url; ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+								</div>
+							<?php endforeach; ?>
 						</div>
+						<div class="swiper-scrollbar slider__scrollbar video-reviews-slider__scrollbar"></div>
+						<div class="swiper-pagination video-reviews-slider__pagination slider__pagination"></div>
+						<div class="swiper-button-prev video-reviews-slider__button-prev slider__button slider__button-prev"></div>
+						<div class="swiper-button-next video-reviews-slider__button-next slider__button slider__button-next"></div>
 					</div>
 				</div>
 			</div>
 		</section>
+		<script>
+			window.addEventListener('DOMContentLoaded', (event) => {
+
+				let videoReviews = new Swiper('.video-reviews-slider', {
+					navigation: {
+						nextEl: '.video-reviews-slider__button-next',
+						prevEl: '.video-reviews-slider__button-prev',
+					},
+					centeredSlides: true,
+					slidesPerView: 'auto',
+					effect: "creative",
+					creativeEffect: {
+						prev: {
+							translate: ["-35%", 0, 0],
+							opacity: 0.3,
+							scale: 0.7,
+						},
+						next: {
+							translate: ["35%", 0, 0],
+							opacity: 0.3,
+							scale: 0.7,
+						},
+						limitProgress: 2,
+					},
+					pagination: {
+						el: '.video-reviews-slider__pagination',
+						dynamicBullets: true,
+					},
+					scrollbar: {
+						el: '.video-reviews-slider__scrollbar',
+						draggable: true,
+					},
+				});
+				const videoSlides = document.querySelectorAll('.video-reviews-slider-slide ');
+				videoSlides.forEach((slide) => {
+					slide.addEventListener('click', (event) => {
+						let video = slide.querySelector('.video-reviews-slider-slide__video');
+						let thumb = slide.querySelector('.video-reviews-slider-slide__img');
+						let videoSrc = video.dataset.src;
+						video.src = videoSrc;
+						thumb.classList.add('video-reviews-slider-slide__img--hidden');
+						video.classList.add('video-reviews-slider-slide__video--visible');
+						slide.classList.add('video-reviews-slider-slide--active');
+					});
+				});
+			});
+		</script>
 	<?php endif; ?>
 
 
@@ -825,12 +795,10 @@ Template Name: CRB Лендинг
 	<?php endif; ?>
 
 
-	<?php
-	$author = array(
+	<?php $author = array(
 		'spec' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_9_spec'),
 		'author' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_9_author'),
-	);
-	?>
+	); ?>
 	<?php if (count($author['author']) == 1) : ?>
 		<section class="autor-single-wrapper">
 			<div class="container autor-single">
@@ -858,31 +826,22 @@ Template Name: CRB Лендинг
 		<section class="autor-wrapper">
 			<div class="container">
 				<div class="autor">
-					<div class="autor-about--more-one">
-						<h2 class="section__title"><?php echo $autor['title_1'] ?></h2>
-						<?php if (!empty($autor['pic_1'])) { ?>
-							<picture class="autor__picture"><img src="<?php echo $autor['pic_1'] ?>" alt="<?php echo $autor['name_1'] ?>"></picture>
-						<?php } ?>
-						<div class="autor-descr">
-							<h3 class="autor__name"><?php echo $autor['name_1'] ?></h3>
-							<div class="autor-bullets list-dotted-bullets">
-								<?php echo $autor['bullets_1'] ?>
+					<?php foreach ($author['author'] as $speaker) : ?>
+						<div class="autor-about--more-one">
+							<h2 class="section__title"><?php echo $speaker['title'] ?></h2>
+							<?php if (!empty($speaker['img'])) { ?>
+								<picture class="autor__picture"><img src="<?php echo $speaker['img'] ?>" alt="<?php echo $speaker['name'] ?>"></picture>
+							<?php } ?>
+							<div class="autor-descr">
+								<h3 class="autor__name"><?php echo $speaker['name'] ?></h3>
+								<div class="autor-bullets list-dotted-bullets">
+									<?php foreach ($speaker['bullets'] as $bullet) : ?>
+										<p><?php echo $bullet['bullet'] ?></p>
+									<?php endforeach; ?>
+								</div>
 							</div>
 						</div>
-					</div>
-
-					<div class="autor-about--more-one">
-						<h2 class="section__title"><?php echo $autor['title_2'] ?></h2>
-						<?php if (!empty($autor['pic_2'])) { ?>
-							<picture class="autor__picture"><img src="<?php echo $autor['pic_2'] ?>" alt="<?php echo $autor['name_2'] ?>"></picture>
-						<?php } ?>
-						<div class="autor-descr">
-							<h3 class="autor__name"><?php echo $autor['name_2'] ?></h3>
-							<div class="autor-bullets list-dotted-bullets">
-								<?php echo $autor['bullets_2'] ?>
-							</div>
-						</div>
-					</div>
+					<?php endforeach; ?>
 				</div>
 			</div>
 		</section>

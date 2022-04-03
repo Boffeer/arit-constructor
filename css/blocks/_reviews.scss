@@ -143,4 +143,9 @@
   .testimonials-pagination {
     display: none;
   }
+  .video-reviews-slider-slide::before {
+    width: 100px;
+    height: 62px;
+    background-size: 26px;
+  }
 }

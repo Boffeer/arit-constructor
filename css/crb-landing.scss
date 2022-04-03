@@ -92,6 +92,10 @@
   color: #333333;
 }
 @media (max-width: 1199px) {
+  .cards__list {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+  }
   .card__title {
     font-size: 14px;
     margin-bottom: 5px;

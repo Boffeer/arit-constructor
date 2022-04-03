@@ -6,13 +6,25 @@
   object-fit: contain;
 }
 
-@media (max-width: 1300px) {
+.autor-single-wrapper {
+  box-shadow: inset 0 -25px 10px -20px rgba(204, 204, 204, 0.15);
+  padding-bottom: 0;
+}
+@media (min-width: 1200px) {
+  .autor-single__name {
+    margin-bottom: 50px;
+  }
+}
+.autor__picture img {
+  object-fit: contain;
+}
+@media (max-width: 1199px) {
   .autor-single__who {
     margin-bottom: -20px;
   }
-  .autor-single {
-    box-shadow: inset 0 -25px 10px -20px rgba(0, 0, 0, 0.1);
-  }
+  // .autor-single {
+  //   box-shadow: inset 0 -25px 10px -20px rgba(0, 0, 0, 0.1);
+  // }
   .autor-single-image {
     max-width: 100%;
     order: 2;
