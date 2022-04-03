@@ -26,9 +26,15 @@ phones.forEach(function (e) {
     });
 
 const tabsButtons = document.querySelectorAll(".program-tabs__control ");
+const tabsPanel = document.querySelector(".program-wrapper");
 if (tabsButtons) {
   tabsButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
+      tabsPanel.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+      });
       tabsButtons.forEach((button) => {
         button.classList.remove("program-tabs__control--current");
       });

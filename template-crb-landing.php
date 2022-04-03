@@ -234,7 +234,13 @@ Template Name: CRB Лендинг
 		<div class="container">
 			<h2 class="section__title"><?php echo $program['title'] ?></h2>
 			<div class="program" id="program">
-				<div class="program-tabs-controls">
+				<?php
+				$tabs_static = '';
+				if (count($program['tabs']) > 2) {
+					$tabs_static = 'position: static;';
+				}
+				?>
+				<div class="program-tabs-controls" style="<?php echo $tabs_static; ?>">
 					<?php foreach ($program['tabs'] as $key => $tab) : ?>
 						<?php
 						$classes = '';

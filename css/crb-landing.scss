@@ -91,3 +91,15 @@
   line-height: 145%;
   color: #333333;
 }
+@media (max-width: 1199px) {
+  .card__title {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  .card__desc {
+    font-size: 14px;
+  }
+  .card__img {
+    height: 100px;
+  }
+}
