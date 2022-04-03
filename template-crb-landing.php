@@ -626,7 +626,6 @@ Template Name: CRB Лендинг
 							<?php foreach ($video_reviews['reviews'] as $review) : ?>
 								<?php
 								$yt_id = preg_replace('/.+\?v\=/i', '', $review['review_link']);
-								https: //www.youtube.com/watch?v=PUsF68N7MfE&t=247s
 								$yt_id = preg_replace('/\&t\=\d+s$/i', '', $yt_id);
 								$yt_id = preg_replace('/\&.+/i', '', $yt_id);
 								$thumbnail = "https://i.ytimg.com/vi/{$yt_id}/hqdefault.jpg";
