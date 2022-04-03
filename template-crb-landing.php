@@ -747,7 +747,7 @@ Template Name: CRB Лендинг
 						<input class="form__input input__regular input--phone" type="tel" placeholder="Ваш номер телефона" name="tel" autocorrect="off" autocomplete="tel" required>
 					</div>
 					<div class="input-wrap">
-						<button class="pricing-popup__button form_button primary-button">Отправить</button></button>
+						<button class="pricing-popup__button form_button primary-button">Отправить</button>
 					</div>
 					<div class="gdpr">Нажимая на кнопку, вы принимаете<strong><a class="gdpr__link" href="<?php echo $privacy_url; ?>"> политику конфиденциальности</a></strong></div>
 				</form>
@@ -792,6 +792,59 @@ Template Name: CRB Лендинг
 				</div>
 			</div>
 		<?php endif; ?>
+	<?php endif; ?>
+
+
+
+
+	<?php
+	$catcher = array(
+		'title' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_8_title'),
+		'subtitle' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_8_subtitle'),
+		'desc' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_8_desc'),
+		'img' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_8_img'),
+		'form_title' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_8_form_title'),
+		'form_button' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_8_form_button'),
+	);
+	?>
+	<?php if ($catcher['title']) : ?>
+		<section class="catcher">
+			<div class="container catcher__container">
+				<h2 class="section__title cathcer__title">
+					<?php echo $catcher['title']; ?>
+				</h2>
+				<h3 class="section__subtitle">
+					<?php echo $catcher['subtitle']; ?>
+				</h3>
+				<p class="section__desc">
+					<?php echo $catcher['desc']; ?>
+				</p>
+				<div class="catcher__inner">
+					<?php if ($catcher['img']) : ?>
+						<picture class="catcher__pic">
+							<img src="<?php echo $catcher['img']; ?>" alt="<?php echo $catcher['title']; ?>" class="catcher__img">
+						</picture>
+					<?php endif; ?>
+					<form class="lead-form__form form" method="post">
+						<h3 class="form__title"><?php echo $catcher['form_title'] ?></h3>
+						<div class="hidden">
+							<input type="hidden" name="from" value="Заявка с нижней формы на «<?php the_title() ?>»">
+							<input type="hidden" name="page" value="<?php echo $current_page_url; ?>">
+						</div>
+						<div class="input-wrap">
+							<input class="form__input input__regular input--phone" type="text" placeholder="Ваше имя" name="name" required>
+						</div>
+						<div class="input-wrap">
+							<input class="form__input input__regular input--phone" type="tel" placeholder="Ваш номер телефона" name="tel" autocorrect="off" autocomplete="tel" required>
+						</div>
+						<div class="input-wrap">
+							<button class="pricing-popup__button form_button primary-button"><?php echo $catcher['form_button']; ?></button>
+						</div>
+						<div class="gdpr">Нажимая на кнопку, вы принимаете<strong><a class="gdpr__link" href="<?php echo $privacy_url; ?>"> политику конфиденциальности</a></strong></div>
+					</form>
+				</div>
+			</div>
+		</section>
 	<?php endif; ?>
 
 
