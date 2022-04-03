@@ -1,9 +1,12 @@
-poppa({
-  clickTrigger: ".hero-video",
-  popWrap: ".pop-video-wrapper",
-  pop: ".pop-video",
-  popCloser: ".pop-closer",
-});
+if (document.querySelector(".pop-video")) {
+  poppa({
+    clickTrigger: ".hero-video",
+    popWrap: ".pop-video-wrapper",
+    pop: ".pop-video",
+    popCloser: ".pop-closer",
+  });
+}
+
 var emails = document.querySelectorAll(".contacts-item--email");
 emails.forEach(function (e) {
   e.addEventListener("click", function () {
@@ -51,3 +54,13 @@ if (tabsButtons) {
     });
   });
 }
+
+// const forms = document.querySelectorAll("form");
+
+// forms.forEach((form) => {
+//   form.addEventListener("submit", (e) => {
+//     e.preventDefault();
+//     const formData = new FormData(form);
+//     console.log(formData);
+//   });
+// });

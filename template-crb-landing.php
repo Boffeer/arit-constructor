@@ -6,6 +6,12 @@ Template Name: CRB Лендинг
 <?php get_header(); ?>
 <main>
 	<?php
+
+	$current_domain = $_SERVER['HTTP_HOST'];
+	$current_page_url = get_permalink();
+
+	$current_page_url = str_replace('xn--h1aitq.xn--80aqxj.xn--p1ai', $current_domain, $current_page_url);
+
 	$privacy_url = carbon_get_theme_option('privacy');
 	$page_id = get_the_ID();
 	$hero = array(
@@ -730,7 +736,7 @@ Template Name: CRB Лендинг
 										<?php endforeach; ?>
 									<?php endif; ?>
 								</ul>
-								<button type="button" class="pricing-bundle__button button button--primary button-form" data-pricing="<?php echo $bundle['title']; ?>">Узнать подробнее</button>
+								<button data-page="<?php the_title(); ?>" type="button" class="pricing-bundle__button button button--primary button-form" data-pricing="<?php echo $bundle['title']; ?>">Узнать подробнее</button>
 							</article>
 						<?php endforeach; ?>
 					</div>
@@ -831,7 +837,7 @@ Template Name: CRB Лендинг
 					<form class="lead-form__form form" method="post">
 						<h3 class="form__title"><?php echo $catcher['form_title'] ?></h3>
 						<div class="hidden">
-							<input type="hidden" name="from" value="Заявка с нижней формы на «<?php the_title() ?>»">
+							<input type="hidden" name="from" value="Заявка с формы «Думаете над предложением или собираетесь уходить?» на «<?php the_title() ?>»">
 							<input type="hidden" name="page" value="<?php echo $current_page_url; ?>">
 						</div>
 						<div class="input-wrap">

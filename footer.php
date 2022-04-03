@@ -80,7 +80,8 @@ if (get_page_template_slug() == 'page-landing.php') {
 						</svg></a></div>
 				<!--<div class="footer-copy">© 2021 Инновационный центр<br><?php //the_field('footer_address')
 																																		?></div>-->
-				<div class="footer-copy"><?php the_field('footer_address') ?></div>
+				<div class="footer-copy">107023, г. Москва, ул. Малая Семеновская д.&nbsp;9, стр.&nbsp;9</div>
+				<!-- <div class="footer-copy"><?php the_field('footer_address') ?></div> -->
 			</div>
 			<div class="contacts contacts--footer"><a class="contacts-item contacts-item--email" href="mailto:dpo@dpoarit.ru">
 					<svg class="contacts__icon" width="30" height="30" viewbox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -120,23 +121,15 @@ if (get_page_template_slug() == 'page-landing.php') {
 	}
 </style>
 <script>
-	// var formElement = document.querySelector("#mainform");
 	var getForms = [...document.querySelectorAll(".form")];
-	var formData = new FormData();
 	var actor = "<?php echo get_template_directory_uri() . '/form.php' ?>";
-
-	var strToSend = '';
-
 
 	getForms.map(function(formItem) {
 		formItem.addEventListener('submit', function(e) {
 			e.preventDefault();
-			var inputs = [...this.querySelectorAll("input")];
-			inputs.map(function(inputItem) {
-				strToSend = strToSend + inputItem.name + '=' + inputItem.value + '&';
-			})
+			const strToSend = new URLSearchParams(new FormData(formItem)).toString();
 
-			console.log(strToSend)
+			// console.log(strToSend)
 			var xhr = new XMLHttpRequest;
 			xhr.onload = function() {
 				if (xhr.status != 200) {
@@ -161,31 +154,31 @@ if (get_page_template_slug() == 'page-landing.php') {
 		})
 	});
 </script>
-<!— Facebook Pixel Code —>
-	<script>
-		! function(f, b, e, v, n, t, s) {
-			if (f.fbq) return;
-			n = f.fbq = function() {
-				n.callMethod ?
-					n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-			};
-			if (!f._fbq) f._fbq = n;
-			n.push = n;
-			n.loaded = !0;
-			n.version = '2.0';
-			n.queue = [];
-			t = b.createElement(e);
-			t.async = !0;
-			t.src = v;
-			s = b.getElementsByTagName(e)[0];
-			s.parentNode.insertBefore(t, s)
-		}(window, document, 'script',
-			'https://connect.facebook.net/en_US/fbevents.js');
-		fbq('init', '432801571357457');
-		fbq('track', 'PageView');
-	</script>
-	<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=432801571357457&ev=PageView&noscript=1" /></noscript>
-	<!— End Facebook Pixel Code —>
-		</body>
+<!-- Facebook Pixel Code -->
+<script>
+	! function(f, b, e, v, n, t, s) {
+		if (f.fbq) return;
+		n = f.fbq = function() {
+			n.callMethod ?
+				n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+		};
+		if (!f._fbq) f._fbq = n;
+		n.push = n;
+		n.loaded = !0;
+		n.version = '2.0';
+		n.queue = [];
+		t = b.createElement(e);
+		t.async = !0;
+		t.src = v;
+		s = b.getElementsByTagName(e)[0];
+		s.parentNode.insertBefore(t, s)
+	}(window, document, 'script',
+		'https://connect.facebook.net/en_US/fbevents.js');
+	fbq('init', '432801571357457');
+	fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=432801571357457&ev=PageView&noscript=1" /></noscript>
+<!-- End Facebook Pixel Code -->
+</body>
 
-		</html>
+</html>
