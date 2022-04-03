@@ -206,7 +206,7 @@ function arit_landing_page_options()
 											'singular_name' => 'результат',
 										))
 										->add_fields(array(
-											Field::make('text', 'result', __('Результат')),
+											Field::make('textarea', 'result', __('Результат')),
 										)),
 								)
 							),
@@ -377,9 +377,9 @@ function arit_landing_page_options()
 				))
 		))
 		->add_tab('Блок 10, Курс проводится редко, получить консультацию', array(
-			Field::make('text', 'crb_landing_block_10_title', __('Заголовок блока'))
+			Field::make('textarea', 'crb_landing_block_10_title', __('Заголовок блока'))
 				->set_default_value('Курс проводится редко'),
-			Field::make('text', 'crb_landing_block_10_subtitle', __('Подзаголовок блока'))
+			Field::make('textarea', 'crb_landing_block_10_subtitle', __('Подзаголовок блока'))
 				->set_default_value('А желающих обычно больше, чем мест'),
 			Field::make('complex', 'crb_landing_block_10_bullets', __('Буллеты'))
 				->setup_labels(array(
@@ -389,5 +389,9 @@ function arit_landing_page_options()
 				->add_fields(array(
 					Field::make('text', 'bullet', __('Буллет')),
 				)),
+			Field::make('text', 'crb_landing_block_10_form_title', __('Заголовок формы'))
+				->set_default_value('Получить консультацию'),
+			Field::make('text', 'crb_landing_block_10_form_button', __('Кнопка формы'))
+				->set_default_value('Узнать есть ли места'),
 		));
 }

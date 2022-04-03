@@ -45,7 +45,7 @@
     flex-direction: column-reverse;
   }
 
-  .section__title {
+  .catcher__title {
     text-align: left;
   }
   .section__subtitle {
@@ -58,5 +58,8 @@
   }
   .catcher__img {
     margin-right: 0;
+  }
+  .catcher .form {
+    margin-bottom: 25px;
   }
 }

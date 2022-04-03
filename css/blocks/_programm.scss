@@ -93,11 +93,35 @@
   counter-increment: module;
 }
 .programm-module__heading {
+  padding-right: 100px;
   padding-left: 70px;
   display: flex;
   border-top: 1px solid #e2e2e2;
   border-bottom: 1px solid #e2e2e2;
+  position: relative;
+  transition: all 0.3s;
+  &::after {
+    transition: all 0.3s;
+    content: "";
+    display: block;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 40px;
+    right: 50px;
+    background-image: url("../img/common/angle.svg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 }
+.bayan--opened {
+  .programm-module__heading::after {
+    transition: all 0.3s;
+    transform: rotate(180deg);
+  }
+}
+
 .programm-module__heading--splitted {
   .programm-module__title {
     max-width: 546px;
@@ -249,11 +273,19 @@
 
   .programm-module__heading {
     padding-left: 15px;
+    padding-right: 0;
   }
   .programm-module__heading-name {
     padding-top: 20px;
     padding-bottom: 20px;
     margin-right: 0;
+    padding-right: 45px;
+  }
+  .programm-module__heading::after {
+    width: 20px;
+    height: 20px;
+    top: 20px;
+    right: 20px;
   }
   .programm-moudle__stat-value,
   .programm-module__stat-title,

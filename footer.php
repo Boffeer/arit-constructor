@@ -1,51 +1,54 @@
 <?php
-$final_form = get_field('final_form');
-$privacy_url = carbon_get_theme_option('privacy');
+if (get_page_template_slug() == 'page-landing.php') {
+	$final_form = get_field('final_form');
+	$privacy_url = carbon_get_theme_option('privacy');
 ?>
-<section class="lead-form-wrapper">
-	<img class="lead-form-img--left" src="<?php echo get_stylesheet_directory_uri() ?>/img/8-cta/pills.png" alt="pills">
-	<img class="lead-form-img--right" src="<?php echo get_stylesheet_directory_uri() ?>/img/8-cta/aid.png" alt="aid">
-	<div class="container">
-		<h2 class="section__title"><?php echo $final_form['title'] ?></h2>
-		<p class="section__descriptor"><strong><?php echo $final_form['subtitle'] ?></strong></p>
-		<div class="lead-form">
-			<div class="lead-form-bullets">
-				<!--<h3 class="lead-form-bullets__title">А желающих обычно больше, чем мест</h3>-->
-				<p>Поэтому, если хотите:</p>
-				<div class="lead-form-list list-dotted-bullets">
-					<?php echo $final_form['bullets'] ?>
+	<section class="lead-form-wrapper">
+		<img class="lead-form-img--left" src="<?php echo get_stylesheet_directory_uri() ?>/img/8-cta/pills.png" alt="pills">
+		<img class="lead-form-img--right" src="<?php echo get_stylesheet_directory_uri() ?>/img/8-cta/aid.png" alt="aid">
+		<div class="container">
+			<h2 class="section__title"><?php echo $final_form['title'] ?></h2>
+			<p class="section__descriptor"><strong><?php echo $final_form['subtitle'] ?></strong></p>
+			<div class="lead-form">
+				<div class="lead-form-bullets">
+					<!--<h3 class="lead-form-bullets__title">А желающих обычно больше, чем мест</h3>-->
+					<p>Поэтому, если хотите:</p>
+					<div class="lead-form-list list-dotted-bullets">
+						<?php echo $final_form['bullets'] ?>
+					</div>
 				</div>
+
+				<?php
+				$current_domain = $_SERVER['HTTP_HOST'];
+				$current_page_url = get_permalink();
+
+				$current_page_url = str_replace('xn--h1aitq.xn--80aqxj.xn--p1ai', $current_domain, $current_page_url);
+				?>
+				<form class="lead-form__form form" method="post">
+					<h3 class="form__title"><?php echo $final_form['form_title'] ?></h3>
+					<div class="hidden">
+						<input type="hidden" name="from" value="Заявка с нижней формы на «<?php the_title() ?>»">
+						<input type="hidden" name="page" value="<?php echo $current_page_url; ?>">
+					</div>
+					<div class="input-wrap">
+						<input class="form__input input__regular input--phone" type="text" placeholder="Ваше имя" name="name" required>
+					</div>
+					<div class="input-wrap">
+						<input class="form__input input__regular input--phone" type="tel" placeholder="Ваш номер телефона" name="tel" autocorrect="off" autocomplete="tel" required>
+					</div>
+					<div class="input-wrap">
+						<button class="form_button primary-button"><?php echo $final_form['form_button'] ?></button>
+					</div>
+					<div class="gdpr">Нажимая на кнопку, вы принимаете<strong><a class="gdpr__link" href="<?php echo $privacy_url; ?>"> политику конфиденциальности</a></strong></div>
+				</form>
 			</div>
-
-			<?php
-			$current_domain = $_SERVER['HTTP_HOST'];
-			$current_page_url = get_permalink();
-
-			$current_page_url = str_replace('xn--h1aitq.xn--80aqxj.xn--p1ai', $current_domain, $current_page_url);
-			?>
-			<form class="lead-form__form form" method="post">
-				<h3 class="form__title"><?php echo $final_form['form_title'] ?></h3>
-				<div class="hidden">
-					<input type="hidden" name="from" value="Заявка с нижней формы на «<?php the_title() ?>»">
-					<input type="hidden" name="page" value="<?php echo $current_page_url; ?>">
-				</div>
-				<div class="input-wrap">
-					<input class="form__input input__regular input--phone" type="text" placeholder="Ваше имя" name="name" required>
-				</div>
-				<div class="input-wrap">
-					<input class="form__input input__regular input--phone" type="tel" placeholder="Ваш номер телефона" name="tel" autocorrect="off" autocomplete="tel" required>
-				</div>
-				<div class="input-wrap">
-					<button class="form_button primary-button"><?php echo $final_form['form_button'] ?></button>
-				</div>
-				<div class="gdpr">Нажимая на кнопку, вы принимаете<strong><a class="gdpr__link" href="<?php echo $privacy_url; ?>"> политику конфиденциальности</a></strong></div>
-			</form>
+			<?php if (!empty($final_form['nmo'])) { ?>
+				<p class="nmo">и напоминаем про <?php echo $final_form['nmo'] ?> баллов в системе НМО</p>
+			<?php } ?>
 		</div>
-		<?php if (!empty($final_form['nmo'])) { ?>
-			<p class="nmo">и напоминаем про <?php echo $final_form['nmo'] ?> баллов в системе НМО</p>
-		<?php } ?>
-	</div>
-</section>
+	</section>
+<?php } ?>
+
 <footer class="footer-wrapper">
 	<div class="container">
 		<style>
