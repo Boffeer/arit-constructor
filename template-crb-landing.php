@@ -780,20 +780,42 @@ Template Name: CRB Лендинг
 	<?php endif; ?>
 
 	<?php if (!empty($pricing['bullets'])) : ?>
-		<div class="pricing-bullets">
+		<?php if (!$pricing['bullets'][0]['title']) : ?>
+			<div class="pricing-bullets">
+				<div class="container">
+					<div class="pricing-bullets__list">
+						<?php foreach ($pricing['bullets'] as $bullet) : ?>
+							<article class="pricing-bullets-bullet">
+								<img src="<?php echo $bullet['img']; ?>" alt="<?php echo $bullet['bullet']; ?>" class="pricing-bullets-bullet__img">
+								<p class="pricing-bullets-bullet__desc">
+									<?php echo $bullet['bullet']; ?>
+								</p>
+							</article>
+						<?php endforeach; ?>
+					</div>
+				</div>
+			</div>
+		<?php else : ?>
 			<div class="container">
-				<div class="pricing-bullets__list">
+				<div class="programm-module-cards cards__list cards__list--3">
 					<?php foreach ($pricing['bullets'] as $bullet) : ?>
-						<article class="pricing-bullets-bullet">
-							<img src="<?php echo $bullet['img']; ?>" alt="<?php echo $bullet['bullet']; ?>" class="pricing-bullets-bullet__img">
-							<p class="pricing-bullets-bullet__desc">
+						<article class="card">
+							<?php if ($bullet['img']) : ?>
+								<img src="<?php echo $bullet['img']; ?>" alt="<?php echo $bullet['bullet'] ?>" class="card__img">
+							<?php endif; ?>
+							<?php if ($bullet['title']) : ?>
+								<h3 class="card__title">
+									<?php echo $bullet['title']; ?>
+								</h3>
+							<?php endif; ?>
+							<p class="card__desc">
 								<?php echo $bullet['bullet']; ?>
 							</p>
 						</article>
 					<?php endforeach; ?>
 				</div>
 			</div>
-		</div>
+		<?php endif; ?>
 	<?php endif; ?>
 
 

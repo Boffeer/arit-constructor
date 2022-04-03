@@ -327,6 +327,8 @@ function arit_landing_page_options()
 				->add_fields(array(
 					Field::make('image', 'img', __('Картинка'))
 						->set_value_type('url'),
+					Field::make('text', 'title', __('Заголовок буллета'))
+						->set_help_text('Можно не заполнять'),
 					Field::make('text', 'bullet', __('Буллет')),
 				))
 		))
