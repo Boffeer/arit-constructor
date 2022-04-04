@@ -378,20 +378,24 @@ function arit_landing_page_options()
 		))
 		->add_tab('Блок 10, Курс проводится редко, получить консультацию', array(
 			Field::make('textarea', 'crb_landing_block_10_title', __('Заголовок блока'))
-				->set_default_value('Курс проводится редко'),
-			Field::make('textarea', 'crb_landing_block_10_subtitle', __('Подзаголовок блока'))
-				->set_default_value('А желающих обычно больше, чем мест'),
+				->set_default_value('Мест всегда меньше, чем желающих'),
 			Field::make('complex', 'crb_landing_block_10_bullets', __('Буллеты'))
 				->setup_labels(array(
 					'plural_name' => 'буллеты',
 					'singular_name' => 'буллет',
 				))
 				->add_fields(array(
-					Field::make('text', 'bullet', __('Буллет')),
+					Field::make('textarea', 'bullet', __('Буллет')),
 				)),
 			Field::make('text', 'crb_landing_block_10_form_title', __('Заголовок формы'))
 				->set_default_value('Получить консультацию'),
 			Field::make('text', 'crb_landing_block_10_form_button', __('Кнопка формы'))
 				->set_default_value('Узнать есть ли места'),
+			Field::make('date', 'crb_landing_block_10_date_end', __('Дата окончания курса'))
+				->set_storage_format('d.m.Y'),
+			Field::make('textarea', 'crb_landing_block_10_address', __('Адрес курса, если есть'))
+				->set_default_value(' г. Москва, ул. Малая Семеновская, д. 5, стр. 1.'),
+			Field::make('textarea', 'crb_landing_block_10_nmo', __('Текст между последней формой и подвалом, например, про НМО баллы'))
+				->set_default_value('и напоминаем про 36 баллов по системе НМО'),
 		));
 }

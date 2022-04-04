@@ -11,8 +11,13 @@
   padding-bottom: 0;
 }
 @media (min-width: 1200px) {
-  .autor-single__name {
+  .autor-single__who {
     margin-bottom: 50px;
+    max-width: 710px;
+    width: 100%;
+  }
+  .autor-single__image {
+    margin-bottom: -50px;
   }
 }
 .autor__picture img {

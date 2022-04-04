@@ -30,8 +30,8 @@ if ($phone) {
 	$headers  = "Content-type: text/html; charset=utf-8 \r\n";
 	$headers .= "From: <mailer@арит.рф>\r\n";
 
-	// $mailstat1 = wp_mail('boffeechane@gmail.com', $subj, $message2, $headers);
-	$mailstat2 = wp_mail('dpo@dpoarit.ru', $subj, $message2, $headers);
+	$mailstat1 = wp_mail('boffeechane@gmail.com', $subj, $message2, $headers);
+	// $mailstat2 = wp_mail('dpo@dpoarit.ru', $subj, $message2, $headers);
 	$mailstat1;
 	$mailstat2;
 

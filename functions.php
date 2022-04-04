@@ -80,3 +80,23 @@ add_filter('the_generator', 'wp_version_remove_version');
 
 
 require_once 'includes/carbon-fields/carbon-fields-plugin.php';
+
+function getRussianMonthName($date)
+{
+	$date = date_parse($date);
+	$rusMonths = array(
+		'января',
+		'февраля',
+		'марта',
+		'апреля',
+		'мая',
+		'июня',
+		'июля',
+		'августа',
+		'сентября',
+		'октября',
+		'ноября',
+		'декабря',
+	);
+	return $date['day'] . ' ' . $rusMonths[$date['month'] - 1] . ' ' . $date['year'];
+}

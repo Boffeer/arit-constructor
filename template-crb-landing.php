@@ -60,7 +60,7 @@ Template Name: CRB Лендинг
 				<div class="hero">
 					<div class="hero-start">
 						<p>Старт:</p>
-						<time><?php echo $hero['date']; ?></time>
+						<time><?php echo getRussianMonthName($hero['date']); ?></time>
 						<div class="hero-start__shevron">
 							<svg width="50" height="74" viewBox="0 0 50 74" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M0 3C0 1.34315 1.34315 0 3 0H47C48.6569 0 50 1.34315 50 3V70.0035C50 72.224 47.6713 73.675 45.678 72.6965L26.322 63.1944C25.4882 62.7851 24.5118 62.7851 23.678 63.1944L4.32202 72.6965C2.32867 73.675 0 72.2241 0 70.0035V3Z" fill="#118A0F"></path>
@@ -878,7 +878,7 @@ Template Name: CRB Лендинг
 					<div class="autor-single-image">
 						<div class="autor-single__who">
 							<h3 class="autor-single__name"><?php echo $speaker['name'] ?></h3>
-							<!-- <p class="autor-single__post"></p> -->
+							<p class="autor-single__post"><?php echo $speaker['title']; ?></p>
 						</div><img class="autor-single__image" src="<?php echo $speaker['img'] ?>" alt="<?php echo $speaker['name'] ?>">
 					</div>
 				<?php endforeach; ?>
@@ -912,31 +912,49 @@ Template Name: CRB Лендинг
 	<?php
 	$final_form = array(
 		'title' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_10_title'),
-		'subtitle' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_10_subtitle'),
 		'bullets' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_10_bullets'),
 		'form_title' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_10_form_title'),
 		'form_button' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_10_form_button'),
+		'nmo' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_10_nmo'),
+		'start_date' => carbon_get_post_meta($page_id, 'crb_landing_block_1_date'),
+		'end_date' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_10_date_end'),
+		'address' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_10_address'),
 	)
 	?>
 	<section class="lead-form-wrapper">
-		<img class="lead-form-img--left" src="<?php echo get_stylesheet_directory_uri() ?>/img/8-cta/pills.png" alt="pills">
-		<img class="lead-form-img--right" src="<?php echo get_stylesheet_directory_uri() ?>/img/8-cta/aid.png" alt="aid">
+		<!-- <img class="lead-form-img--left" src="<?php echo get_stylesheet_directory_uri() ?>/img/8-cta/pills.png" alt="pills">
+		<img class="lead-form-img--right" src="<?php echo get_stylesheet_directory_uri() ?>/img/8-cta/aid.png" alt="aid"> -->
 		<div class="container">
-			<h2 class="section__title lead-form__title"><?php echo $final_form['title'] ?></h2>
-			<p class="section__descriptor"><strong><?php echo $final_form['subtitle'] ?></strong></p>
+			<!-- <h2 class="section__title lead-form__title"><?php //echo $final_form['title']
+																												?></h2> -->
+			<!-- <p class="section__descriptor"><strong><?php //echo $final_form['subtitle']
+																									?></strong></p> -->
 			<div class="lead-form">
-				<?php if (!empty($final_form['bullets'])) : ?>
-					<div class="lead-form-bullets">
-						<!--<h3 class="lead-form-bullets__title">А желающих обычно больше, чем мест</h3>-->
+				<div class="lead-form-bullets">
+					<h3 class="lead-form-bullets__title"><?php echo $final_form['title'] ?></h3>
+					<?php if (!empty($final_form['bullets'])) : ?>
 						<p>Поэтому, если хотите:</p>
 						<div class="lead-form-list list-dotted-bullets">
 							<?php foreach ($final_form['bullets'] as $bullet) : ?>
 								<p><?php echo $bullet['bullet'] ?></p>
 							<?php endforeach; ?>
 						</div>
-					</div>
-				<?php endif; ?>
+						<?php if ($final_form['end_date']) : ?>
+							<div class="lead-form-date">
+								<img src="<?php echo get_stylesheet_directory_uri() ?>/img/common/map.png" alt="длительность курса" class="lead-form-date__img">
+								<p class="lead-form-date__desc">
+									<?php if ($final_form['end_date'] == $final_form['start_date']) : ?>
+										Курс пройдет <span><?php echo $final_form['end_date'] ?></span>
+									<?php else : ?>
+										Курс продлится с <span><?php echo $final_form['start_date']; ?> по <?php echo $final_form['end_date'] ?></span>
+									<?php endif; ?>
+									и будет проходить по адерсу: <span><?php echo $final_form['address'] ?></span>
+								</p>
+							</div>
+						<?php endif; ?>
+					<?php endif; ?>
 
+				</div>
 				<?php
 				$current_domain = $_SERVER['HTTP_HOST'];
 				$current_page_url = get_permalink();
@@ -960,11 +978,10 @@ Template Name: CRB Лендинг
 					</div>
 					<div class="gdpr">Нажимая на кнопку, вы принимаете<strong><a class="gdpr__link" href="<?php echo $privacy_url; ?>"> политику конфиденциальности</a></strong></div>
 				</form>
+				<?php if (!empty($final_form['nmo'])) { ?>
+					<p class="nmo"><?php echo $final_form['nmo'] ?></p>
+				<?php } ?>
 			</div>
-			<?php if (!empty($final_form['nmo'])) { ?>
-				<p class="nmo">и напоминаем про <?php echo $final_form['nmo'] ?> баллов в системе НМО</p>
-			<?php } ?>
-		</div>
 	</section>
 
 </main>
