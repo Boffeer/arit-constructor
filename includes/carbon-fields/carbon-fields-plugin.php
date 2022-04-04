@@ -131,7 +131,7 @@ function arit_landing_page_options()
 								'theory_and_practice' => '2. Длительность + Теория + практика + результат',
 								'task_theory_and_practice' => '3. Задача + время и план теории + время и план практики + результат',
 							)),
-						Field::make('complex', 'tab_progarmm_1', 'Программа курса')
+						Field::make('complex', 'tab_program_1', 'Программа курса')
 							->setup_labels(array(
 								'plural_name' => 'элементы программы',
 								'singular_name' => 'элемент программы',
@@ -160,7 +160,7 @@ function arit_landing_page_options()
 										Field::make('text', 'bullet', __('Пункт плана')),
 									)),
 							)),
-						Field::make('complex', 'tab_progarmm_2', 'Программа курса')
+						Field::make('complex', 'tab_program_2', 'Программа курса')
 							->setup_labels(array(
 								'plural_name' => 'элементы программы',
 								'singular_name' => 'элемент программы',
@@ -210,7 +210,7 @@ function arit_landing_page_options()
 										)),
 								)
 							),
-						Field::make('complex', 'tab_progarmm_3', 'Программа курса')
+						Field::make('complex', 'tab_program_3', 'Программа курса')
 							->setup_labels(array(
 								'plural_name' => 'элементы программы',
 								'singular_name' => 'элемент программы',

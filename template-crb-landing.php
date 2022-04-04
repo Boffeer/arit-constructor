@@ -320,12 +320,12 @@ Template Name: CRB Лендинг
 									$modules = array();
 									$modules_classes = '';
 									if ($tab['tab_programm_type'] == 'table') {
-										$modules = $tab['tab_progarmm_1'];
+										$modules = $tab['tab_program_1'];
 									} elseif ($tab['tab_programm_type'] == 'theory_and_practice') {
-										$modules = $tab['tab_progarmm_2'];
+										$modules = $tab['tab_program_2'];
 										$modules_classes = 'programm-module__heading--splitted';
 									} elseif ($tab['tab_programm_type'] == 'task_theory_and_practice') {
-										$modules = $tab['tab_progarmm_3'];
+										$modules = $tab['tab_program_3'];
 									}
 									?>
 									<?php if (!empty($modules)) : ?>
