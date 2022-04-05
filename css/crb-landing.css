@@ -202,6 +202,10 @@
   margin-right: 60px;
 }
 
+.catcher__pic {
+  max-width: 550px;
+}
+
 @media (max-width: 1199px) {
   .catcher {
     background: none;
@@ -1130,5 +1134,9 @@
     height: 250px;
     margin-top: 0;
   }
+}
+
+.poppa-aligner {
+  padding: 0;
 }
 /*# sourceMappingURL=crb-landing.css.map */

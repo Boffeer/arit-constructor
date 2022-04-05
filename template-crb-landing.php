@@ -192,7 +192,6 @@ Template Name: CRB Лендинг
 		'subtitle' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_3_subtitle'),
 		'bullets' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_3_bullets'),
 		'image' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_3_background_desktop'),
-		'image_mobile' => carbon_get_post_meta(get_the_ID(), 'crb_landing_block_3_background_mobile'),
 	);
 	?>
 	<?php if (!empty($after['bullets'])) : ?>
@@ -271,9 +270,11 @@ Template Name: CRB Лендинг
 							?>
 							<div data-tab="<?php echo $key; ?>" class="program-tab program-tab--theory <?php echo $tab_classes; ?>">
 								<?php if ($tab['tab_top_type'] == 'text') : ?>
-									<div class="program-tab-descr-wrapper">
-										<p class="program-tab__descr"><?php echo $tab['tab_top_text']; ?></p>
-									</div>
+									<?php if ($tab['tab_top_text']) : ?>
+										<div class="program-tab-descr-wrapper">
+											<p class="program-tab__descr"><?php echo $tab['tab_top_text']; ?></p>
+										</div>
+									<?php endif; ?>
 								<?php elseif ($tab['tab_top_type'] == 'cards') : ?>
 									<?php
 									$cards_gallery_class = 'gallery--2';
@@ -488,41 +489,45 @@ Template Name: CRB Лендинг
 					</div>
 				<?php endforeach; ?>
 				<div class="program-tab program-tab--practice">
-					<div class="program-tab-descr-wrapper">
-						<h3 class="program-tab__title"><?php echo $program['tab_2']['title'] ?></h3>
-						<ul class="practice-bullets">
+					<?php if ($program['tab_2']['title']) : ?>
+						<div class="program-tab-descr-wrapper">
+							<h3 class="program-tab__title"><?php echo $program['tab_2']['title'] ?></h3>
+							<ul class="practice-bullets">
 
-							<li class="practice-bullet">
-								<?php if (!empty($program['tab_2']['bullets_pics']['pic_1'])) { ?>
-									<picture class="practice-picture"><img src="<?php echo $program['tab_2']['bullets_pics']['pic_1'] ?>" alt="<?php $program['tab_2']['bullets_pics']['bullet_1'] ?>"></picture>
-								<?php } ?>
-								<p><?php echo $program['tab_2']['bullets_pics']['bullet_1'] ?></p>
-							</li>
+								<li class="practice-bullet">
+									<?php if (!empty($program['tab_2']['bullets_pics']['pic_1'])) { ?>
+										<picture class="practice-picture"><img src="<?php echo $program['tab_2']['bullets_pics']['pic_1'] ?>" alt="<?php $program['tab_2']['bullets_pics']['bullet_1'] ?>"></picture>
+									<?php } ?>
+									<p><?php echo $program['tab_2']['bullets_pics']['bullet_1'] ?></p>
+								</li>
 
-							<li class="practice-bullet">
-								<?php if (!empty($program['tab_2']['bullets_pics']['pic_2'])) { ?>
-									<picture class="practice-picture"><img src="<?php echo $program['tab_2']['bullets_pics']['pic_2'] ?>" alt="<?php $program['tab_2']['bullets_pics']['bullet_2'] ?>"></picture>
-								<?php } ?>
-								<p><?php echo $program['tab_2']['bullets_pics']['bullet_2'] ?></p>
-							</li>
+								<li class="practice-bullet">
+									<?php if (!empty($program['tab_2']['bullets_pics']['pic_2'])) { ?>
+										<picture class="practice-picture"><img src="<?php echo $program['tab_2']['bullets_pics']['pic_2'] ?>" alt="<?php $program['tab_2']['bullets_pics']['bullet_2'] ?>"></picture>
+									<?php } ?>
+									<p><?php echo $program['tab_2']['bullets_pics']['bullet_2'] ?></p>
+								</li>
 
-							<li class="practice-bullet">
-								<?php if (!empty($program['tab_2']['bullets_pics']['pic_3'])) { ?>
-									<picture class="practice-picture"><img src="<?php echo $program['tab_2']['bullets_pics']['pic_3'] ?>" alt="<?php $program['tab_2']['bullets_pics']['bullet_3'] ?>"></picture>
-								<?php } ?>
-								<p><?php echo $program['tab_2']['bullets_pics']['bullet_3'] ?></p>
-							</li>
+								<li class="practice-bullet">
+									<?php if (!empty($program['tab_2']['bullets_pics']['pic_3'])) { ?>
+										<picture class="practice-picture"><img src="<?php echo $program['tab_2']['bullets_pics']['pic_3'] ?>" alt="<?php $program['tab_2']['bullets_pics']['bullet_3'] ?>"></picture>
+									<?php } ?>
+									<p><?php echo $program['tab_2']['bullets_pics']['bullet_3'] ?></p>
+								</li>
 
-						</ul>
-					</div>
-					<div class="program-tab-bullets list-dotted-bullets">
-						<div class="program-tab-bullets--left">
-							<?php echo $program['tab_2']['bullets_left'] ?>
+							</ul>
 						</div>
-						<div class="program-tab-bullets--right">
-							<?php echo $program['tab_2']['bullets_right'] ?>
+					<?php endif; ?>
+					<?php if ($program['tab_2']['bullets_left'] || $program['tab_2']['bullets_right']) : ?>
+						<div class="program-tab-bullets list-dotted-bullets">
+							<div class="program-tab-bullets--left">
+								<?php echo $program['tab_2']['bullets_left'] ?>
+							</div>
+							<div class="program-tab-bullets--right">
+								<?php echo $program['tab_2']['bullets_right'] ?>
+							</div>
 						</div>
-					</div>
+					<?php endif; ?>
 
 
 				</div>
@@ -587,29 +592,37 @@ Template Name: CRB Лендинг
 				<div class="swiper-button-next testimonials-button-next"></div>
 				<div class="swiper-button-prev testimonials-button-prev"></div>
 				<script>
-					var testimonialsSlider = new Swiper('.testimonials-slider', {
-						autoHeight: true,
-						slidesPerView: 1,
-						spaceBetween: 19,
-						pagination: {
-							el: '.swiper-pagination.testimonials-pagination',
-							dynamicBullets: true,
-						},
-						navigation: {
-							nextEl: '.testimonials-button-next',
-							prevEl: '.testimonials-button-prev',
-						},
-						breakpoints: {
-							1200: {
-								slidesPerView: 2,
-							}
-						},
-						scrollbar: {
-							el: '.testimonials__scrollbar',
-							draggable: true,
-						},
+					window.addEventListener('DOMContentLoaded', (event) => {
+						var testimonialsSlider = new Swiper('.testimonials-slider', {
+							autoHeight: true,
+							slidesPerView: 1,
+							spaceBetween: 19,
+							pagination: {
+								el: '.swiper-pagination.testimonials-pagination',
+								dynamicBullets: true,
+							},
+							navigation: {
+								nextEl: '.testimonials-button-next',
+								prevEl: '.testimonials-button-prev',
+							},
+							breakpoints: {
+								1200: {
+									slidesPerView: 2,
+								}
+							},
+							scrollbar: {
+								el: '.testimonials__scrollbar',
+								draggable: true,
+							},
 
-					})
+						});
+						setTimeout(() => {
+							testimonialsSlider.slideNext();
+						}, 100);
+						setTimeout(() => {
+							testimonialsSlider.slidePrev();
+						}, 100);
+					});
 				</script>
 			</div>
 		</section>
@@ -697,6 +710,12 @@ Template Name: CRB Лендинг
 						slide.classList.add('video-reviews-slider-slide--active');
 					});
 				});
+				setTimeout(() => {
+					videoReviews.slideNext();
+				}, 100);
+				setTimeout(() => {
+					videoReviews.slidePrev();
+				}, 100);
 			});
 		</script>
 	<?php endif; ?>
@@ -736,7 +755,7 @@ Template Name: CRB Лендинг
 										<?php endforeach; ?>
 									<?php endif; ?>
 								</ul>
-								<button data-page="<?php the_title(); ?>" type="button" class="pricing-bundle__button button button--primary button-form" data-pricing="<?php echo $bundle['title']; ?>">Узнать подробнее</button>
+								<button data-page="<?php the_title(); ?>" type="button" class="pricing-bundle__button button button--primary button-form" data-pricing="<?php echo $bundle['title']; ?>">Получить консультацию</button>
 							</article>
 						<?php endforeach; ?>
 					</div>
@@ -771,7 +790,9 @@ Template Name: CRB Лендинг
 					<div class="pricing-bullets__list">
 						<?php foreach ($pricing['bullets'] as $bullet) : ?>
 							<article class="pricing-bullets-bullet">
-								<img src="<?php echo $bullet['img']; ?>" alt="<?php echo $bullet['bullet']; ?>" class="pricing-bullets-bullet__img">
+								<?php if ($bullet['img']) : ?>
+									<img src="<?php echo $bullet['img']; ?>" alt="<?php echo $bullet['bullet']; ?>" class="pricing-bullets-bullet__img">
+								<?php endif; ?>
 								<p class="pricing-bullets-bullet__desc">
 									<?php echo $bullet['bullet']; ?>
 								</p>
@@ -835,7 +856,9 @@ Template Name: CRB Лендинг
 						</picture>
 					<?php endif; ?>
 					<form class="lead-form__form form" method="post">
-						<h3 class="form__title"><?php echo $catcher['form_title'] ?></h3>
+						<?php if ($catcher['form_title']) : ?>
+							<h3 class="form__title"><?php echo $catcher['form_title'] ?></h3>
+						<?php endif; ?>
 						<div class="hidden">
 							<input type="hidden" name="from" value="Заявка с формы «Думаете над предложением или собираетесь уходить?» на «<?php the_title() ?>»">
 							<input type="hidden" name="page" value="<?php echo $current_page_url; ?>">

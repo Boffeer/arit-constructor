@@ -67,8 +67,6 @@ function arit_landing_page_options()
 				)),
 			Field::make('image', 'crb_landing_block_3_background_desktop', __('Фон, компьютер'))
 				->set_value_type('url'),
-			Field::make('image', 'crb_landing_block_3_background_mobile', __('Фон, мобилка'))
-				->set_value_type('url'),
 		))
 		->add_tab(__('Блок 4, Программа курса. Теория и практика'), array(
 			Field::make('text', 'crb_landing_block_4_title', __('Заголовок'))
